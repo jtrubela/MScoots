@@ -1,34 +1,33 @@
-# crud-demo-MScoots
+crud-demo-MScoots 
+=======================================================================================
 
-#  MScoots
- =======
-###  Contents
-#### ...
-#### ...
-#### ...
-#### ...
 
-==========================
+
+About
+-----
+
+
+
+
 ##  Folder Hierarchy
 --------------------------
 ### MScoots
-### ...
-#### ...
-#### ...
-#### ...
-#### ...
-===========================
-## Things to add
-===========================
-### Utilities folder
-1. DB CRUD
-2. UI custom styler structs
-3. Sign-In Auth
-⋅⋅1. Empty Field Validation
-..2 signup tapped
-..3 Reg expression pattern NF
-..4 
-
-
-##### H5
-###### H6
+#### Main
+#### Models
+#### Utilities
+#### View Models
+#### Views
+## --------------------------------------THINGS TO DO -----------------------------------
+| ITEM | SUB ITEM   | ....................DESCRIPTION.................... |
+| :-----------:    | :-------------: | :----- |
+|                  | Directories  |   |   
+|                  | Utilities  |   |   |
+|                  |                  | DB CRUD |   
+|                  |                  | UI custom styler structs |   
+|                  |                  | Sign-In Auth |  |
+|                  |                  |  Empty Field Validation | 
+|                  |                  | ViewTranstion |  
+|                  | Models: Classes/Structs |   |   
+|                  |   |   Constants - instantiate ViewController - [Sign-in with Firebase - CWChris](https://www.youtube.com/watch?app=desktop&v=1HN7usMROt8&feature=youtu.be "Firebase Auth Signin - CWChris") |    
+|                  | ViewModels  |   |   
+|                  | Storyboards  |   |   
