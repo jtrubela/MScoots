@@ -31,7 +31,10 @@ About
 |                  |   |   Constants - instantiate ViewController - [Sign-in with Firebase - CWChris](https://www.youtube.com/watch?app=desktop&v=1HN7usMROt8&feature=youtu.be "Firebase Auth Signin - CWChris") |    
 |                  | ViewModels  |   |   
 |                  | Storyboards  |   |   
-
+| :-----------:    | :-------------: | :----- |
+#.
+#.
+#.
 
 
 -----------------------------------UPDATES TO PROJECT--------------------------------------
@@ -74,3 +77,18 @@ About
 | | | |
 | ViewController| | |
 | | video UI: funcs: ViewDidLoad, ViewWillAppear, SetupElement, setUpVideo | provides the uiscreen with a video to play in the background |
+
+
+#.
+#.
+#.
+
+##-----------------------------------------------------GitHub Updates-------------------------------------------------------------
+|   Date    |    Location git was used     |  Interactions with the server    |     Notes/Changes     |  Updates to the README  |
+| ------    | ------                       | ------                           | ------                | ----                    |
+| 2/22/23|  XCode: Github repository | Fetched changes |  |  Yes |
+| | | Stashed things a few times - not sure what that did yet | Had issues with the local repository being out of date | |
+| | | Pulled and pushed | last was astash and Committed all the changes | changes made in commit message and README | Yes |
+| ------ | ------ | ------ | ------ | ---- |
+| |  | | | | |
+
