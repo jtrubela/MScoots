@@ -1,0 +1,28 @@
+firebase auth:import users.json --hash-algo=scrypt --rounds=8 --mem-cost=14
+{
+  "users": [
+    {
+      "localId": UID,
+      "email": EMAIL_ADDRESS
+      "emailVerified": EMAIL_VERIFIED,
+      "passwordHash": BASE64_ENCODED_PASSWORD_HASH,
+      "salt": BASE64_ENCODED_PASSWORD_SALT,
+      "displayName": NAME,
+      "photoUrl": PHOTO_URL,
+      "createdAt": CREATED_AT_IN_MILLIS,
+      "lastSignedInAt": LAST_SIGNEDIN_AT_IN_MILLIS,
+      "phoneNumber": PHONE_NUMBER
+      "providerUserInfo": [
+        {
+          "providerId": PROVIDER_ID,
+          "rawId": PROVIDER_UID,
+          "email":  PROVIDER_EMAIL,
+          "displayName": PROVIDER_NAME,
+          "photoUrl": PROVIDER_PHOTO_URL
+        },
+        ...
+      ]
+    },
+    ...
+  ]
+}

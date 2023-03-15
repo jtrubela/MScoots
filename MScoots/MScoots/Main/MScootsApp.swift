@@ -9,22 +9,124 @@ import SwiftUI
 
 @main
 struct MScootsApp: App {
-    
-//    // register app delegate for Firebase setup
-//      @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
-    
+
     var body: some Scene {
-        var adminView = false
-        var network = Network()
+        
+        //Change this to true to manually switch to admin/testing view to see accounts
+        //not fully implemented yet
+        let adminView = false
+        let network = Network()
         WindowGroup {
             if adminView {
-                AdminView().environmentObject(network)
+                AdminView(network: network).environmentObject(network)
             }
             else{
                 LandingPageView()
             }
         }
     }
+    
+    //Network class  &  Adminview View
+    /*
+     //
+     //  Takes all the users in the database and adds them to the view to be seen on app
+     //      for testing purposes only
+     //
+     //  Created by Justin Trubela on 3/1/23.
+     //
+
+     //The only way I have found how to export the user data is into JSON. I have not connected this yet to make the JSON file into a URL decoder but I do have a JSON decoder than can do that.
+         //might need to add a textfield on admin view to input the url to be converted
+
+
+     /*
+      Takes in an array of users to be shown iteratively
+      Turns the URL given,
+      
+      
+      */
+
+
+     //import SwiftUI
+
+     */
+    class Network: ObservableObject {
+        @Published var users: [User] = []
+
+        func getUsers() {
+            guard let url = URL(string: "https://jsonplaceholder.typicode.com/users") else { fatalError("Missing URL") }
+
+            let urlRequest = URLRequest(url: url)
+
+            let dataTask = URLSession.shared.dataTask(with: urlRequest) { (data, response, error) in
+                if let error = error {
+                    print("Request error: ", error)
+                    return
+                }
+
+                guard let response = response as? HTTPURLResponse else { return }
+
+                if response.statusCode == 200 {
+                    guard let data = data else { return }
+                    DispatchQueue.main.async {
+                        do {
+                            let decodedUsers = try JSONDecoder().decode([User].self, from: data)
+                            self.users = decodedUsers
+                        } catch let error {
+                            print("Error decoding: ", error)
+                        }
+                    }
+                }
+            }
+
+            dataTask.resume()
+        }
+    }
+    struct AdminView: View {
+        @ObservedObject var network: Network
+        
+        var message = ""
+
+        var body: some View {
+            ScrollView {
+                Text("All users")
+                    .font(.title)
+                    .bold()
+
+                VStack(alignment: .leading) {
+                    ForEach(network.users) { user in
+                        HStack(alignment:.top) {
+                            Text("\(user.id)")
+
+                            VStack(alignment: .leading) {
+                                Text(user.name)
+                                    .bold()
+
+                                Text(user.email.lowercased())
+
+                                Text(user.phone)
+                            }
+                        }
+                        .frame(width: 300, alignment: .leading)
+                        .padding()
+                        .background(Color(#colorLiteral(red: 0.6667672396, green: 0.7527905703, blue: 1, alpha: 0.2662717301)))
+                        .cornerRadius(20)
+                    }
+                }
+
+            }
+            .padding(.vertical)
+            .onAppear {
+                network.getUsers()
+            }
+        }
+    }
+    //struct AdminView_Previews: PreviewProvider {
+    //    static var previews: some View {
+    //        AdminView(adminModel: 0, network: Network)
+    //            .environmentObject(Network())
+    //    }
+    //}
 }
 
 
