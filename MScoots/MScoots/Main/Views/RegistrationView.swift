@@ -7,12 +7,21 @@
 
 import SwiftUI
 import Firebase
+import FirebaseAuth
 
 struct RegistrationView: View {
     
-    @ObservedObject var model = ViewModel()
-    @State var userHome = UserHomeView()
     
+    
+    
+    //ModelView Values-functionality
+    //imports functions needed to register
+    @ObservedObject var model = DB_Authorization()
+
+
+    //User data(still not being used)
+    // creates instances of registration items needed for view state change
+    // checked against user database
     @State var CWID = ""
     @State var first_name = ""
     @State var last_name = ""
@@ -21,27 +30,62 @@ struct RegistrationView: View {
     @State var password = ""
     @State var password2 = ""
 
-    @State var newUserStatusMessage = ""
-
-    @State var shouldShowImagePicker = false
-    @State var goToHomeUserView = UserHomeView()
+    //View Variables
+    //Create an @State NavigationPath() variable to use in the NavigationStack
+    @State private var path = NavigationPath()
     
+    //ViewModifying variables
+    @State private var showingAlert = false
+//    @State private var buttonsDisabled = true
+    @State private var alertMessage = ""
+//    @FocusState private var focusField: Field?
+    @Environment(\.dismiss) private var dismiss
+    
+    
+    
+    // create instance for showing data back to user if user already created
+    @State var newUserStatusErrorMessage = ""
+
+    // create image picture verification
+    @State var shouldShowImagePicker = false
     @State var image: UIImage?
     
+    
+    
+    
+    
+
+
+    
+
+    
     var body: some View {
-        NavigationView{
+        //Navigates to UserHome upon successfull registration
+        NavigationStack(path: $path){
+            //Stack for login information
+            //-profile image
+            //-cwid
+            //-first name
+            //-last name
+            //-email
+            //-password1
+            //-password2
+            
+            //-registration input error message
+            //-registration button
+            
+            //Stack for all elements
             VStack {
+                //List Stack for inputFields
+                
                 List{
+                    //Section for image picker
                     Section("Profile Image"){
                         
                         Button {
                             shouldShowImagePicker.toggle()
                         } label: {
-                            
-                            
                             VStack {
-                                
-                                
                                 if let image = self.image {
                                     Image(uiImage: image)
                                         .resizable()
@@ -59,28 +103,26 @@ struct RegistrationView: View {
                                 .stroke(Color.black, lineWidth: 3)
                             )
                         }
-
+                        
                         .navigationViewStyle(StackNavigationViewStyle())
                         .fullScreenCover(
                             isPresented: $shouldShowImagePicker, onDismiss: nil) {
                                 ImagePicker(image: $image)
                             }
-//                            .frame(height: 120)
                     }
                     
+                    //Section for name input
+                    Section("Name") {
+                        TextField("First Name",text: $first_name)
+                        TextField("Last Name", text: $last_name)
+                    }
                     
+                    //Section for CWID imput
+                    Section("Campus Wide ID"){
+                        TextField("CWID", text: $CWID)
+                    }
                     
-                                        Section("Name") {
-                                            TextField("First Name",text: $first_name)
-                                            TextField("Last Name", text: $last_name)
-                                        }
-                    
-                    
-                                        Section("Campus Wide ID"){
-                                            TextField("CWID", text: $CWID)
-                                        }
-                    
-                    
+                    //Section for Email and Passowrd input
                     Section("Email and Password"){
                         TextField("Email Address", text: $email)
                         
@@ -88,68 +130,101 @@ struct RegistrationView: View {
                         SecureField("Re-Enter Password", text: $password2)
                         
                     }
-                    
-                    
-                    
-                    
-                    
-                    
-//                    Button{} label: {}
-                }.toolbarColorScheme(.dark, for: .bottomBar).ignoresSafeArea().padding(10).navigationBarBackButtonHidden(false)
-                Button {
-                                        newUserStatusMessage = model.createNewAccount(email: email, password: password)
-                    
-                    
-                                        //                        createNewAccount(email: email, password: password)
-                                        //Switch to UserHomeView
-                                        //UserHomeView()
-                    //maybe???
-                                        
-                                    } label: {
-                                        Text("Register")
-                                    }.AddMy_ButtonSytle()
+                }.toolbarColorScheme(.dark, for: .bottomBar).ignoresSafeArea().padding(10)
+                    .navigationBarBackButtonHidden(true)
                 
-                Text(self.newUserStatusMessage).foregroundColor(.red)
+                /* implement upon successful registration transition to UserHomeView
+                 implement upon unsuccesful registration error message is shown to the user
+                 
+                 */
+                Button {
+                    //Previous use of model.create
+                    //                    newUserStatusErrorMessage = model.createNewAccount(email: email, password: password)
+                    
+                } label: {
+                    Text("Register")
+                }.AddMy_ButtonSytle()
+                /*
+                 implement new user status errors here
+                 */
+                VStack{
+                    //previous call for self.new user
+                    //                    Text(self.newUserStatusErrorMessage).foregroundColor(.red)
+                    Text(newUserStatusErrorMessage)
+                    Text("Waiting for error").foregroundColor(.red)
+                }
+            }
+            .navigationDestination(for: String.self) { view in
+                if view == "LandingPageView"{
+                    LandingPageView()
+                }
+                if view == "RegistrationView"{
+                    RegistrationView()
+                }
+                else{
+                    LoginView()
+                }
                 
             }
+            .alert(alertMessage, isPresented: $showingAlert){
+                Button("OK", role: .cancel) {}
+            }
+        }.onAppear {
+            //Check to see if user is logged in when app runs
+            //navigate to the new screen and skip login screen
+            if FirebaseManager.shared.auth.currentUser != nil {
+                print("Login Successful")
+                path.append("UserHomeView")
+            }
+            
         }
     }
-//
- /*
-        func persistImageToStorage() {
-    //        let filename = UUID().uuidString
+          
+        
+        
+        func createNewAccount(email: String, password: String, alertMessage: String) -> String {
+            //alertmessage coming in is the correct db description
+            //message is what i will be modiftying and pushing out to the view to show the user
             
-            guard let uid = FirebaseManager.shared.auth.currentUser?.uid else { return }
-            
-            let ref = FirebaseManager.shared.storage.reference(withPath: uid)
-            guard let imageMeta = self.image?.jpegData(compressionQuality: 0.5) else { return }
-            ref.putData(imageMeta, metadata: nil) { metadata, err in
-                if let error = err {
-                    self.newUserStatusMessage = "Failed to push image to Storage: \(error)"
-                    print(error )
-                    return
-                }
-                
-                ref.downloadURL { url, err in
-                    if let err = error {
-                        self.newUserStatusMessage = "Failed to retrieve downloadURL: \(err)"
-                        print(error)
-                        return
-                    }
+            var message = alertMessage
+            FirebaseManager.shared.auth.createUser(withEmail: email, password: password) { result,
+                error in
+                if let error = error { //login error occured
+                    let fullAlertMessage = "Failed to Register User user: \(error.localizedDescription) \n---> \(message)"
+                    print(fullAlertMessage)
+                        /*
+                         implement alertmessage from loginView/DBauth function
+                         */
+                    //data that will be added in to portray the correct db auth description to user
+                    //
+                    message = "Sign Up Error: \(error.localizedDescription)"
+                    showingAlert = true
                     
-                    self.newUserStatusMessage = "Successfully stored image with url: \(url?.absoluteString ?? "unwrap success")"
-                    //store the url in the user
+    //                self.newUserStatusErrorMessage = "Failed to create user: \(err)"
+    //                print(err)
+    //                message = "\(err)"
+                } else {
                     
-                    model.UpdateUserData(user: model.User?, email: "new user status", imageProfileUrl: url)
-                    
-//                    print(url?.absoluteString ?? "Success. Not working")
+                    let fullAlertMessage = "Successfully created user: \(result?.user.uid ?? "0") \n--->\(error?.localizedDescription ?? "0") \n---> \(message)"
+//                    print("Failed to Register User user: \(error.localizedDescription) \n---> \(message)"
+                    path.append("UserHomeView")
                 }
             }
-        }*/
-}
+            return message
+        }
+        
+        
+        
+        
+        
+    }
+
 
 struct RegistrationView_Previews: PreviewProvider {
     static var previews: some View {
-        RegistrationView(newUserStatusMessage: "")
+        //takes in error message so that we can access the login function in model
+        NavigationStack{
+            RegistrationView()
+        }
     }
 }
