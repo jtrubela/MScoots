@@ -18,65 +18,47 @@ About
 #### View Models
 #### Views
 ## --------------------------------------THINGS TO DO -----------------------------------
-| ITEM | SUB ITEM   | ....................DESCRIPTION.................... |
-| :-----------:    | :-------------: | :----- |
-|                  | Directories  |   |   
-|                  | Utilities  |   |   |
-|                  |                  | DB CRUD |   
-|                  |                  | UI custom styler structs |   
-|                  |                  | Sign-In Auth |  |
-|                  |                  |  Empty Field Validation | 
-|                  |                  | ViewTranstion |  
-|                  | Models: Classes/Structs |   |   
-|                  |   |   Constants - instantiate ViewController - [Sign-in with Firebase - CWChris](https://www.youtube.com/watch?app=desktop&v=1HN7usMROt8&feature=youtu.be "Firebase Auth Signin - CWChris") |    
-|                  | ViewModels  |   |   
-|                  | Storyboards  |   |   
-| :-----------:    | :-------------: | :----- |
-#.
-#.
-#.
-
-
------------------------------------UPDATES TO PROJECT--------------------------------------
-| ITEM | SUB ITEM   | ....................DESCRIPTION.................... |
-| :-----------:    | :-------------: | :----- |
-| Working on the custom login page | added CWC custom login swift files |  |
-| items added:       2/22/23              |  Custom login import | |
-| | App Delegate  | | 
-|           | function    applicationWillTerminate | Called when the app is about to terminate. Save data if appropriate. See applicationDidEnterBackground |
-|             | function    application(_ app: UIApp...,configurationForConnection) | called when a new scene session is being created
-|             | function    application(_ app: UIApp..., didDiscardSceneSessions)   | called when user dsicards a scene session
-| App Delegate.SceneDelegate | functions (scene,...)
-|             |  functions (sceneDidDisconnect... ) ||
-|             |  functions (sceneDidBecomeActive...) ||
-|             |  functions (sceneWillResignActive...) ||
-|             |  functions (sceneWillEnterForeground...)| |
-|             |  functions (sceneDidEnterBackground...) || 
-| | | |
-| LoginViewController| | |
-| | @IBOutlet: emailTextField, passwordTextField, loginButton,| |
-| | override func viewDidLoad| do any additional setup after loading the view |
-| | override func setupElements| hide a custom error label used on the UI:styleTextFields in Utilities |
-| | | |
-| ViewControllers | | |
-|            | HomeViewController| UIViewController|
-|   |  override func viewDidLoad(): Do any additional setup after loading the view ...In a storyboard-based app, do a little prep before navigation | |
-| | override func prepare(for segue: UIStoryboardSegue,...) | get new view controller using segue destination & pass selected object to the new view |
-| | | |
-| SignUpViewController| UIViewController| |
-| | IBOutlet: firstnameTextField, lastnameTextField, emailTextField, passwordTextField, signUpButton, errorLabel | |
-| | override function viewDidLoad | |
-| | func setUpElements | |
-| | func validateFields() | Check fields and validate data for IBOutlet data |
-| | IBAction func signUpTapped | FIREBASE AUTHORIZATION |
-| | --Validate fields, format/cleanup login user text if inconsistent | |
-| | --Create the user, Write, and Store the user to the database | |
-| | -----view declaration:   transition to homescreen | |
-| | func showError | update ErrorLabelUI |
-| | func transitionToHome | STORYBOARD |
-| | | |
-| ViewController| | |
-| | video UI: funcs: ViewDidLoad, ViewWillAppear, SetupElement, setUpVideo | provides the uiscreen with a video to play in the background |
+| STATUS    | ITEM            | SUB ITEM | DESCRIPTION                                                                                                          |
+|-----------|----------------|----------|---------------------------------------------------------------------------------------------------------------------|
+| COMPLETED | Working on the custom login page | added CWC custom login swift files |                                                      |
+| COMPLETED | items added:       2/22/23              |  Custom login import |                                                     |
+| xxxxxxxxx | App Delegate | need to implement all checks for FatalErrors and crashing |                                                 |
+| REMOVED   | get to later... | function | Called when the app is about to terminate. Save data if appropriate. See applicationDidEnterBackground            |
+|           |                | applicationWillTerminate                                                     |                                                     |
+| \/        | function    application(_ app: UIApp...,configurationForConnection) | called when a new scene session is being created |
+| \/        | function    application(_ app: UIApp..., didDiscardSceneSessions)   | called when user dsicards a scene session          |
+|           | App Delegate.SceneDelegate | functions (scene,...) |                                                     |
+| \/        | functions (sceneDidDisconnect... )                                     |                                                            |
+| \/        | functions (sceneDidBecomeActive...)                                     |                                                            |
+| \/        | functions (sceneWillResignActive...)                                    |                                                            |
+| \/        | functions (sceneWillEnterForeground...)|                                                             |
+| \/        | functions (sceneDidEnterBackground...)                                  |                                                            |
+|           |                |            |                                                                                                                     |
+|           | LoginViewController |          |                                                                                                                     |
+| DONE      | @IBOutlet: emailTextField, passwordTextField, loginButton             |                                                            |
+|           |                |            |                                                                                                                     |
+|           |                |            | override func viewDidLoad: do any additional setup after loading the view                                          |
+| DONE      |                | setupElements                                             | hide a custom error label used on the UI:styleTextFields in Utilities                                               |
+|           |                |            |                                                                                                                     |
+|           | ViewControllers |          |                                                                                                                     |
+| defunct   |                | HomeViewController                                        | UIViewController                                       |
+| xxxxx     | override func viewDidLoad(): Do any additional setup after loading the view ...In a storyboard-based app, do a little prep before navigation |         |
+| xxxxx     | override func prepare(for segue: UIStoryboardSegue,...)            | get new view controller using segue destination & pass selected object to the new view                              |
+|           |                |            |                                                                                                                     |
+| REMOVED & DONE | SignUpViewController | UIViewController | DB_Manager is the consolidated version and does all that's necessary for Database AUTH                       |
+| DONE      | IBOutlet: firstnameTextField, lastnameTextField, emailTextField, passwordTextField, signUpButton, errorLabel |                                                            |
+| xxxxx     | override func viewDidLoad                                              |                                                            |
+| xxxxx     | func setUpElements                                                     |                                                            |
+| xxxxx     | func validateFields()                                                  | Check fields and validate data for IBOutlet data                                                                     |
+| COMPLETED | IBAction func signUpTapped                                             | FIREBASE AUTHORIZATION                                                                                              |
+| DONE      | --Validate fields, format/cleanup login user text if inconsistent       |                                                                                                                     |
+|           | --Create the user, Write, and Store the user to the database             |                                                                                                                     |
+| DONE      | -----view declaration:   transition to homescreen                        |                                                                                                                     |
+| DONE      | func showError                                                        | update ErrorLabelUI                                                                                                 |
+| DONE      | func transitionToHome                                                  | STORYBOARD                                                                                                          |
+|           |                |            |                                                                                                                     |
+|           | ViewController |          |                                                                                                                     |
+| not started and may not need | video UI: funcs: ViewDidLoad, ViewWillAppear, SetupElement, setUp
 
 
 #.
