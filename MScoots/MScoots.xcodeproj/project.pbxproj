@@ -21,6 +21,9 @@
 		3D94DD7329ABCC4D0093C878 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 3D94DD7229ABCC4D0093C878 /* FirebaseStorage */; };
 		3D94DD7529ABD6170093C878 /* RegistrationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D94DD7429ABD6170093C878 /* RegistrationView.swift */; };
 		3D94DD7729ABD6CF0093C878 /* UserHomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D94DD7629ABD6CF0093C878 /* UserHomeView.swift */; };
+		3DAB28EF29C41E75004365D5 /* SwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DAB28EE29C41E75004365D5 /* SwiftUIView.swift */; };
+		3DAB28F129C41F7C004365D5 /* TestUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DAB28F029C41F7C004365D5 /* TestUIView.swift */; };
+		3DAB28F329C4F188004365D5 /* LoadingScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DAB28F229C4F188004365D5 /* LoadingScreenView.swift */; };
 		3DAE1F9429B26120009FEA73 /* ScooterListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DAE1F9329B26120009FEA73 /* ScooterListView.swift */; };
 		3DAE1F9A29B285DA009FEA73 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3DAE1F9929B285DA009FEA73 /* GoogleService-Info.plist */; };
 		3DFC742E29C1593100EF35AB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3DFC742D29C1593100EF35AB /* Assets.xcassets */; };
@@ -40,6 +43,9 @@
 		3D94DD6429ABC99E0093C878 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		3D94DD7429ABD6170093C878 /* RegistrationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationView.swift; sourceTree = "<group>"; };
 		3D94DD7629ABD6CF0093C878 /* UserHomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserHomeView.swift; sourceTree = "<group>"; };
+		3DAB28EE29C41E75004365D5 /* SwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIView.swift; sourceTree = "<group>"; };
+		3DAB28F029C41F7C004365D5 /* TestUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestUIView.swift; sourceTree = "<group>"; };
+		3DAB28F229C4F188004365D5 /* LoadingScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingScreenView.swift; sourceTree = "<group>"; };
 		3DAE1F9329B26120009FEA73 /* ScooterListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScooterListView.swift; sourceTree = "<group>"; };
 		3DAE1F9929B285DA009FEA73 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "MScoots/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		3DFC742D29C1593100EF35AB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = MScoots/Main/Views/Sources/Assets.xcassets; sourceTree = "<group>"; };
@@ -62,6 +68,7 @@
 		3D56C5ED29ACCC7A00036363 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				3DAB28F229C4F188004365D5 /* LoadingScreenView.swift */,
 				3D56C5F929ACE05400036363 /* LandingPageView.swift */,
 				3D94DD5F29ABC99C0093C878 /* LoginView.swift */,
 				3D94DD7429ABD6170093C878 /* RegistrationView.swift */,
@@ -69,6 +76,8 @@
 				3DAE1F9329B26120009FEA73 /* ScooterListView.swift */,
 				3D113E9B29C1D06E00A8C2B7 /* ScanQRView.swift */,
 				3DAE1F9229B227D3009FEA73 /* ViewStyling */,
+				3DAB28EE29C41E75004365D5 /* SwiftUIView.swift */,
+				3DAB28F029C41F7C004365D5 /* TestUIView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -227,10 +236,13 @@
 			files = (
 				3D94DD7729ABD6CF0093C878 /* UserHomeView.swift in Sources */,
 				3D94DD7529ABD6170093C878 /* RegistrationView.swift in Sources */,
+				3DAB28EF29C41E75004365D5 /* SwiftUIView.swift in Sources */,
 				3D94DD6029ABC99C0093C878 /* LoginView.swift in Sources */,
 				3D56C60429AD53EA00036363 /* User.swift in Sources */,
+				3DAB28F329C4F188004365D5 /* LoadingScreenView.swift in Sources */,
 				3D113E9C29C1D06E00A8C2B7 /* ScanQRView.swift in Sources */,
 				3D56C5FC29ACE67900036363 /* ViewStyling.swift in Sources */,
+				3DAB28F129C41F7C004365D5 /* TestUIView.swift in Sources */,
 				3DAE1F9429B26120009FEA73 /* ScooterListView.swift in Sources */,
 				3D56C5F829ACD07000036363 /* DB_Authorization.swift in Sources */,
 				3D56C5FA29ACE05400036363 /* LandingPageView.swift in Sources */,
