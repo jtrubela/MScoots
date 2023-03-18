@@ -68,9 +68,10 @@ About
 ##-----------------------------------------------------GitHub Updates-------------------------------------------------------------
 |   Date    |    Location git was used     |  Interactions with the server    |     Notes/Changes     |  Updates to the README  |
 | ------    | ------                       | ------                           | ------                | ----                    |
-| 2/22/23|  XCode: Github repository | Fetched changes |  |  Yes |
+| 2/22/23 |  XCode: Github repository | Fetched changes |  |  Yes |
 | | | Stashed things a few times - not sure what that did yet | Had issues with the local repository being out of date | |
 | | | Pulled and pushed | last was astash and Committed all the changes | changes made in commit message and README | Yes |
+| 3/18/23 | XCode: Github repository | Stash and Pull changes | I wanted to commit my changes to the directory and it showed an error message telliong me that i needed to stash changes first. stash and pull was the next option | unsuccessful commit to GitHub on website | | |
 | ------ | ------ | ------ | ------ | ---- |
 | |  | | | | |
 
