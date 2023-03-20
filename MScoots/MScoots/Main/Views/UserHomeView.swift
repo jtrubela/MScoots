@@ -10,10 +10,9 @@ import Firebase
 import FirebaseAuth
 
 struct UserHomeView: View{
-    //import viewmodel functions
-//    @ObservedObject var model = DB_Authorization()
-    //creates a verification for dropdown menu to appear
-    @State private var dropDownMenu = false
+
+//    @State private var dropDownMenu = false
+    @State private var model = DB_Authorization()
     
     
     var body: some View {
@@ -32,45 +31,68 @@ struct UserHomeView: View{
                         //Stack for Title and Hamburger Menu
                         HStack{
                             VStack{
-//                                NavigationLink("Sign out", destination: LandingPageView())
                                 Text("Home")
                                     .font(.system(size: 42))
                                     .fontWeight(.bold).padding(.leading, 30)
                             }
                                 Spacer()
-                            
-                            Button{
-                                dropDownMenu.toggle()
-                            } label: {
-                                Image(systemName: "line.3.horizontal")
-                                    .addMyHambugerMenuStyler()
-                            }
-                            .font(.system(size: 30))
-                            //                                .frame(width: 50, height :50)
-                            .sheet(isPresented: $dropDownMenu, content: {
-                                //List stack for drop down menu items
-                                // -Signout
-                                // -Wallet
-                                // -Settings
-                                List{
+/*
+//                            Button{
+//                                dropDownMenu.toggle()
+//                            } label: {
+//                                Image(systemName: "line.3.horizontal")
+//                                    .addMyHambugerMenuStyler()
+//                            }
+//                            .font(.system(size: 30))
 
-                                    Button{
-                                        logOut()
-                                        
-                                        /* implement transtion back to homescreen
-                                         
-                                         */
-                                    } label: {
-                                        
-//                                        Image(systemName: "figure.wave")
-                                        NavigationLink("Sign Out",destination:  LandingPageView())
+                            //                                .frame(width: 50, height :50)
+//                            .sheet(isPresented: $dropDownMenu, content: {
+//                                //List stack for drop down menu items
+//                                // -Signout
+//                                // -Wallet
+//                                // -Settings
+//                                List{
+//
+////                                    Button{
+//////                                        logOut()
+////
+////
+////                                    } label: {
+//
+////                                        Image(systemName: "figure.wave")
+//                        NavigationLink("Sign Out",destination:  LoginView())
+////                                    }
+//                                }
+//                            })
+
+                            Button {
+//                                logOut()
+//                                func logOut(){
+                                    let firebaseAuth = Auth.auth()
+
+                                    do {
+                                        try firebaseAuth.signOut()
+                                        print("userAuth.signOut: Successful---no user currently logged in")
+                                    } catch let signOutError as NSError {
+                                        print("Error signing out: %@", signOutError)
                                     }
-                                }
-                            })
+                            //        dropDownMenu.toggle()
+                                    
+                                    print("userAuth.signOut: Successful---no user currently logged in")
+//                                }
+                                
+                            } label:{
+                                NavigationLink("Sign Out",destination:  LandingPageView()).padding(.trailing, 30).buttonStyle(.borderedProminent)
+                            }
+//                            .onSubmit {
+//                                model.logOut()
+//                            }
+ */
                         }
                         .foregroundColor(.black).padding(.trailing, 20)
                         Rectangle().AddMyDivider()
                         Spacer()
+                            .navigationBarBackButtonHidden(true)
                     }
                     //STACK 1.2 -- User Buttons
                     VStack{
@@ -165,26 +187,23 @@ struct UserHomeView: View{
                     .frame(width: UIScreen.main.bounds.width , height: 170)
                     .background(Color.secondary)
                 }
-                //                .navigationBarBackButtonHidden()
-                .toolbar{ToolbarItemGroup(placement:.bottomBar){} }
-                .navigationBarBackButtonHidden()
             }
-        }
-        
-        .navigationBarHidden(true)
+        }.navigationBarBackButtonHidden(true)
     }
     
-    func logOut(){
-        let firebaseAuth = Auth.auth()
-        
-        do {
-            try firebaseAuth.signOut()
-        } catch let signOutError as NSError {
-            print("Error signing out: %@", signOutError)
-        }
-        dropDownMenu.toggle()
-        print("userAuth.signOut: Successful---no user currently logged in")
-    }
+//    func logOut(){
+//        let firebaseAuth = Auth.auth()
+//
+//        do {
+//            try firebaseAuth.signOut()
+//            print("userAuth.signOut: Successful---no user currently logged in")
+//        } catch let signOutError as NSError {
+//            print("Error signing out: %@", signOutError)
+//        }
+////        dropDownMenu.toggle()
+//
+//        print("userAuth.signOut: Successful---no user currently logged in")
+//    }
 }
 
 struct UserHomeView_Previews: PreviewProvider {

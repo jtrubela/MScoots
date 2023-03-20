@@ -16,21 +16,19 @@ struct LoginView: View {
         }
     
         let views: [ViewItem] = [
+            .init(name: "LandingPageView"),
             .init(name: "LoginView"),
             .init(name: "RegistrationView"),
-            .init(name: "UserHomeView"),
+            .init(name: "UserHomeView")
         ]
     
     //imports functions for creating user and logging in
-//    @StateObject var model = DB_Authorization()
+    @StateObject var model = DB_Authorization()
     
     
     @State private var isLoggedIn = false
     
-    enum Field {
-        case email, password
-    }
-    
+
     //User input fields to verify against the db
     @State private var email = ""
     @State private var password = ""
@@ -38,11 +36,18 @@ struct LoginView: View {
     //variables for errors upon user login attempt
     @State private var showingAlert = false
     @State private var buttonsDisabled = true
+    enum Field {
+        case email, password
+    }
+    
     @FocusState private var focusField: Field?
     @Environment(\.dismiss) private var dismiss
     
     //Create an @State NavigationPath() variable to use in the NavigationStack
     @State private var path = [ViewItem]()
+    //will show a logout -> return to root
+    @State private var showFullStack = false
+    
     @State public var loginStatusErrorMessage = ""
 
     
@@ -52,109 +57,119 @@ struct LoginView: View {
         //Navigates to the UserHomeView upon successful login
         NavigationStack(path: $path){
             VStack{
-                Image("scooter")
-                //  .colorInvert()
-                //  .colorMultiply(.blue)
-                ZStack{
-                    //add the title to the page
-                    
-                    //stack for the entire view
+                
+                
+                //add the title to the page
+                
+                //stack for the entire view
+                VStack{
+                    Image("scooter")
+                    //  .colorInvert()
+                    //  .colorMultiply(.blue)
+                    //Stack for Email address and password input
+                    //Text for LoginStatusErrorMessage
                     VStack{
-                        //Stack for Email address and password input
-                        //Text for LoginStatusErrorMessage
+                        TextField("Email Address", text: $email)
+                            .AddMyTextFieldEntry()
+                            .keyboardType(.emailAddress)
+                            .autocorrectionDisabled().padding(5)
+                            .textInputAutocapitalization(.never)
+                            .submitLabel(.next)
+                            .focused($focusField, equals: .email)// field bound to the .email case
+                            .onSubmit {
+                                focusField = .password
+                            }
+                            .onChange(of: email) { _ in
+                                //Enable buttons?
+                                enableButtons()
+                            }
+                        
+                        SecureField("Password", text: $password).AddMyTextFieldEntry()
+                            .textInputAutocapitalization(.never)
+                            .submitLabel(.done)
+                            .focused($focusField, equals: .password) /* field bound to the .email case*/
+                            .onSubmit {
+                                focusField = nil
+                            }
+                            .onChange(of: password) { _ in
+                                //Enable buttons?
+                                enableButtons()
+                            }
+                            .padding(5)
+                        
+                        //test for login status error message
+                        if showingAlert {
+                            Text(loginStatusErrorMessage).foregroundColor(.red)
+                        }
+                        
+                        
                         VStack{
-                            TextField("Email Address", text: $email)
-                                .AddMyTextFieldEntry()
-                                .keyboardType(.emailAddress)
-                                .autocorrectionDisabled().padding(5)
-                                .textInputAutocapitalization(.never)
-                                .submitLabel(.next)
-                                .focused($focusField, equals: .email)// field bound to the .email case
-                                .onSubmit {
-                                    focusField = .password
-                                }
-                                .onChange(of: email) { _ in
-                                    //Enable buttons?
-                                    enableButtons()
-                                }
-                            
-                            SecureField("Password", text: $password).AddMyTextFieldEntry()
-                                .textInputAutocapitalization(.never)
-                                .submitLabel(.done)
-                                .focused($focusField, equals: .password) /* field bound to the .email case*/
-                                .onSubmit {
-                                    focusField = nil
-                                }
-                                .onChange(of: password) { _ in
-                                    //Enable buttons?
-                                    enableButtons()
-                                }
-                                .padding(5)
-                            
-                            //test for login status error message
-                            if showingAlert {
-                                Text(loginStatusErrorMessage).foregroundColor(.red)
-                            }
-                            
-                            
-                            VStack{
-                                /*implement test for reset password
-                                 */
-                                Button{
-                                    
-                                } label: {
-                                    Text("Reset Password...")
-                                        .buttonStyle(.borderedProminent)
-                                        .underline()
-                                        .fontWidth(.expanded)
-                                        .foregroundColor(.blue)
-                                }
-                            }
-                            .buttonStyle(.plain)
-                            .fontWidth(.expanded)
-                            
-                            
-                            Rectangle()
-                                .AddMyDivider()
-//User Login
-                            //Navigation Link to UserHomeView
+                            /*implement test for reset password
+                                */
                             Button{
-                                loginStatusErrorMessage = login_Registration_InputErrorCheck(email: email, password: password)
-                                
-                                if isLoggedIn{
-//                                    path.remove(at: 0)
-                                    path.append(ViewItem(name: "UserHomeView"))
-                                }
-                                else{
-                                    password = ""
-                                }
-                                
                                 
                             } label: {
-                                Text("Login")
-                            }.foregroundColor(.blue)
-                                .AddMy_ButtonSytle()
-
-                            
-                            
-                            
+                                Text("Reset Password...")
+                                    .buttonStyle(.borderedProminent)
+                                    .underline()
+                                    .fontWidth(.expanded)
+                                    .foregroundColor(.blue)
+                            }
                         }
+                        .buttonStyle(.plain)
+                        .fontWidth(.expanded)
+//
+//                            Rectangle()
+//                                .AddMyDivider()
+//User Login
+                        //Navigation Link to UserHomeView
+                        Button{
+                            loginStatusErrorMessage = login_Registration_InputErrorCheck(email: email, password: password)
+                            
+                            if isLoggedIn{
+                                path.append(ViewItem(name: "UserHomeView"))
+                            }
+                            else{
+                                email = ""
+                                password = ""
+                            }
+                        } label: {
+                            Text("Login")
+                        }.foregroundColor(.blue)
+                            .AddMy_ButtonSytle()
                     }
                 }
                 .navigationDestination(for: ViewItem.self) { view in
-                    
-                    ViewForItem(view)
+                    VStack{
+                        ViewForItem(view)
+                        
+                        
+                        if view.name == "UserHomeView"{
+                            Button {
+                                path = []
+                                model.logOut()
+                            } label: {
+                                Text("LogOut")
+                            }
+                        }
+                    }
+                    .navigationBarBackButtonHidden(true)
                 }
+                .navigationBarBackButtonHidden(true)
                 .navigationTitle("Log in")
             }
+            .navigationBarBackButtonHidden(true)
         }
-        .navigationBarBackButtonHidden()
+        .navigationBarBackButtonHidden(true)
+
     }
     
     
     //update the view to the navigationstack path variable
     func ViewForItem(_ view: ViewItem) -> AnyView {
         switch view.name {
+        case "LandingPageView":
+            return AnyView(LandingPageView())
         case "LoginView":
             return AnyView(LoginView())
         case "RegistrationView":

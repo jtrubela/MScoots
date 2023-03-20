@@ -169,17 +169,17 @@ class DB_Authorization: ObservableObject {
     //
     /*------------------------------------------------------------------------------------------------------------------------*/
         
-//        func logOut(){
-//            let firebaseAuth = Auth.auth()
-//            let userUID = firebaseAuth.currentUser?.uid
-//            
-//            do {
-//                try firebaseAuth.signOut()
-//            } catch let signOutError as NSError {
-//                print("Error signing out: %@", signOutError)
-//            }
-//            print("userAuth.signOut: Successful---no user currently logged in")
-//        }
+        func logOut(){
+            let firebaseAuth = Auth.auth()
+            let userUID = firebaseAuth.currentUser?.uid
+            
+            do {
+                try firebaseAuth.signOut()
+            } catch let signOutError as NSError {
+                print("Error signing out: %@", signOutError)
+            }
+            print("user(\(String(describing: userUID))): Signed out Successfully")
+        }
         
 
 //    }
