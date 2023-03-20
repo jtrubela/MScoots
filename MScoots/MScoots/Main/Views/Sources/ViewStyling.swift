@@ -122,7 +122,7 @@ extension View {
 
 
 
-struct myNavigationViewStyler: ViewModifier {
+struct RegisterAccountButton: ViewModifier {
     func body(content: Content) -> some View {
         content
             .frame(width: 300,height: 50)
@@ -134,8 +134,8 @@ struct myNavigationViewStyler: ViewModifier {
     }
 }
 extension View {
-    func AddMyNavigationViewStyler() -> some View {
-        modifier (myNavigationViewStyler())
+    func AddRegisterAccountButton() -> some View {
+        modifier (RegisterAccountButton())
     }
 }
 
