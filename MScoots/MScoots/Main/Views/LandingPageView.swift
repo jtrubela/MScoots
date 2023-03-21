@@ -8,8 +8,12 @@
 import SwiftUI
 
 struct LandingPageView: View {
+    @State private var shouldShowRegistrationSheet = false
+    
     @State private var isNewUser = false
     @State private var isCurrentUser = false
+    
+    @Environment(\.dismiss) var dismiss
     
     
     var body: some View {
@@ -114,10 +118,19 @@ struct LandingPageView: View {
                                     .bold()
                                     .foregroundColor(.white)
                                 Button{
+                                    shouldShowRegistrationSheet.toggle()
                                     newUser()
                                 } label: {
                                     NavigationLink("Create an Account", destination: RegistrationView())
-                                }
+                                }.sheet(isPresented: $shouldShowRegistrationSheet, content: {
+                                    RegistrationView()
+                                })
+                                .navigationViewStyle(StackNavigationViewStyle())
+                                                        .fullScreenCover(
+                                                            isPresented: $shouldShowRegistrationSheet, onDismiss: nil) {
+                                                    
+                                                        }
+                                                            .frame(height: 120)
                                 .AddRegisterAccountButton()
                                 Spacer()
                             }

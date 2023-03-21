@@ -21,6 +21,13 @@
 		3D94DD7329ABCC4D0093C878 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 3D94DD7229ABCC4D0093C878 /* FirebaseStorage */; };
 		3D94DD7529ABD6170093C878 /* RegistrationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D94DD7429ABD6170093C878 /* RegistrationView.swift */; };
 		3D94DD7729ABD6CF0093C878 /* UserHomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D94DD7629ABD6CF0093C878 /* UserHomeView.swift */; };
+		3DA1A89929C9681400BD2D54 /* AdminUserHomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DA1A89829C9681400BD2D54 /* AdminUserHomeView.swift */; };
+		3DA1A89B29C979E100BD2D54 /* ResetPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DA1A89A29C979E100BD2D54 /* ResetPasswordView.swift */; };
+		3DA1A89D29C9849D00BD2D54 /* MyScootsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DA1A89C29C9849D00BD2D54 /* MyScootsView.swift */; };
+		3DA1A89F29C9855300BD2D54 /* ScootMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DA1A89E29C9855300BD2D54 /* ScootMapView.swift */; };
+		3DA1A8A129C9858A00BD2D54 /* WalletView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DA1A8A029C9858A00BD2D54 /* WalletView.swift */; };
+		3DA1A8A329C985FA00BD2D54 /* UserProfile_SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DA1A8A229C985FA00BD2D54 /* UserProfile_SettingsView.swift */; };
+		3DA1A8A529C9E83B00BD2D54 /* ProfileImageSaver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DA1A8A429C9E83B00BD2D54 /* ProfileImageSaver.swift */; };
 		3DA868E729C5B58000043C9B /* DB_Firestore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DA868E629C5B58000043C9B /* DB_Firestore.swift */; };
 		3DAB28EF29C41E75004365D5 /* SwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DAB28EE29C41E75004365D5 /* SwiftUIView.swift */; };
 		3DAB28F129C41F7C004365D5 /* TestUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DAB28F029C41F7C004365D5 /* TestUIView.swift */; };
@@ -44,6 +51,13 @@
 		3D94DD6429ABC99E0093C878 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		3D94DD7429ABD6170093C878 /* RegistrationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationView.swift; sourceTree = "<group>"; };
 		3D94DD7629ABD6CF0093C878 /* UserHomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserHomeView.swift; sourceTree = "<group>"; };
+		3DA1A89829C9681400BD2D54 /* AdminUserHomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminUserHomeView.swift; sourceTree = "<group>"; };
+		3DA1A89A29C979E100BD2D54 /* ResetPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordView.swift; sourceTree = "<group>"; };
+		3DA1A89C29C9849D00BD2D54 /* MyScootsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyScootsView.swift; sourceTree = "<group>"; };
+		3DA1A89E29C9855300BD2D54 /* ScootMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScootMapView.swift; sourceTree = "<group>"; };
+		3DA1A8A029C9858A00BD2D54 /* WalletView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletView.swift; sourceTree = "<group>"; };
+		3DA1A8A229C985FA00BD2D54 /* UserProfile_SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfile_SettingsView.swift; sourceTree = "<group>"; };
+		3DA1A8A429C9E83B00BD2D54 /* ProfileImageSaver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileImageSaver.swift; sourceTree = "<group>"; };
 		3DA868E629C5B58000043C9B /* DB_Firestore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DB_Firestore.swift; sourceTree = "<group>"; };
 		3DAB28EE29C41E75004365D5 /* SwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIView.swift; sourceTree = "<group>"; };
 		3DAB28F029C41F7C004365D5 /* TestUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestUIView.swift; sourceTree = "<group>"; };
@@ -75,8 +89,8 @@
 				3D94DD5F29ABC99C0093C878 /* LoginView.swift */,
 				3D94DD7429ABD6170093C878 /* RegistrationView.swift */,
 				3D94DD7629ABD6CF0093C878 /* UserHomeView.swift */,
+				3DA1A89829C9681400BD2D54 /* AdminUserHomeView.swift */,
 				3DAE1F9329B26120009FEA73 /* ScooterListView.swift */,
-				3D113E9B29C1D06E00A8C2B7 /* ScanQRView.swift */,
 				3DCF552F29C84B0A00DA3FB3 /* UnusedViews */,
 				3DAE1F9229B227D3009FEA73 /* ViewStyling */,
 			);
@@ -96,8 +110,9 @@
 		3D56C5F229ACCD7700036363 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				3DAE1F9129B22680009FEA73 /* DatabaseMGRclass */,
+				3DA1A8A429C9E83B00BD2D54 /* ProfileImageSaver.swift */,
 				3D56C60329AD53EA00036363 /* User.swift */,
+				3DAE1F9129B22680009FEA73 /* DatabaseMGRclass */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -162,6 +177,12 @@
 			children = (
 				3DAB28EE29C41E75004365D5 /* SwiftUIView.swift */,
 				3DAB28F029C41F7C004365D5 /* TestUIView.swift */,
+				3D113E9B29C1D06E00A8C2B7 /* ScanQRView.swift */,
+				3DA1A89A29C979E100BD2D54 /* ResetPasswordView.swift */,
+				3DA1A89C29C9849D00BD2D54 /* MyScootsView.swift */,
+				3DA1A89E29C9855300BD2D54 /* ScootMapView.swift */,
+				3DA1A8A029C9858A00BD2D54 /* WalletView.swift */,
+				3DA1A8A229C985FA00BD2D54 /* UserProfile_SettingsView.swift */,
 			);
 			path = UnusedViews;
 			sourceTree = "<group>";
@@ -251,15 +272,22 @@
 				3D94DD6029ABC99C0093C878 /* LoginView.swift in Sources */,
 				3D56C60429AD53EA00036363 /* User.swift in Sources */,
 				3DAB28F329C4F188004365D5 /* LoadingScreenView.swift in Sources */,
+				3DA1A89F29C9855300BD2D54 /* ScootMapView.swift in Sources */,
 				3D113E9C29C1D06E00A8C2B7 /* ScanQRView.swift in Sources */,
 				3D56C5FC29ACE67900036363 /* ViewStyling.swift in Sources */,
 				3DAB28F129C41F7C004365D5 /* TestUIView.swift in Sources */,
 				3DAE1F9429B26120009FEA73 /* ScooterListView.swift in Sources */,
+				3DA1A8A129C9858A00BD2D54 /* WalletView.swift in Sources */,
 				3DA868E729C5B58000043C9B /* DB_Firestore.swift in Sources */,
 				3D56C5F829ACD07000036363 /* DB_Authorization.swift in Sources */,
 				3D56C5FA29ACE05400036363 /* LandingPageView.swift in Sources */,
+				3DA1A89D29C9849D00BD2D54 /* MyScootsView.swift in Sources */,
 				3D94DD5E29ABC99C0093C878 /* MScootsApp.swift in Sources */,
+				3DA1A89929C9681400BD2D54 /* AdminUserHomeView.swift in Sources */,
 				3D59B97B29B0BF650032BCB4 /* FirebaseManager.swift in Sources */,
+				3DA1A8A329C985FA00BD2D54 /* UserProfile_SettingsView.swift in Sources */,
+				3DA1A89B29C979E100BD2D54 /* ResetPasswordView.swift in Sources */,
+				3DA1A8A529C9E83B00BD2D54 /* ProfileImageSaver.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -392,6 +420,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MScoots/Info.plist;
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "Want to save images to the image library to add to profile photo";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -421,6 +450,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MScoots/Info.plist;
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "Want to save images to the image library to add to profile photo";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";

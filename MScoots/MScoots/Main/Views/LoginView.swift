@@ -4,6 +4,9 @@
 //
 //  Created by Justin Trubela on 2/26/23.
 //
+// implement UUID of 2IME2CmEYCWn7tUzvRPjkxrgUc33 as admin for JT
+//       if FirebaseManager.shared.auth.currentUser?.uid == "2IME2CmEYCWn7tUzvRPjkxrgUc33"
+//
 
 import SwiftUI
 import Firebase
@@ -19,36 +22,70 @@ struct LoginView: View {
             .init(name: "LandingPageView"),
             .init(name: "LoginView"),
             .init(name: "RegistrationView"),
-            .init(name: "UserHomeView")
+            .init(name: "UserHomeView"),
+            .init(name: "ResetPasswordView"),
+            .init(name: "AdminUserHomeView"),
+            .init(name: "ScanQRView"),
+            .init(name: "ScooterListView"),
+            .init(name: "ScootMapView"),
+            .init(name: "MyScootsView"),
+            .init(name: "UserProfile_SettingsView"),
+            .init(name: "WalletView"),
+                //AdminScooterManagerView
+                //AdminUserManagerView
+                //AdminFindScooterView
+                //Admin.....
         ]
     
     //imports functions for creating user and logging in
     @StateObject var model = DB_Authorization()
     
+    //Create an @State NavigationPath() variable to use in the NavigationStack
+    @State private var path = [ViewItem]()
+    //will show a logout -> return to root
+    // in admin mode
+    
     
     @State private var isLoggedIn = false
+    @State private var isAdmin = false
+    @State private var admin_OR_userButtonText = "Forgot Password"
     
 
+
     //User input fields to verify against the db
+    enum Field {
+            case email, password
+        }
     @State private var email = ""
     @State private var password = ""
+    
+    //If email is determined to be admin, make button appear
+    // if email and password entered correctly...enter admin mode
+    var isAdminSignedIn: Bool {
+        if email == "jtrubela@icloud.com"{
+            isAdmin.toggle()
+            admin_OR_userButtonText = "ADMIN MODE"
+            statusErrorMessage = "Enter correct password to enter Admin Account"
+            path = []
+            return true
+        }
+        return false
+    }
+    
+    
     
     //variables for errors upon user login attempt
     @State private var showingAlert = false
     @State private var buttonsDisabled = true
-    enum Field {
-        case email, password
-    }
+    
     
     @FocusState private var focusField: Field?
     @Environment(\.dismiss) private var dismiss
     
-    //Create an @State NavigationPath() variable to use in the NavigationStack
-    @State private var path = [ViewItem]()
-    //will show a logout -> return to root
+
     @State private var showFullStack = false
     
-    @State public var loginStatusErrorMessage = ""
+    @State public var statusErrorMessage = ""
 
     
     
@@ -56,18 +93,21 @@ struct LoginView: View {
     var body: some View {
         //Navigates to the UserHomeView upon successful login
         NavigationStack(path: $path){
+/*******/
             VStack{
                 
                 
                 //add the title to the page
                 
                 //stack for the entire view
-                VStack{
+/**/            VStack{
                     Image("scooter")
-                    //  .colorInvert()
+//Image                    //  .colorInvert()
                     //  .colorMultiply(.blue)
                     //Stack for Email address and password input
                     //Text for LoginStatusErrorMessage
+                    
+//Text input
                     VStack{
                         TextField("Email Address", text: $email)
                             .AddMyTextFieldEntry()
@@ -82,6 +122,10 @@ struct LoginView: View {
                             .onChange(of: email) { _ in
                                 //Enable buttons?
                                 enableButtons()
+                                if isAdminSignedIn{
+                                    showFullStack = true
+                                }
+                                
                             }
                         
                         SecureField("Password", text: $password).AddMyTextFieldEntry()
@@ -98,23 +142,59 @@ struct LoginView: View {
                             .padding(5)
                         
                         //test for login status error message
+                        if isAdmin{
+                            Text("isAdmin: \(String(isAdmin))")
+                        }
                         if showingAlert {
-                            Text(loginStatusErrorMessage).foregroundColor(.red)
+                            Text(statusErrorMessage).foregroundColor(.red)
+                        }
+                        if showFullStack && isAdmin {
+                            Text(statusErrorMessage).foregroundColor(.blue)
                         }
                         
                         
+                        
                         VStack{
-                            /*implement test for reset password
-                                */
-                            Button{
+                            
+                            if isAdmin && showFullStack && password == "Password!123"{
                                 
-                            } label: {
-                                Text("Reset Password...")
-                                    .buttonStyle(.borderedProminent)
-                                    .underline()
-                                    .fontWidth(.expanded)
-                                    .foregroundColor(.blue)
+                                NavigationLink("\(admin_OR_userButtonText)", destination: AdminUserHomeView())
+                                    .buttonStyle(.bordered).underline()
                             }
+                            else{
+                                NavigationLink("\(String(admin_OR_userButtonText))", destination: ResetPasswordView())
+                                    .buttonStyle(.bordered).underline()
+
+                            }
+
+                            /*implement test for reset password
+                             
+                             
+                                */
+//showFullStack ? Button{
+//
+//                } label: {
+//                            Text("\(admin_OR_userButtonText)")
+//                                    .buttonStyle(.borderedProminent)
+//                                    .underline()
+//                                    .fontWidth(.expanded)
+//                                    .foregroundColor(.blue)} :
+//                Button{
+//                                if password == "Password!123"{
+////                                  path = []
+//                                    path.append(ViewItem(name:"AdminUserHomeView"))
+//                                } else {
+//                                    resetAllData()
+//                                    showingAlert.toggle()
+//                                    loginStatusErrorMessage = "Incorrect admin password"
+//                                }
+//                            } label: {
+//                                Text("\(admin_OR_userButtonText)")
+//                                    .buttonStyle(.borderedProminent)
+//                                    .underline()
+//                                    .fontWidth(.expanded)
+//                                    .foregroundColor(.blue)
+//                            }
                         }
                         .buttonStyle(.plain)
                         .fontWidth(.expanded)
@@ -124,7 +204,7 @@ struct LoginView: View {
 //User Login
                         //Navigation Link to UserHomeView
                         Button{
-                            loginStatusErrorMessage = login_Registration_InputErrorCheck(email: email, password: password)
+                            statusErrorMessage = login_Registration_InputErrorCheck(email: email, password: password)
                             
                             if isLoggedIn{
                                 path.append(ViewItem(name: "UserHomeView"))
@@ -138,20 +218,31 @@ struct LoginView: View {
                         }.foregroundColor(.blue)
                             .AddMy_ButtonSytle()
                     }
-                }
+/**/            }
+                
                 .navigationDestination(for: ViewItem.self) { view in
                     VStack{
                         ViewForItem(view)
                         
                         
                         if view.name == "UserHomeView"{
-                            Button {
-                                path = []
-                                model.logOut()
-                            } label: {
-                                Text("LogOut")
+                            if isAdmin && email == "jtrubela@icloud.com"{
+                                Button {
+                                    path = views
+                                } label: {
+                                    Text("LogOut")
+                                }
+                           
+                            } else {
+                                Button {
+                                    path = []
+                                    logOut()
+                                } label: {
+                                    Text("LogOut")
+                                }
                             }
                         }
+                        
                     }
                     .navigationBarBackButtonHidden(true)
                 }
@@ -160,7 +251,7 @@ struct LoginView: View {
             }
             .navigationBarBackButtonHidden(true)
         }
-        .navigationBarBackButtonHidden(true)
+//        .navigationBarBackButtonHidden(true)
 
     }
     
@@ -176,9 +267,44 @@ struct LoginView: View {
             return AnyView(RegistrationView())
         case "UserHomeView":
                 return AnyView(UserHomeView())
+        case "ResetPasswordView":
+            return AnyView(ResetPasswordView())
+        case "AdminUserHomeView":
+            return AnyView(AdminUserHomeView())
+        case "ScanQRView":
+            return AnyView(ScanQRView())
+        case "ScooterListView":
+            return AnyView(ScooterListView())
+        case "ScootMapView":
+            return AnyView(ScootMapView())
+        case "MyScootsView":
+            return AnyView(MyScootsView())
+        case "UserProfile_SettingsView":
+            return AnyView(UserProfile_SettingsView())
+        case "WalletView":
+            return AnyView(WalletView())
         default:
             return AnyView(LandingPageView())
         }
+    }
+    
+    func logOut(){
+        let userUID = FirebaseManager.shared.auth.currentUser?.uid
+        
+        do {
+            try FirebaseManager.shared.auth.signOut()
+        } catch let signOutError as NSError {
+            print("Error signing out: %@", signOutError)
+        }
+        print("user(\(String(describing: userUID))): Signed out Successfully---no user currently logged in")
+    }
+    
+    func resetAllData(){
+        email = ""
+        password = ""
+        showFullStack = false
+        isAdmin = false
+        admin_OR_userButtonText = ""
     }
     
     func login_Registration_InputErrorCheck(email: String, password: String) -> String{
@@ -193,25 +319,25 @@ struct LoginView: View {
                     
                 //Password invalid
                 case AuthErrorCode.wrongPassword.rawValue:
-                    loginStatusErrorMessage = "Password entered is not correct"
-                    print(loginStatusErrorMessage)
+                    statusErrorMessage = "Password entered is not correct"
+                    print(statusErrorMessage)
 
                 //Email is invalid
                 case AuthErrorCode.invalidEmail.rawValue:
-                    loginStatusErrorMessage = "Email is invalid"
-                    print(loginStatusErrorMessage)
+                    statusErrorMessage = "Email is invalid"
+                    print(statusErrorMessage)
                 //Email is unverified
                     case AuthErrorCode.unverifiedEmail.rawValue:
-                    loginStatusErrorMessage = "An email link was sent to your account, please verify it before loggin in"
-                    print(loginStatusErrorMessage)
+                    statusErrorMessage = "An email link was sent to your account, please verify it before loggin in"
+                    print(statusErrorMessage)
                 //Network error
                 case AuthErrorCode.networkError.rawValue:
-                    loginStatusErrorMessage = "Error in network connection"
-                    print(loginStatusErrorMessage)
+                    statusErrorMessage = "Error in network connection"
+                    print(statusErrorMessage)
                 //User disabled
                 case AuthErrorCode.userDisabled.rawValue:
-                    loginStatusErrorMessage = "User is currently disabled"
-                    print(loginStatusErrorMessage)
+                    statusErrorMessage = "User is currently disabled"
+                    print(statusErrorMessage)
                 
                     
                 default:
@@ -220,15 +346,15 @@ struct LoginView: View {
             } else { //there was no error so the user could be auth'd or maybe not!
                 if let _ = auth?.user {
                     path.append(ViewItem(name: "UserHomeView"))
-                    loginStatusErrorMessage = "user is authd"
-                    print(loginStatusErrorMessage)
+                    statusErrorMessage = "user is authd"
+                    print(statusErrorMessage)
                 } else {
-                    loginStatusErrorMessage = "no authenticated user"
-                    print(loginStatusErrorMessage)
+                    statusErrorMessage = "no authenticated user"
+                    print(statusErrorMessage)
                 }
             }
         })
-            return loginStatusErrorMessage
+            return statusErrorMessage
     }
 
     func enableButtons() {
