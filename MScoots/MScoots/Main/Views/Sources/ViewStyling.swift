@@ -19,6 +19,24 @@ import SwiftUI
 
 
 /*-----------------------------------------------------------------------------------------------------/
+ //View Items                View Items                 View Items                     View Items
+ //                     View Items                                             View Items
+ //     View Items        View Items      View Items         View Items                 View Items
+ //             View Items               View Items                        View Items
+ //    View Items         View Items         View Items         View Items         Views/Scenes
+ /------------------------------------------------------------------------------------------------------*/
+struct FlagImage: View {
+    var ImageText: String
+    
+    var body: some View {
+        Image(ImageText)
+            .renderingMode(.original)
+            .clipShape(Capsule())
+            .shadow(radius: 50)
+    }
+}
+
+/*-----------------------------------------------------------------------------------------------------/
  //Views/Scenes                Views/Scenes                 Views/Scenes                     Views/Scenes
  //                     Views/Scenes                                             Views/Scenes
  //     Views/Scenes        Views/Scenes      Views/Scenes         Views/Scenes                 Views/Scenes
@@ -221,16 +239,7 @@ extension View {
 }
 
 
-struct FlagImage: View {
-    var ImageText: String
-    
-    var body: some View {
-        Image(ImageText)
-            .renderingMode(.original)
-            .clipShape(Capsule())
-            .shadow(radius: 50)
-    }
-}
+
 
 /*------------------------------------------------------------------------------------------------------/
  //Buttons                              Buttons                 Buttons                     Buttons

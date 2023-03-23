@@ -32,10 +32,21 @@
 		3DAB28EF29C41E75004365D5 /* SwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DAB28EE29C41E75004365D5 /* SwiftUIView.swift */; };
 		3DAB28F129C41F7C004365D5 /* TestUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DAB28F029C41F7C004365D5 /* TestUIView.swift */; };
 		3DAB28F329C4F188004365D5 /* LoadingScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DAB28F229C4F188004365D5 /* LoadingScreenView.swift */; };
+		3DAD829E29CB7F93002C1FFA /* MScootsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DAD829D29CB7F93002C1FFA /* MScootsTests.swift */; };
 		3DAE1F9429B26120009FEA73 /* ScooterListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DAE1F9329B26120009FEA73 /* ScooterListView.swift */; };
 		3DAE1F9A29B285DA009FEA73 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3DAE1F9929B285DA009FEA73 /* GoogleService-Info.plist */; };
 		3DFC742E29C1593100EF35AB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3DFC742D29C1593100EF35AB /* Assets.xcassets */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		3DAD829F29CB7F93002C1FFA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3D94DD5229ABC99B0093C878 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 3D94DD5929ABC99C0093C878;
+			remoteInfo = MScoots;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		3D113E9B29C1D06E00A8C2B7 /* ScanQRView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanQRView.swift; sourceTree = "<group>"; };
@@ -62,6 +73,8 @@
 		3DAB28EE29C41E75004365D5 /* SwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIView.swift; sourceTree = "<group>"; };
 		3DAB28F029C41F7C004365D5 /* TestUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestUIView.swift; sourceTree = "<group>"; };
 		3DAB28F229C4F188004365D5 /* LoadingScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingScreenView.swift; sourceTree = "<group>"; };
+		3DAD829B29CB7F92002C1FFA /* MScootsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MScootsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		3DAD829D29CB7F93002C1FFA /* MScootsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MScootsTests.swift; sourceTree = "<group>"; };
 		3DAE1F9329B26120009FEA73 /* ScooterListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScooterListView.swift; sourceTree = "<group>"; };
 		3DAE1F9929B285DA009FEA73 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "MScoots/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		3DFC742D29C1593100EF35AB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = MScoots/Main/Views/Sources/Assets.xcassets; sourceTree = "<group>"; };
@@ -78,19 +91,55 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		3DAD829829CB7F92002C1FFA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3D093EDA29CBFC24000E466F /* UserViews */ = {
+			isa = PBXGroup;
+			children = (
+				3D94DD7629ABD6CF0093C878 /* UserHomeView.swift */,
+				3DA1A8A229C985FA00BD2D54 /* UserProfile_SettingsView.swift */,
+				3DA1A89C29C9849D00BD2D54 /* MyScootsView.swift */,
+				3DA1A8A029C9858A00BD2D54 /* WalletView.swift */,
+				3D113E9B29C1D06E00A8C2B7 /* ScanQRView.swift */,
+				3DAE1F9329B26120009FEA73 /* ScooterListView.swift */,
+				3DA1A89E29C9855300BD2D54 /* ScootMapView.swift */,
+			);
+			path = UserViews;
+			sourceTree = "<group>";
+		};
+		3D093EDB29CBFCB8000E466F /* Login&Registration */ = {
+			isa = PBXGroup;
+			children = (
+				3D94DD5F29ABC99C0093C878 /* LoginView.swift */,
+				3DA1A89A29C979E100BD2D54 /* ResetPasswordView.swift */,
+				3D94DD7429ABD6170093C878 /* RegistrationView.swift */,
+			);
+			path = "Login&Registration";
+			sourceTree = "<group>";
+		};
+		3D093EDC29CBFD0E000E466F /* AdminViews */ = {
+			isa = PBXGroup;
+			children = (
+				3DA1A89829C9681400BD2D54 /* AdminUserHomeView.swift */,
+			);
+			path = AdminViews;
+			sourceTree = "<group>";
+		};
 		3D56C5ED29ACCC7A00036363 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				3DAB28F229C4F188004365D5 /* LoadingScreenView.swift */,
 				3D56C5F929ACE05400036363 /* LandingPageView.swift */,
-				3D94DD5F29ABC99C0093C878 /* LoginView.swift */,
-				3D94DD7429ABD6170093C878 /* RegistrationView.swift */,
-				3D94DD7629ABD6CF0093C878 /* UserHomeView.swift */,
-				3DA1A89829C9681400BD2D54 /* AdminUserHomeView.swift */,
-				3DAE1F9329B26120009FEA73 /* ScooterListView.swift */,
+				3D093EDB29CBFCB8000E466F /* Login&Registration */,
+				3D093EDA29CBFC24000E466F /* UserViews */,
+				3D093EDC29CBFD0E000E466F /* AdminViews */,
 				3DCF552F29C84B0A00DA3FB3 /* UnusedViews */,
 				3DAE1F9229B227D3009FEA73 /* ViewStyling */,
 			);
@@ -123,6 +172,7 @@
 				3D94DD5C29ABC99C0093C878 /* MScoots */,
 				3DAE1F9929B285DA009FEA73 /* GoogleService-Info.plist */,
 				3DFC742D29C1593100EF35AB /* Assets.xcassets */,
+				3DAD829C29CB7F93002C1FFA /* MScootsTests */,
 				3D94DD5B29ABC99C0093C878 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -131,6 +181,7 @@
 			isa = PBXGroup;
 			children = (
 				3D94DD5A29ABC99C0093C878 /* MScoots.app */,
+				3DAD829B29CB7F92002C1FFA /* MScootsTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -151,6 +202,14 @@
 				3D94DD6429ABC99E0093C878 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		3DAD829C29CB7F93002C1FFA /* MScootsTests */ = {
+			isa = PBXGroup;
+			children = (
+				3DAD829D29CB7F93002C1FFA /* MScootsTests.swift */,
+			);
+			path = MScootsTests;
 			sourceTree = "<group>";
 		};
 		3DAE1F9129B22680009FEA73 /* DatabaseMGRclass */ = {
@@ -175,14 +234,9 @@
 		3DCF552F29C84B0A00DA3FB3 /* UnusedViews */ = {
 			isa = PBXGroup;
 			children = (
+				3DAB28F229C4F188004365D5 /* LoadingScreenView.swift */,
 				3DAB28EE29C41E75004365D5 /* SwiftUIView.swift */,
 				3DAB28F029C41F7C004365D5 /* TestUIView.swift */,
-				3D113E9B29C1D06E00A8C2B7 /* ScanQRView.swift */,
-				3DA1A89A29C979E100BD2D54 /* ResetPasswordView.swift */,
-				3DA1A89C29C9849D00BD2D54 /* MyScootsView.swift */,
-				3DA1A89E29C9855300BD2D54 /* ScootMapView.swift */,
-				3DA1A8A029C9858A00BD2D54 /* WalletView.swift */,
-				3DA1A8A229C985FA00BD2D54 /* UserProfile_SettingsView.swift */,
 			);
 			path = UnusedViews;
 			sourceTree = "<group>";
@@ -212,6 +266,24 @@
 			productReference = 3D94DD5A29ABC99C0093C878 /* MScoots.app */;
 			productType = "com.apple.product-type.application";
 		};
+		3DAD829A29CB7F92002C1FFA /* MScootsTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3DAD82A129CB7F93002C1FFA /* Build configuration list for PBXNativeTarget "MScootsTests" */;
+			buildPhases = (
+				3DAD829729CB7F92002C1FFA /* Sources */,
+				3DAD829829CB7F92002C1FFA /* Frameworks */,
+				3DAD829929CB7F92002C1FFA /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				3DAD82A029CB7F93002C1FFA /* PBXTargetDependency */,
+			);
+			name = MScootsTests;
+			productName = MScootsTests;
+			productReference = 3DAD829B29CB7F92002C1FFA /* MScootsTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -224,6 +296,10 @@
 				TargetAttributes = {
 					3D94DD5929ABC99C0093C878 = {
 						CreatedOnToolsVersion = 14.2;
+					};
+					3DAD829A29CB7F92002C1FFA = {
+						CreatedOnToolsVersion = 14.2;
+						TestTargetID = 3D94DD5929ABC99C0093C878;
 					};
 				};
 			};
@@ -244,6 +320,7 @@
 			projectRoot = "";
 			targets = (
 				3D94DD5929ABC99C0093C878 /* MScoots */,
+				3DAD829A29CB7F92002C1FFA /* MScootsTests */,
 			);
 		};
 /* End PBXProject section */
@@ -256,6 +333,13 @@
 				3D94DD6529ABC99E0093C878 /* Preview Assets.xcassets in Resources */,
 				3DAE1F9A29B285DA009FEA73 /* GoogleService-Info.plist in Resources */,
 				3DFC742E29C1593100EF35AB /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3DAD829929CB7F92002C1FFA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -291,7 +375,23 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		3DAD829729CB7F92002C1FFA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3DAD829E29CB7F93002C1FFA /* MScootsTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		3DAD82A029CB7F93002C1FFA /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 3D94DD5929ABC99C0093C878 /* MScoots */;
+			targetProxy = 3DAD829F29CB7F93002C1FFA /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		3D94DD6629ABC99E0093C878 /* Debug */ = {
@@ -344,6 +444,12 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_KEY_NSLocalNetworkUsageDescription = Allow;
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = Allow;
+				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = Allow;
+				INFOPLIST_KEY_NSLocationTemporaryUsageDescriptionDictionary = Allow;
+				INFOPLIST_KEY_NSLocationUsageDescription = Allow;
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = Allow;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -390,6 +496,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -398,6 +505,12 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_KEY_NSLocalNetworkUsageDescription = Allow;
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = Allow;
+				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = Allow;
+				INFOPLIST_KEY_NSLocationTemporaryUsageDescriptionDictionary = Allow;
+				INFOPLIST_KEY_NSLocationUsageDescription = Allow;
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = Allow;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
@@ -420,6 +533,8 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MScoots/Info.plist;
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "Always allow location";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Always allow location";
 				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "Want to save images to the image library to add to profile photo";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -450,6 +565,8 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MScoots/Info.plist;
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "Always allow location";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Always allow location";
 				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "Want to save images to the image library to add to profile photo";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -465,6 +582,42 @@
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		3DAD82A229CB7F93002C1FFA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 6CD78A686T;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "Justin-Trubela.MScootsTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MScoots.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/MScoots";
+			};
+			name = Debug;
+		};
+		3DAD82A329CB7F93002C1FFA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 6CD78A686T;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "Justin-Trubela.MScootsTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MScoots.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/MScoots";
 			};
 			name = Release;
 		};
@@ -485,6 +638,15 @@
 			buildConfigurations = (
 				3D94DD6929ABC99E0093C878 /* Debug */,
 				3D94DD6A29ABC99E0093C878 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3DAD82A129CB7F93002C1FFA /* Build configuration list for PBXNativeTarget "MScootsTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3DAD82A229CB7F93002C1FFA /* Debug */,
+				3DAD82A329CB7F93002C1FFA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
