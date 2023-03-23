@@ -7,6 +7,74 @@ About
 -----
 
 
+Remaining Tasks Before Submission
+=================================
+### MScootsApp.main
+---------------------------------------------------------------------------------------------
+### LoadingScreenView
+
+
+### LandingPageView
+
+---------------------------------------------------------------------------------------------
+### LoginView
+
+
+### ResetPasswordView
+
+
+### RegistrationView
+
+---------------------------------------------------------------------------------------------
+### UserHomeView
+
+
+### UserSettings_Profile
+    Both Users
+	      [ ] change email/password, non-functional reqs(I.e. change light and dark mode),sign out, contact support, 
+    Admin-TBD
+     User
+        [ ] Add, edit, and remove user data in storage,
+
+
+### MyScootsView
+
+
+### WalletView
+	      [ ] Add, edit, and remove payment methods
+	      [ ] Add, edit, and remove user data in storage
+
+
+### ScanQRView
+	      [ ] Scan QR code to rent/return scooter(Fake representation of camera)
+
+
+### ScooterListView
+    Admin
+		    [ ] Add, edit, and remove Scooters
+    User
+        [ ] Rent,Return,report scooter issue,
+
+
+### ScootMapView
+    Admin-
+        [ ] Add, edit, and remove Scooter object pins on image/map(Show 2 different images with scooters missing)
+    User-
+        [ ] UI - just a view to see where scooters are located until further notice
+    
+### AdminUserHomeView
+    [ ] Add, edit, and remove user
+
+---------------------------------------------------------------------------------------------
+### ViewStyling
+
+---------------------------------------------------------------------------------------------
+### ProfileImageSaver
+### User
+### FirebaseManager
+### DB_Authorization
+### DB_Firestore
+### MScootsTest
 
 
 ##  Folder Hierarchy
