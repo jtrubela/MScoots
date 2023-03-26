@@ -28,10 +28,11 @@
 		3DA1A8A129C9858A00BD2D54 /* WalletView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DA1A8A029C9858A00BD2D54 /* WalletView.swift */; };
 		3DA1A8A329C985FA00BD2D54 /* UserProfile_SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DA1A8A229C985FA00BD2D54 /* UserProfile_SettingsView.swift */; };
 		3DA1A8A529C9E83B00BD2D54 /* ProfileImageSaver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DA1A8A429C9E83B00BD2D54 /* ProfileImageSaver.swift */; };
-		3DA868E729C5B58000043C9B /* DB_Firestore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DA868E629C5B58000043C9B /* DB_Firestore.swift */; };
+		3DA868E729C5B58000043C9B /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DA868E629C5B58000043C9B /* ViewModel.swift */; };
 		3DAB28EF29C41E75004365D5 /* SwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DAB28EE29C41E75004365D5 /* SwiftUIView.swift */; };
 		3DAB28F129C41F7C004365D5 /* TestUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DAB28F029C41F7C004365D5 /* TestUIView.swift */; };
 		3DAB28F329C4F188004365D5 /* LoadingScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DAB28F229C4F188004365D5 /* LoadingScreenView.swift */; };
+		3DACDC5A29D05DE300AFD00E /* Scooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DACDC5929D05DE200AFD00E /* Scooter.swift */; };
 		3DAD829E29CB7F93002C1FFA /* MScootsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DAD829D29CB7F93002C1FFA /* MScootsTests.swift */; };
 		3DAE1F9429B26120009FEA73 /* ScooterListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DAE1F9329B26120009FEA73 /* ScooterListView.swift */; };
 		3DAE1F9A29B285DA009FEA73 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3DAE1F9929B285DA009FEA73 /* GoogleService-Info.plist */; };
@@ -69,10 +70,11 @@
 		3DA1A8A029C9858A00BD2D54 /* WalletView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletView.swift; sourceTree = "<group>"; };
 		3DA1A8A229C985FA00BD2D54 /* UserProfile_SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfile_SettingsView.swift; sourceTree = "<group>"; };
 		3DA1A8A429C9E83B00BD2D54 /* ProfileImageSaver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileImageSaver.swift; sourceTree = "<group>"; };
-		3DA868E629C5B58000043C9B /* DB_Firestore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DB_Firestore.swift; sourceTree = "<group>"; };
+		3DA868E629C5B58000043C9B /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 		3DAB28EE29C41E75004365D5 /* SwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIView.swift; sourceTree = "<group>"; };
 		3DAB28F029C41F7C004365D5 /* TestUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestUIView.swift; sourceTree = "<group>"; };
 		3DAB28F229C4F188004365D5 /* LoadingScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingScreenView.swift; sourceTree = "<group>"; };
+		3DACDC5929D05DE200AFD00E /* Scooter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scooter.swift; sourceTree = "<group>"; };
 		3DAD829B29CB7F92002C1FFA /* MScootsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MScootsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3DAD829D29CB7F93002C1FFA /* MScootsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MScootsTests.swift; sourceTree = "<group>"; };
 		3DAE1F9329B26120009FEA73 /* ScooterListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScooterListView.swift; sourceTree = "<group>"; };
@@ -118,7 +120,7 @@
 		3D093EDB29CBFCB8000E466F /* Login&Registration */ = {
 			isa = PBXGroup;
 			children = (
-				3D94DD5F29ABC99C0093C878 /* LoginView.swift */,
+				3D56C5F929ACE05400036363 /* LandingPageView.swift */,
 				3DA1A89A29C979E100BD2D54 /* ResetPasswordView.swift */,
 				3D94DD7429ABD6170093C878 /* RegistrationView.swift */,
 			);
@@ -136,7 +138,6 @@
 		3D56C5ED29ACCC7A00036363 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				3D56C5F929ACE05400036363 /* LandingPageView.swift */,
 				3D093EDB29CBFCB8000E466F /* Login&Registration */,
 				3D093EDA29CBFC24000E466F /* UserViews */,
 				3D093EDC29CBFD0E000E466F /* AdminViews */,
@@ -160,6 +161,7 @@
 			isa = PBXGroup;
 			children = (
 				3DA1A8A429C9E83B00BD2D54 /* ProfileImageSaver.swift */,
+				3DACDC5929D05DE200AFD00E /* Scooter.swift */,
 				3D56C60329AD53EA00036363 /* User.swift */,
 				3DAE1F9129B22680009FEA73 /* DatabaseMGRclass */,
 			);
@@ -217,7 +219,7 @@
 			children = (
 				3D59B97A29B0BF650032BCB4 /* FirebaseManager.swift */,
 				3D56C5F729ACD07000036363 /* DB_Authorization.swift */,
-				3DA868E629C5B58000043C9B /* DB_Firestore.swift */,
+				3DA868E629C5B58000043C9B /* ViewModel.swift */,
 			);
 			path = DatabaseMGRclass;
 			sourceTree = "<group>";
@@ -234,6 +236,7 @@
 		3DCF552F29C84B0A00DA3FB3 /* UnusedViews */ = {
 			isa = PBXGroup;
 			children = (
+				3D94DD5F29ABC99C0093C878 /* LoginView.swift */,
 				3DAB28F229C4F188004365D5 /* LoadingScreenView.swift */,
 				3DAB28EE29C41E75004365D5 /* SwiftUIView.swift */,
 				3DAB28F029C41F7C004365D5 /* TestUIView.swift */,
@@ -351,6 +354,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3D94DD7729ABD6CF0093C878 /* UserHomeView.swift in Sources */,
+				3DACDC5A29D05DE300AFD00E /* Scooter.swift in Sources */,
 				3D94DD7529ABD6170093C878 /* RegistrationView.swift in Sources */,
 				3DAB28EF29C41E75004365D5 /* SwiftUIView.swift in Sources */,
 				3D94DD6029ABC99C0093C878 /* LoginView.swift in Sources */,
@@ -362,7 +366,7 @@
 				3DAB28F129C41F7C004365D5 /* TestUIView.swift in Sources */,
 				3DAE1F9429B26120009FEA73 /* ScooterListView.swift in Sources */,
 				3DA1A8A129C9858A00BD2D54 /* WalletView.swift in Sources */,
-				3DA868E729C5B58000043C9B /* DB_Firestore.swift in Sources */,
+				3DA868E729C5B58000043C9B /* ViewModel.swift in Sources */,
 				3D56C5F829ACD07000036363 /* DB_Authorization.swift in Sources */,
 				3D56C5FA29ACE05400036363 /* LandingPageView.swift in Sources */,
 				3DA1A89D29C9849D00BD2D54 /* MyScootsView.swift in Sources */,

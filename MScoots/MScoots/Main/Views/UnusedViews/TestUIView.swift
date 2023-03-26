@@ -1,99 +1,194 @@
-////
-////  TestUIView.swift
-////  MScoots
-////
-////  Created by Justin Trubela on 3/17/23.
-////
+import Foundation
+import SwiftUI
+import FirebaseStorage
+import FirebaseCore
+import FirebaseFirestore
+import Firebase
+
+struct TestUIView: View {
+
+//    @ObservedObject var model = ViewModel()
+    
+    @State var list = [studentUser]()
+
+
+    @State var CWID = ""
+    @State var email = ""
+    @State var first_name = ""
+    @State var last_name = ""
+    @State var password = ""
+
+
+    var body: some View {
+
+        VStack {
+
+
+                HStack {
+                    Text(CWID)
+                    Spacer()
+                    
+                    
+                    // Update button
+                    HStack {
+                        Button{
+//                            updateData(studentUserToUpdate: )
+                        }label:{
+                            Image(systemName: "pencil")
+                        }
+                        
+                        // Delete button
+                        Button{
+//                            deleteData(studentUserToDelete: )
+                        }label:{
+                            Image(systemName: "minus.circle")
+                        }
+                    }.buttonStyle(.borderedProminent).foregroundColor(.black)
+            }
+
+            Divider()
+
+            VStack(spacing: 5) {
+
+                TextField("CWID", text: $CWID)
+                    .textFieldStyle(RoundedBorderTextFieldStyle())
+
+                TextField("email", text: $email)
+                    .textFieldStyle(RoundedBorderTextFieldStyle())
+
+                TextField("first_name", text: $first_name)
+                    .textFieldStyle(RoundedBorderTextFieldStyle())
+
+                TextField("last_name", text: $last_name)
+                    .textFieldStyle(RoundedBorderTextFieldStyle())
+
+                TextField("password", text: $password)
+                    .textFieldStyle(RoundedBorderTextFieldStyle())
+
+                Button{
+                    // Call add data
+                    addData(CWID: CWID, email: email, first_name: first_name, last_name: last_name, password: password)
+
+                    // Clear the text fields
+                    CWID = ""
+                    email = ""
+                    first_name = ""
+                    last_name = ""
+                    password = ""
+                    
+                }label:{
+                    Text("Add New Student Item")
+                }
+            }
+        }
+
+
+    }
+//    func updateData(studentUserToUpdate:studentUser) {
 //
-//import SwiftUI
+//        // Get a reference to the database
+//        let db = Firestore.firestore()
 //
-////
-////  ContentView.swift
-////  MScoots
-////
-////  Created by Justin Trubela on 2/26/23.
-////
+//        // Set the data to update
+//        db.collection("studentUser").document(studentUserToUpdate.id).setData(["Email":"Updated: \(studentUserToUpdate.CWID)"], merge: true) { error in
 //
-//import SwiftUI
-//import Firebase
-//
-//struct TestUIView: View {
-//    
-//    struct ViewItem: Identifiable, Hashable {
-//        let name: String
-//        let id = NSUUID().uuidString
-//    }
-//    
-//    let views: [ViewItem] = [
-//        .init(name: "LoginView"),
-//        .init(name: "UserHomeView"),
-//    ]
-//    
-//    //imports functions for creating user and logging in
-//    @StateObject var model = DB_Authorization()
-//    
-//    
-//    @State private var isLoggedIn = false
-//    
-//    
-//    //User input fields to verify against the db
-//    @State private var email = ""
-//    @State private var password = ""
-//    
-//    @State private var path = [ViewItem]()
-//    
-//    @State public var loginStatusErrorMessage = ""
-//    
-//    
-//    
-//    var body: some View {
-//        
-//        NavigationStack(path: $path){
-//            VStack{
-//                    TextField("Email Address", text: $email).AddMyTextFieldEntry()
-//                    SecureField("Password", text: $password).AddMyTextFieldEntry()
-//                    Button{
-//                        path = []
-////                        isLoggedIn.toggle()
-////                        if isLoggedIn{
-//                            path = [views[1]]
-////                        }
-////                        else{
-////                            path = [views[0]]
-////                        }
-//                    } label: {
-////                        NavigationLink("\(brands[3].name)",value: brands[3])
-//                        NavigationLink("\(views[1].name)",value: views[1])
-////                        Text("Login")
-//                    }.foregroundColor(.blue).AddMy_ButtonSytle()
-//                .navigationTitle("Log in")
-//            }
-//            .navigationDestination(for: ViewItem.self) { view in
-//                    ViewForItem(view)
+//            // Check for errors
+//            if error == nil {
+//                // Get the new data
+//                self.getData()
 //            }
 //        }
 //    }
 //
-//    
-//    
-//    //update the view to the navigationstack path variable
-//    func ViewForItem(_ UIview: ViewItem) -> AnyView {
-//        switch UIview.name {
-//        case "LoginView":
-//            return AnyView(LoginView())
-//        case "RegistrationView":
-//            return AnyView(RegistrationView())
-//        case "UserHomeView":
-//            return AnyView(UserHomeView())
-//        default:
-//            return AnyView(LandingPageView())
+//    func deleteData(studentUserToDelete:studentUser) {
+//
+//        // Get a reference to the database
+//        let db = Firestore.firestore()
+//
+//        // Specify the document to delete
+//        db.collection("studentUser").document(studentUserToDelete.id).delete { error in
+//
+//            // Check for errors
+//            if error == nil {
+//                // No errors
+//
+//                // Update the UI from the main thread
+//                DispatchQueue.main.async {
+//
+//                    // Remove thestudentUser that was just deleted
+//                    self.list.removeAll { studentUser in
+//
+//                        // Check for thestudentUser to remove
+//                        return studentUser.id == studentUserToDelete.id
+//                    }
+//                }
+//
+//
+//            }
 //        }
-//    }
-//}
 //
-//
-//struct TestUIView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        TestUIView()
 //    }
-//}
+    
+    func addData(CWID: String, email: String, first_name: String, last_name: String, password: String) {
+        
+        // Get a reference to the database
+        let db = Firestore.firestore()
+        
+        // Add a document to a collection
+        db.collection("studentUser").addDocument(data: ["CWID":CWID, "email":email, "first_name":first_name,"last_name":last_name,"password":password]) { error in
+            
+            
+            // Check for errors
+            if error == nil {
+                
+                // No errors
+                // Call get data to retrieve latest data
+                self.getData()
+            }
+            else {
+                // Handle the error
+            }
+        }
+    }
+    
+    func getData() {
+        
+        // Get a reference to the database
+        let db = Firestore.firestore()
+        
+        // Read the documents at a specific path
+        db.collection("studentUser").getDocuments { snapshot, error in
+            
+            // Check for errors
+            if error == nil {
+                
+                // No errors
+                if let snapshot = snapshot {
+                    
+                    // Update the list property in the main thread
+                    DispatchQueue.main.async {
+                        
+                        // Get all the documents and create studentUsers
+                        self.list = snapshot.documents.map { d in
+                            
+                            // Create a studentUser item for each document returned
+                            return studentUser(id: d.documentID,
+                                          CWID: d["CWID"] as? String ?? "",
+                                          Email: d["Email"] as? String ?? "",
+                                          first_name: d["first_name"] as? String ?? "",
+                                          last_name: d["last_name"] as? String ?? "",
+                                          Password: d["Password"] as? String ?? "")}
+  
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+struct TestUIView_Previews: PreviewProvider {
+    static var previews: some View {
+        TestUIView()
+    }
+}

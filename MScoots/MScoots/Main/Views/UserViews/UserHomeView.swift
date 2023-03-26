@@ -10,10 +10,9 @@ import Firebase
 import FirebaseAuth
 
 struct UserHomeView: View{
-    
-    //    @State private var dropDownMenu = false
     @State private var model = DB_Authorization()
-    
+    @State private var isLoggedIn = true
+    @State private var selection: String? = nil
     
     var body: some View {
         //Navigates to a buttons location
@@ -35,79 +34,34 @@ struct UserHomeView: View{
                                     .font(.system(size: 32))
                                     .fontWeight(.bold).padding(.leading, 30)
                             }
+                            
                             Spacer()
-                            VStack{
-                                Button{}label:{
-                                    Image(systemName: "person.fill").font(.system(size: 30))
+                            
+                            HStack{
+                                Button { } label: {
+                                    ProfileButton(ImageText: "person.fill")
                                 }
-                                .font(.system(size: 34))
-                                .padding()
-                                .foregroundColor(Color(.label))
-                                .overlay(RoundedRectangle(cornerRadius: 64)
-                                    .stroke(Color.black, lineWidth: 3)
-                                )
-                                Text("Profile").font(.headline)
-
-                            }.padding(.leading,120)
+                                    
+                            }
+                            
                             Spacer()
-                            /*
-                             //                            Button{
-                             //                                dropDownMenu.toggle()
-                             //                            } label: {
-                             //                                Image(systemName: "line.3.horizontal")
-                             //                                    .addMyHambugerMenuStyler()
-                             //                            }
-                             //                            .font(.system(size: 30))
-                             
-                             //                                .frame(width: 50, height :50)
-                             //                            .sheet(isPresented: $dropDownMenu, content: {
-                             //                                //List stack for drop down menu items
-                             //                                // -Signout
-                             //                                // -Wallet
-                             //                                // -Settings
-                             //                                List{
-                             //
-                             ////                                    Button{
-                             //////                                        logOut()
-                             ////
-                             ////
-                             ////                                    } label: {
-                             //
-                             ////                                        Image(systemName: "figure.wave")
-                             //                        NavigationLink("Sign Out",destination:  LoginView())
-                             ////                                    }
-                             //                                }
-                             //                            })
-                             
-                             Button {
-                             //                                logOut()
-                             //                                func logOut(){
-                             let firebaseAuth = Auth.auth()
-                             
-                             do {
-                             try firebaseAuth.signOut()
-                             print("userAuth.signOut: Successful---no user currently logged in")
-                             } catch let signOutError as NSError {
-                             print("Error signing out: %@", signOutError)
-                             }
-                             //        dropDownMenu.toggle()
-                             
-                             print("userAuth.signOut: Successful---no user currently logged in")
-                             //                                }
-                             
-                             } label:{
-                             NavigationLink("Sign Out",destination:  LandingPageView()).padding(.trailing, 30).buttonStyle(.borderedProminent)
-                             }
-                             //                            .onSubmit {
-                             //                                model.logOut()
-                             //                            }
-                             */
+
+                            if !isLoggedIn{
+                                NavigationLink("", destination: LandingPageView(), tag: "LandingPage", selection: $selection)
+                            }
+                            Button {
+                                isLoggedIn = model.logOut()
+                                
+                                self.selection = "LandingPage"
+                            } label: {
+                                Text("Log out")
+                            }
+                            Spacer()
                         }
-                        .foregroundColor(.black).padding(.trailing, 20)
                         Rectangle().AddMyDivider()
-                        Spacer()
-                            .navigationBarBackButtonHidden(true)
+
                     }
+
                     //STACK 1.2 -- User Buttons
                     VStack{
                         //ROW 1
@@ -172,18 +126,7 @@ struct UserHomeView: View{
                         HStack{
                             //Stack for navigation button linked to ????
                             NavigationLink(destination: ScanQRView()) {
-//                                VStack {
-//                                    Image(systemName: "person.crop.circle.fill.badge.checkmark").padding(.leading, 10)
-//                                        .font(.system(size: 70))
-//                                        .frame(width: 100, height: 100)
-//                                        .background(Color.red)
-//                                        .clipShape(RoundedRectangle(cornerRadius: 20, style:.continuous))
-//                                        .shadow(color: .black, radius: 7, x: 8, y: 9)
-//                                    Text("Button")
-//                                        .font(.title2).foregroundColor(.white)
-//                                }
                             }
-//                            .padding()
                             //Stack for navigation button linked to ????
                             /*
                              Implement a My Scooter Information View
@@ -207,39 +150,14 @@ struct UserHomeView: View{
                     .background(Color.secondary)
                 }
             }
-        }.navigationBarBackButtonHidden(false)
+        }            .navigationBarBackButtonHidden(true)
     }
 }
-    
-//    func logOut(){
-//        let firebaseAuth = Auth.auth()
-//
-//        do {
-//            try firebaseAuth.signOut()
-//            print("userAuth.signOut: Successful---no user currently logged in")
-//        } catch let signOutError as NSError {
-//            print("Error signing out: %@", signOutError)
-//        }
-////        dropDownMenu.toggle()
-//
-//        print("userAuth.signOut: Successful---no user currently logged in")
-//    }
-//    
-//    func logOut(){
-//        let firebaseAuth = Auth.auth()
-//        let userUID = firebaseAuth.currentUser?.uid
-//        
-//        do {
-//            try firebaseAuth.signOut()
-//        } catch let signOutError as NSError {
-//            print("Error signing out: %@", signOutError)
-//        }
-//        print("user(\(String(describing: userUID))): Signed out Successfully---no user currently logged in")
-//    }
-//}
+
+
 
 struct UserHomeView_Previews: PreviewProvider {
     static var previews: some View {
-            UserHomeView()
+        UserHomeView()
     }
 }

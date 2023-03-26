@@ -4,7 +4,7 @@ import Foundation
 
 
 class studentUser: Identifiable, Decodable {
-    var id: String
+    var id = UUID().uuidString
     var CWID: String
     var email: String
     var first_name: String
@@ -13,19 +13,18 @@ class studentUser: Identifiable, Decodable {
     
     struct Address: Decodable {
         var street: String
-        var suite: String
         var city: String
         var zipcode: String
-        var geo: Geo
-
-        struct Geo: Decodable {
-            var lat: String
-            var lng: String
-        }
+//Would be fantastic to get maps working so we can use this and store to Firestore
+//        var geo: Geo
+//
+//        struct Geo: Decodable {
+//            var lat: String
+//            var lng: String
+//        }
     }
 
     init(id: String, CWID: String, Email: String, first_name: String, last_name: String, Password: String) {
-        self.id = id
         self.CWID = CWID
         self.email = Email
         self.first_name = first_name

@@ -9,79 +9,78 @@ import SwiftUI
 
 struct ScooterListView: View {
     
-    //create an verification for ledColor to represent available/unavailable
-    //  AVAIALBLE = GREEN
-    //  UNAVAILABLE = GREY
     @State var scootAvailable = true
+    @State var canReserve = true
+    
+ 
 
     var body: some View {
         NavigationView{
             ZStack{
-                //ScrollView Stack for all scooters avaiable to be shown on the list
-                ScrollView{
-                    //Stack for all elements
-                    VStack{
-                        //Stack for the list item titles
-                        HStack{
-                            Text("Location")
-                            Spacer()
-                            Text("Battery")
-                            Spacer()
-                            Text("Scooter")
-                            Spacer()
-                            Text("Status")
-                        }
-                        //Stack for the individual scooters
-//TODO: Once the necessary data and objects are created to individually initialize the data we will need to change the ForEach loop
 //TODO: Add Battery images
-                        ForEach(1..<25){scooter in
-                            Rectangle().size(width: 400, height: 3)
-                            HStack{
-                                Button{
-                                    //TODO: add logic so that if anwhere on the list item some more details are provided about the scooter
-                                }label: {
-                                    //TODO: add variable for current lot it is located in using
-                                    Text("LOT \(60)")
-                                        .font(.title2)
-                                        .foregroundColor(.black)
-                                    Spacer()
-                                    Section{
-                                        Button{
-                                            scootAvailable.toggle()
-                                        }label: {
-                                            Image("scooter").MakeScooter()
-                                                .scaleEffect(x:0.8 ,y: 0.8, anchor: .center)
-                                        }
-                                    }
-                                    //TODO: Add logic for availability
-                                    //if scooter is available turn green light on, otherwise turn grey light on
-                                    Image(scootAvailable ? "LED ON" : "LED OFF")
-                                    
-                                    Button{
+                        List{
+                                ForEach(scooters){scooter in
+                                    Rectangle().size(width: 400, height: 3)
+                                    HStack{
+
+
+                                        ScooterListItemView()
+
+                                        
                                         //TODO: Add logic for reserving a scooter
-                                    }label:{
-                                        Text("Reserve")
+                                        Button{}label:{
+                                            Text("Reserve")}.buttonStyle(.borderedProminent)
+
+                                        //TODO: add logic so that if anwhere on the list item some more details are provided about the scooter
+
+                                        
+                                        Spacer()
+                                        let LEDcheck = checkScooterAvail(scooterAvail: scooter.isAvailable)
+                                        if LEDcheck == 1{
+                                            Image("LED ON")
+                                        }
+                                        else if LEDcheck == 0 && LEDcheck == -1 {
+                                            Image("LED OFF")
+                                        }
+                                        else {
+                                            Image("LED OFF")
+                                        }
+                                        Spacer()
+                                        
+                                        //                                        //TODO: Add logic for reserving a scooter
+                                        
                                     }
-                                    .scaleEffect( y: 0.7, anchor: .center)
-                                    .padding()
-                                    .frame(width: 120)
-                                    .buttonStyle(.bordered)
+                                    .frame(maxWidth: .infinity)
+                                    .background(
+                                        Color.white
+                                            .clipShape(RoundedRectangle(cornerRadius: 25, style: .continuous))
+                                            .ignoresSafeArea()
+                                    )
                                 }
-                            }
-                            .scaleEffect( y: 0.7, anchor: .center)
-                        }
-                        Rectangle()
-                            .size(width: 400, height: 3)
-                    }
-                }
+
+                        }.listStyle(InsetListStyle())
+
+                
             }.navigationTitle("Scoots")
-                .scaleEffect(x:0.9,y:0.9)
-        }
+        }.ignoresSafeArea()
     }
+    
 }
 
 struct ScooterListView_Previews: PreviewProvider {
     static var previews: some View {
         ScooterListView()
+    }
+}
+
+struct ScooterMaker: ViewModifier {
+    func body(content: Content) -> some View {
+        content
+//            .frame(width:120,height:20,alignment: .center ).border(.purple)
+    }
+}
+extension View {
+    func MakeScooter() -> some View {
+        modifier(ScooterMaker())
     }
 }

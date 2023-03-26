@@ -25,6 +25,218 @@ import SwiftUI
  //             View Items               View Items                        View Items
  //    View Items         View Items         View Items         View Items         Views/Scenes
  /------------------------------------------------------------------------------------------------------*/
+
+
+struct ProfilePhotoButton: View {
+    var image_: Image?
+    var inputImage: UIImage?
+    
+    var body: some View {
+        VStack{
+            if let image_ = self.inputImage {
+                Image(uiImage: image_)
+                    .resizable()
+                    .scaledToFill()
+                    .frame(width: 128, height: 128)
+                    .cornerRadius(64)
+            } else {
+                Image(systemName: "person.fill")
+                    .font(.system(size: 64))
+                    .padding()
+                    .foregroundColor(Color(.label))
+                    .overlay(RoundedRectangle(cornerRadius: 64)
+                        .stroke(Color.black, lineWidth: 3)
+                    )
+            }
+        }
+
+    }
+}
+
+
+
+
+
+
+
+
+
+
+struct ScooterListItemView: View {
+    var Scooter: Scooter?
+    
+    var ImageText = "scooterList"
+    var imageNum: Int {
+        checkScooterAvail(scooterAvail: Scooter?.isAvailable ?? "\(randomScooterAvailability)!")
+    }
+    
+    
+    var body: some View {
+        HStack{
+            Text(Scooter?.location ?? "\(randomLocation)!")
+                .font(Font.system(size: 16))
+
+
+            
+            Spacer()
+            
+            
+            let LEDcheck = imageNum
+            if LEDcheck == 1{
+                Image("LED ON")
+            }
+            else if LEDcheck == 0{
+                Image("LED OFF")
+            }
+            Spacer()
+            Image(ImageText)
+
+            Spacer()
+            //TODO: Add logic for availability
+            //if scooter is available turn green light on, otherwise turn grey light on
+        }
+    }
+}
+
+struct EmailTextField: View {
+    @Binding var email: String
+    var buttonsDisabled = false
+    var enableButtons: () -> Void
+    
+    var body: some View {
+        TextField("Email Address", text: $email).padding(10)
+            .frame(width: 320, height: 40, alignment: .center)
+            .background(Color.white)
+            .clipShape(RoundedRectangle(cornerRadius: 10))
+            .font(.title2)
+            .textFieldStyle(.plain)
+//            .focused($focusField, equals: .email)// field bound to the .email case
+//            .onSubmit {focusField = .password}
+            .onChange(of: email) { _ in
+                //Enable buttons?
+                self.enableButtons()
+            }
+    }
+}
+
+
+struct SecurePasswordField: View {
+    
+    @Binding var password: String
+    var email: String
+    var buttonsDisabled = false
+
+    
+    var enableButtons: () -> Void
+
+
+    
+    
+
+    
+    
+    var body: some View {
+        
+        SecureField("Password", text: $password)
+            .padding(10)
+            .frame(width: 320, height: 40, alignment: .center)
+            .background(Color.white)
+            .clipShape(RoundedRectangle(cornerRadius: 10))
+            .font(.title2)
+            .textFieldStyle(.plain)
+//            .focused($focusField, equals: password)
+//            .onSubmit {
+//                focusField = nil
+//
+//            }
+            .onChange(of: email) { _ in
+                self.enableButtons()
+            }
+    }
+    
+}
+
+
+
+struct ProfileButton: View {
+    var ImageText: String
+    
+    var body: some View {
+        
+        Image(systemName: ImageText)
+            .font(.system(size: 30))
+        
+            .font(.system(size: 34))
+            .padding()
+            .foregroundColor(Color(.label))
+            .overlay(RoundedRectangle(cornerRadius: 64)
+                .stroke(Color.black, lineWidth: 3)
+            )
+    }
+}
+
+struct LogoutButton: View {
+    var ImageText: String
+    
+    var body: some View {
+
+            VStack{
+                Image(systemName: ImageText)
+                Text("Log Out")
+            }
+            .font(.system(size: 22))
+            .buttonStyle(.bordered)
+    }
+}
+
+struct LandingViewLoginButton1: View {
+
+    var body: some View {
+
+        Text("Login")
+        .frame(width: 130, height: 30)
+        .background(
+            RoundedRectangle(cornerRadius: 10,style:.continuous)
+                .fill(.white)
+        )
+        .clipShape(Capsule())
+        .fontWeight(.bold)
+        .foregroundColor(.blue)
+
+    }
+}
+struct LandingViewLoginButton2: View {
+
+    var body: some View {
+
+        Text("Login")
+            .frame(width: 130, height: 30)
+            .background(
+                RoundedRectangle(cornerRadius: 10,style:.continuous)
+                    .fill(.white)
+            )
+            .clipShape(Capsule())
+        
+            .fontWeight(.bold)
+            .foregroundColor(.gray)
+
+    }
+}
+
+
+struct HamburgerMenu: View {    
+    var body: some View {
+        
+        Image(systemName: "line.3.horizontal")
+            .addMyHambugerMenuStyler()
+            .font(.system(size: 30))
+            .frame(width: 50, height :50)
+            .padding(.trailing,25)
+    }
+}
+
+
+
 struct FlagImage: View {
     var ImageText: String
     
@@ -35,6 +247,8 @@ struct FlagImage: View {
             .shadow(radius: 50)
     }
 }
+
+
 
 /*-----------------------------------------------------------------------------------------------------/
  //Views/Scenes                Views/Scenes                 Views/Scenes                     Views/Scenes
@@ -56,7 +270,7 @@ struct CustomScene: Scene {
         //Login/Register
         .init(name: "LandingPageView"),
         .init(name: "RegistrationView"),
-        .init(name: "LoginView"),
+//        .init(name: "LoginView"),
         .init(name: "ResetPasswordView"),
         
         .init(name: "UserHomeView"),
@@ -80,7 +294,7 @@ struct CustomScene: Scene {
         WindowGroup {
             NavigationStack(path: $navigationPath){
                 ZStack{
-                    NavigationLink("LoginView", destination: ViewForItem(ViewItem(name: "LoginView")))
+//                    NavigationLink("LoginView", destination: ViewForItem(ViewItem(name: "LoginView")))
 
                 }.navigationDestination(for: ViewItem.self){ view in
                     VStack{
@@ -102,8 +316,8 @@ struct CustomScene: Scene {
         switch view.name {
         case "LandingPageView":
             return AnyView(LandingPageView())
-        case "LoginView":
-            return AnyView(LoginView())
+//        case "LoginView":
+//            return AnyView(LoginView())
         case "RegistrationView":
             return AnyView(RegistrationView())
         case "UserHomeView":
@@ -225,18 +439,7 @@ extension View {
         modifier(LEDMaker())
     }
 }
-struct ScooterMaker: ViewModifier {
-    func body(content: Content) -> some View {
-        content
-            .scaleEffect(x:0.3,y:0.3)
-                .frame(width:120,height:40,alignment: .center ).padding(.bottom,5)
-    }
-}
-extension View {
-    func MakeScooter() -> some View {
-        modifier(ScooterMaker())
-    }
-}
+
 
 
 
@@ -252,7 +455,7 @@ struct LoginView_Login_ButtonStyle: ViewModifier {
     func body(content: Content) -> some View {
         content
         
-            .frame(width: 150, height: 50)
+            .frame(width: 150, height: 30)
             .background(
                 RoundedRectangle(cornerRadius: 10,style:.continuous)
                     .fill(.white)
@@ -261,7 +464,6 @@ struct LoginView_Login_ButtonStyle: ViewModifier {
         
             .fontWeight(.bold)
             .foregroundColor(.red)
-            .padding(20)
     }
 }
 extension View {
@@ -282,7 +484,7 @@ struct AddMyButtonStyle: ViewModifier {
     }
 }
 extension View {
-    func AddMy_ButtonSytle() -> some View {
+    func AddMy_ButtonStyle() -> some View {
         modifier(AddMyButtonStyle())
     }
 }
@@ -363,6 +565,20 @@ extension View {
   //             TextObjects               TextObjects                        TextObjects
   //    TextObjects         TextObjects         TextObjects         TextObjects         TextObjects
   /------------------------------------------------------------------------------------------------------*/
+struct LandingFieldText: ViewModifier {
+    func body(content: Content) -> some View {
+        content
+            .bold()
+            .foregroundColor(.white)
+    }
+}
+extension View {
+    func AddLandingFieldText() -> some View {
+        modifier(LandingFieldText())
+    }
+}
+
+
 
   struct MyTextEntryField: ViewModifier {
       func body(content: Content) -> some View {
@@ -383,6 +599,36 @@ extension View {
           modifier(MyTextEntryField())
       }
   }
+
+struct MyEmailEntryField: ViewModifier {
+    func body(content: Content) -> some View {
+        content
+            .keyboardType(.emailAddress)
+            .autocorrectionDisabled().padding(5)
+            .textInputAutocapitalization(.never)
+            .submitLabel(.next)
+    }
+}
+extension View {
+    func AddMyEmailFieldEntry() -> some View {
+        modifier(MyEmailEntryField())
+    }
+}
+
+struct MyPasswordEntryField: ViewModifier {
+    func body(content: Content) -> some View {
+        content
+            .textInputAutocapitalization(.never)
+            .submitLabel(.done)
+    }
+}
+extension View {
+    func AddMyPasswordFieldEntry() -> some View {
+        modifier(MyPasswordEntryField())
+    }
+}
+
+
 
 struct TextEntryField: ViewModifier {
     func body(content: Content) -> some View {
