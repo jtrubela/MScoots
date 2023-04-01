@@ -24,12 +24,12 @@ class studentUser: Identifiable, Decodable {
 //        }
     }
 
-    init(id: String, CWID: String, Email: String, first_name: String, last_name: String, Password: String) {
+    init(CWID: String, email: String, first_name: String, last_name: String, password: String) {
         self.CWID = CWID
-        self.email = Email
+        self.email = email
         self.first_name = first_name
         self.last_name = last_name
-        self.password = Password
+        self.password = password
     }
 
 }
