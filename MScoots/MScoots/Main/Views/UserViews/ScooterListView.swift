@@ -89,6 +89,7 @@ struct ScooterListView: View {
                 }.navigationBarTitle("Scoots")
             }
             .padding(.bottom, 120)
+            
         }
     }
     
