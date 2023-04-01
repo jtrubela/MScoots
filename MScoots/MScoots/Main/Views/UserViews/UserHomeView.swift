@@ -10,7 +10,7 @@ import Firebase
 import FirebaseAuth
 
 struct UserHomeView: View{
-    @State private var model = DB_Authorization()
+    @State private var model = Firebase_Authorization()
     @State private var isLoggedIn = true
     @State private var selection: String? = nil
     
@@ -49,13 +49,19 @@ struct UserHomeView: View{
                             if !isLoggedIn{
                                 NavigationLink("", destination: LandingPageView(), tag: "LandingPage", selection: $selection)
                             }
-                            Button {
-                                isLoggedIn = model.logOut()
-                                
-                                self.selection = "LandingPage"
+                            
+                            Button{
+                                //Log out and go back to landing page
+                                model.isLoggedIn =
+                                model.logOut()
                             } label: {
-                                Text("Log out")
+                                NavigationLink("Log Out", destination: LandingPageView(), tag: "LandingPage", selection: $selection)
+                                HStack{
+                                    Image(systemName: "figure.wave")
+                                }
+                                .font(.system(size: 22))
                             }
+                            .buttonStyle(.bordered)
                             Spacer()
                         }
                         Rectangle().AddMyDivider()
