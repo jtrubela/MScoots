@@ -17,7 +17,7 @@ struct LandingPageView: View {
     
     
     //StateObject accessing these variables in this view
-    @StateObject var model = DB_Authorization()
+    @StateObject var model = Firebase_Authorization()
     //@State public var showingAlert: Bool
     //@State public var statusErrorMessage: String
     //@State private var isLoggedIn = false
@@ -76,7 +76,7 @@ struct LandingPageView: View {
                                     ZStack{
                                         Image("scooter")
                                         Image("rocky")
-                                            .position(x:140,y:100)
+                                            .position(x:210,y:150)
                                             .scaleEffect(x:2.5,y:1.6)
                                     }
                                     Image("smoke-effect")
@@ -101,7 +101,7 @@ struct LandingPageView: View {
                         //Email and Password Fields
                         VStack{
                             //Email
-                            EmailTextField(email: $email, enableButtons: enableButtons)
+                            EmailTextField(email: $email, enableButtons: enableButtons).foregroundColor(.black)
                                 .focused($focusField, equals: .email)// field bound to the .email case
                                 .onSubmit {
                                     focusField = .password
@@ -111,7 +111,7 @@ struct LandingPageView: View {
                                     enableButtons()
                                 }
                             //Password
-                            SecurePasswordField(password: $password, email: email, buttonsDisabled: buttonsDisabled, enableButtons: enableButtons)
+                            SecurePasswordField(password: $password, email: email, buttonsDisabled: buttonsDisabled, enableButtons: enableButtons).foregroundColor(.black)
                                 .focused($focusField, equals: .password) /* field bound to the .email case*/
                                 .onSubmit {
                                     focusField = .password
@@ -131,6 +131,7 @@ struct LandingPageView: View {
                         if model.isLoggedIn && model.isAdmin{
                             NavigationLink("",destination: AdminUserHomeView(), tag: "Admin", selection: $model.selection)
                         }
+                        
                         //if not go to user view
                         if model.isLoggedIn{
                             NavigationLink("", destination: UserHomeView(), tag: "User", selection: $model.selection)
