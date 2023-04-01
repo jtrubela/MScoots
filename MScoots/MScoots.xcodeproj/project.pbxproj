@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		3D113E9C29C1D06E00A8C2B7 /* ScanQRView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D113E9B29C1D06E00A8C2B7 /* ScanQRView.swift */; };
-		3D56C5F829ACD07000036363 /* DB_Authorization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D56C5F729ACD07000036363 /* DB_Authorization.swift */; };
+		3D56C5F829ACD07000036363 /* Firebase_Authorization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D56C5F729ACD07000036363 /* Firebase_Authorization.swift */; };
 		3D56C5FA29ACE05400036363 /* LandingPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D56C5F929ACE05400036363 /* LandingPageView.swift */; };
 		3D56C5FC29ACE67900036363 /* ViewStyling.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D56C5FB29ACE67900036363 /* ViewStyling.swift */; };
 		3D56C60429AD53EA00036363 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D56C60329AD53EA00036363 /* User.swift */; };
@@ -21,6 +21,7 @@
 		3D94DD7329ABCC4D0093C878 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 3D94DD7229ABCC4D0093C878 /* FirebaseStorage */; };
 		3D94DD7529ABD6170093C878 /* RegistrationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D94DD7429ABD6170093C878 /* RegistrationView.swift */; };
 		3D94DD7729ABD6CF0093C878 /* UserHomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D94DD7629ABD6CF0093C878 /* UserHomeView.swift */; };
+		3D9F657C29D115C800D65CCC /* CodeScanner in Frameworks */ = {isa = PBXBuildFile; productRef = 3D9F657B29D115C800D65CCC /* CodeScanner */; };
 		3DA1A89929C9681400BD2D54 /* AdminUserHomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DA1A89829C9681400BD2D54 /* AdminUserHomeView.swift */; };
 		3DA1A89B29C979E100BD2D54 /* ResetPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DA1A89A29C979E100BD2D54 /* ResetPasswordView.swift */; };
 		3DA1A89D29C9849D00BD2D54 /* MyScootsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DA1A89C29C9849D00BD2D54 /* MyScootsView.swift */; };
@@ -28,9 +29,9 @@
 		3DA1A8A129C9858A00BD2D54 /* WalletView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DA1A8A029C9858A00BD2D54 /* WalletView.swift */; };
 		3DA1A8A329C985FA00BD2D54 /* UserProfile_SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DA1A8A229C985FA00BD2D54 /* UserProfile_SettingsView.swift */; };
 		3DA1A8A529C9E83B00BD2D54 /* ProfileImageSaver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DA1A8A429C9E83B00BD2D54 /* ProfileImageSaver.swift */; };
-		3DA868E729C5B58000043C9B /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DA868E629C5B58000043C9B /* ViewModel.swift */; };
+		3DA868E729C5B58000043C9B /* Firebase_Firestore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DA868E629C5B58000043C9B /* Firebase_Firestore.swift */; };
 		3DAB28EF29C41E75004365D5 /* SwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DAB28EE29C41E75004365D5 /* SwiftUIView.swift */; };
-		3DAB28F129C41F7C004365D5 /* TestUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DAB28F029C41F7C004365D5 /* TestUIView.swift */; };
+		3DAB28F129C41F7C004365D5 /* UserManagerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DAB28F029C41F7C004365D5 /* UserManagerView.swift */; };
 		3DAB28F329C4F188004365D5 /* LoadingScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DAB28F229C4F188004365D5 /* LoadingScreenView.swift */; };
 		3DACDC5A29D05DE300AFD00E /* Scooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DACDC5929D05DE200AFD00E /* Scooter.swift */; };
 		3DAD829E29CB7F93002C1FFA /* MScootsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DAD829D29CB7F93002C1FFA /* MScootsTests.swift */; };
@@ -52,7 +53,7 @@
 /* Begin PBXFileReference section */
 		3D113E9B29C1D06E00A8C2B7 /* ScanQRView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanQRView.swift; sourceTree = "<group>"; };
 		3D56C5EB29ACC92100036363 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		3D56C5F729ACD07000036363 /* DB_Authorization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DB_Authorization.swift; sourceTree = "<group>"; };
+		3D56C5F729ACD07000036363 /* Firebase_Authorization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Firebase_Authorization.swift; sourceTree = "<group>"; };
 		3D56C5F929ACE05400036363 /* LandingPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingPageView.swift; sourceTree = "<group>"; };
 		3D56C5FB29ACE67900036363 /* ViewStyling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewStyling.swift; sourceTree = "<group>"; };
 		3D56C60329AD53EA00036363 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -70,9 +71,9 @@
 		3DA1A8A029C9858A00BD2D54 /* WalletView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletView.swift; sourceTree = "<group>"; };
 		3DA1A8A229C985FA00BD2D54 /* UserProfile_SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfile_SettingsView.swift; sourceTree = "<group>"; };
 		3DA1A8A429C9E83B00BD2D54 /* ProfileImageSaver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileImageSaver.swift; sourceTree = "<group>"; };
-		3DA868E629C5B58000043C9B /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
+		3DA868E629C5B58000043C9B /* Firebase_Firestore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Firebase_Firestore.swift; sourceTree = "<group>"; };
 		3DAB28EE29C41E75004365D5 /* SwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIView.swift; sourceTree = "<group>"; };
-		3DAB28F029C41F7C004365D5 /* TestUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestUIView.swift; sourceTree = "<group>"; };
+		3DAB28F029C41F7C004365D5 /* UserManagerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManagerView.swift; sourceTree = "<group>"; };
 		3DAB28F229C4F188004365D5 /* LoadingScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingScreenView.swift; sourceTree = "<group>"; };
 		3DACDC5929D05DE200AFD00E /* Scooter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scooter.swift; sourceTree = "<group>"; };
 		3DAD829B29CB7F92002C1FFA /* MScootsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MScootsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -87,6 +88,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3D9F657C29D115C800D65CCC /* CodeScanner in Frameworks */,
 				3D94DD6F29ABCC4D0093C878 /* FirebaseAuth in Frameworks */,
 				3D94DD7129ABCC4D0093C878 /* FirebaseFirestore in Frameworks */,
 				3D94DD7329ABCC4D0093C878 /* FirebaseStorage in Frameworks */,
@@ -106,11 +108,8 @@
 		3D093EDA29CBFC24000E466F /* UserViews */ = {
 			isa = PBXGroup;
 			children = (
+				3D9F657929D1058100D65CCC /* Views Left To Do */,
 				3D94DD7629ABD6CF0093C878 /* UserHomeView.swift */,
-				3DA1A8A229C985FA00BD2D54 /* UserProfile_SettingsView.swift */,
-				3DA1A89C29C9849D00BD2D54 /* MyScootsView.swift */,
-				3DA1A8A029C9858A00BD2D54 /* WalletView.swift */,
-				3D113E9B29C1D06E00A8C2B7 /* ScanQRView.swift */,
 				3DAE1F9329B26120009FEA73 /* ScooterListView.swift */,
 				3DA1A89E29C9855300BD2D54 /* ScootMapView.swift */,
 			);
@@ -206,6 +205,17 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
+		3D9F657929D1058100D65CCC /* Views Left To Do */ = {
+			isa = PBXGroup;
+			children = (
+				3DA1A8A229C985FA00BD2D54 /* UserProfile_SettingsView.swift */,
+				3DA1A89C29C9849D00BD2D54 /* MyScootsView.swift */,
+				3D113E9B29C1D06E00A8C2B7 /* ScanQRView.swift */,
+				3DA1A8A029C9858A00BD2D54 /* WalletView.swift */,
+			);
+			path = "Views Left To Do";
+			sourceTree = "<group>";
+		};
 		3DAD829C29CB7F93002C1FFA /* MScootsTests */ = {
 			isa = PBXGroup;
 			children = (
@@ -218,8 +228,8 @@
 			isa = PBXGroup;
 			children = (
 				3D59B97A29B0BF650032BCB4 /* FirebaseManager.swift */,
-				3D56C5F729ACD07000036363 /* DB_Authorization.swift */,
-				3DA868E629C5B58000043C9B /* ViewModel.swift */,
+				3D56C5F729ACD07000036363 /* Firebase_Authorization.swift */,
+				3DA868E629C5B58000043C9B /* Firebase_Firestore.swift */,
 			);
 			path = DatabaseMGRclass;
 			sourceTree = "<group>";
@@ -239,7 +249,7 @@
 				3D94DD5F29ABC99C0093C878 /* LoginView.swift */,
 				3DAB28F229C4F188004365D5 /* LoadingScreenView.swift */,
 				3DAB28EE29C41E75004365D5 /* SwiftUIView.swift */,
-				3DAB28F029C41F7C004365D5 /* TestUIView.swift */,
+				3DAB28F029C41F7C004365D5 /* UserManagerView.swift */,
 			);
 			path = UnusedViews;
 			sourceTree = "<group>";
@@ -264,6 +274,7 @@
 				3D94DD6E29ABCC4D0093C878 /* FirebaseAuth */,
 				3D94DD7029ABCC4D0093C878 /* FirebaseFirestore */,
 				3D94DD7229ABCC4D0093C878 /* FirebaseStorage */,
+				3D9F657B29D115C800D65CCC /* CodeScanner */,
 			);
 			productName = MScoots;
 			productReference = 3D94DD5A29ABC99C0093C878 /* MScoots.app */;
@@ -317,6 +328,7 @@
 			mainGroup = 3D94DD5129ABC99B0093C878;
 			packageReferences = (
 				3D94DD6D29ABCC4D0093C878 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				3D9F657A29D115C700D65CCC /* XCRemoteSwiftPackageReference "CodeScanner" */,
 			);
 			productRefGroup = 3D94DD5B29ABC99C0093C878 /* Products */;
 			projectDirPath = "";
@@ -363,11 +375,11 @@
 				3DA1A89F29C9855300BD2D54 /* ScootMapView.swift in Sources */,
 				3D113E9C29C1D06E00A8C2B7 /* ScanQRView.swift in Sources */,
 				3D56C5FC29ACE67900036363 /* ViewStyling.swift in Sources */,
-				3DAB28F129C41F7C004365D5 /* TestUIView.swift in Sources */,
+				3DAB28F129C41F7C004365D5 /* UserManagerView.swift in Sources */,
 				3DAE1F9429B26120009FEA73 /* ScooterListView.swift in Sources */,
 				3DA1A8A129C9858A00BD2D54 /* WalletView.swift in Sources */,
-				3DA868E729C5B58000043C9B /* ViewModel.swift in Sources */,
-				3D56C5F829ACD07000036363 /* DB_Authorization.swift in Sources */,
+				3DA868E729C5B58000043C9B /* Firebase_Firestore.swift in Sources */,
+				3D56C5F829ACD07000036363 /* Firebase_Authorization.swift in Sources */,
 				3D56C5FA29ACE05400036363 /* LandingPageView.swift in Sources */,
 				3DA1A89D29C9849D00BD2D54 /* MyScootsView.swift in Sources */,
 				3D94DD5E29ABC99C0093C878 /* MScootsApp.swift in Sources */,
@@ -454,6 +466,9 @@
 				INFOPLIST_KEY_NSLocationTemporaryUsageDescriptionDictionary = Allow;
 				INFOPLIST_KEY_NSLocationUsageDescription = Allow;
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = Allow;
+				INFOPLIST_KEY_NSNearbyInteractionAllowOnceUsageDescription = Allow;
+				INFOPLIST_KEY_NSNearbyInteractionUsageDescription = Allow;
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = Allow;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -515,6 +530,9 @@
 				INFOPLIST_KEY_NSLocationTemporaryUsageDescriptionDictionary = Allow;
 				INFOPLIST_KEY_NSLocationUsageDescription = Allow;
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = Allow;
+				INFOPLIST_KEY_NSNearbyInteractionAllowOnceUsageDescription = Allow;
+				INFOPLIST_KEY_NSNearbyInteractionUsageDescription = Allow;
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = Allow;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
@@ -537,9 +555,15 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MScoots/Info.plist;
+				INFOPLIST_KEY_NSCameraUsageDescription = Allow;
+				INFOPLIST_KEY_NSLocalNetworkUsageDescription = Allow;
 				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "Always allow location";
+				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = Allow;
+				INFOPLIST_KEY_NSLocationTemporaryUsageDescriptionDictionary = Allow;
+				INFOPLIST_KEY_NSLocationUsageDescription = Allow;
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Always allow location";
-				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "Want to save images to the image library to add to profile photo";
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = Allow;
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = Allow;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -549,6 +573,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
+				NEW_SETTING = "";
 				PRODUCT_BUNDLE_IDENTIFIER = "Justin-Trubela.MScoots";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -569,9 +594,15 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MScoots/Info.plist;
+				INFOPLIST_KEY_NSCameraUsageDescription = Allow;
+				INFOPLIST_KEY_NSLocalNetworkUsageDescription = Allow;
 				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "Always allow location";
+				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = Allow;
+				INFOPLIST_KEY_NSLocationTemporaryUsageDescriptionDictionary = Allow;
+				INFOPLIST_KEY_NSLocationUsageDescription = Allow;
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Always allow location";
-				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "Want to save images to the image library to add to profile photo";
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = Allow;
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = Allow;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -581,6 +612,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
+				NEW_SETTING = "";
 				PRODUCT_BUNDLE_IDENTIFIER = "Justin-Trubela.MScoots";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -666,6 +698,14 @@
 				kind = branch;
 			};
 		};
+		3D9F657A29D115C700D65CCC /* XCRemoteSwiftPackageReference "CodeScanner" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/twostraws/CodeScanner.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -683,6 +723,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 3D94DD6D29ABCC4D0093C878 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseStorage;
+		};
+		3D9F657B29D115C800D65CCC /* CodeScanner */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3D9F657A29D115C700D65CCC /* XCRemoteSwiftPackageReference "CodeScanner" */;
+			productName = CodeScanner;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

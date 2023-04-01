@@ -5,7 +5,7 @@ import FirebaseCore
 import FirebaseFirestore
 import Firebase
 
-struct TestUIView: View {
+struct UserManagerView: View {
 
 //    @ObservedObject var model = ViewModel()
     
@@ -172,12 +172,11 @@ struct TestUIView: View {
                         self.list = snapshot.documents.map { d in
                             
                             // Create a studentUser item for each document returned
-                            return studentUser(id: d.documentID,
-                                          CWID: d["CWID"] as? String ?? "",
-                                          Email: d["Email"] as? String ?? "",
-                                          first_name: d["first_name"] as? String ?? "",
-                                          last_name: d["last_name"] as? String ?? "",
-                                          Password: d["Password"] as? String ?? "")}
+                            return studentUser(CWID: d["CWID"] as? String ?? "",
+                                               email: d["Email"] as? String ?? "",
+                                               first_name: d["first_name"] as? String ?? "",
+                                               last_name: d["last_name"] as? String ?? "",
+                                               password: d["Password"] as? String ?? "")}
   
                     }
                 }
@@ -187,8 +186,8 @@ struct TestUIView: View {
 }
 
 
-struct TestUIView_Previews: PreviewProvider {
+struct UserManagerView_Previews: PreviewProvider {
     static var previews: some View {
-        TestUIView()
+        UserManagerView()
     }
 }

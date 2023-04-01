@@ -5,13 +5,11 @@
 //
 //  Created by Justin Trubela on 2/27/23.
 //
-
-
 import FirebaseAuth
 import SwiftUI
 
 
-class DB_Authorization: ObservableObject {
+class Firebase_Authorization: ObservableObject {
     //
     // Error message items for displaying message to the user
     //      for non-functional req problems with sign-in/password etc..
@@ -43,6 +41,8 @@ class DB_Authorization: ObservableObject {
     @Published var shouldShowImagePicker = false
     @Published var image: UIImage?
     @Published var inputImage: UIImage?
+    
+    let firebase = FirebaseManager.shared.auth
     
 
     
@@ -139,7 +139,7 @@ class DB_Authorization: ObservableObject {
                     else{
                         self.selection = "User"
                     }
-                    print("User: \(String(describing: Auth.auth().currentUser?.uid)) is Authenticated")
+                    print("User: \(String(describing: self.firebase.currentUser?.uid)) is Authenticated")
                     self.statusErrorMessage = "user is authd"
                     print(self.statusErrorMessage)
                 }
@@ -252,11 +252,10 @@ class DB_Authorization: ObservableObject {
     /*------------------------------------------------------------------------------------------------------------------------*/
         
     func logOut() -> Bool{
-        let firebaseAuth = Auth.auth()
-        let userUID = firebaseAuth.currentUser?.uid
+        let userUID = firebase.currentUser?.uid
         
         do {
-            try firebaseAuth.signOut()
+            try firebase.signOut()
         } catch let signOutError as NSError {
             print("Error signing out: %@", signOutError)
             return true
@@ -274,46 +273,46 @@ class DB_Authorization: ObservableObject {
 //
 /*------------------------------------------------------------------------------------------------------------------------*/
 
-//func getUserAuthStatus() -> String {
-//    if Auth.auth().currentUser != nil {
-//      // User is signed in.
-//      // ...
-//        let user = Auth.auth().currentUser
-//        if let user = user {
-//          // The user's ID, unique to the Firebase project.
-//          // Do NOT use this value to authenticate with your backend server,
-//          // if you have one. Use getTokenWithCompletion:completion: instead.
-//          let uid = user.uid
-//            
-//            
-//            //unsused
-//            _ = user.email
-//            _ = user.photoURL
-//            //
-//            
-//            
-//          var multiFactorString = "MultiFactor: "
-//          for info in user.multiFactor.enrolledFactors {
-//            multiFactorString += info.displayName ?? "[DispayName]"
-//            multiFactorString += " "
-//          }
-//            print("currentUser.Auth: Successful---User:\(uid) is logged in")
+func getUserAuthStatus() -> Bool {
+    if firebase.currentUser != nil {
+      // User is signed in.
+      // ...
+        let user = firebase.currentUser
+        if let user = user {
+          // The user's ID, unique to the Firebase project.
+          // Do NOT use this value to authenticate with your backend server,
+          // if you have one. Use getTokenWithCompletion:completion: instead.
+          let uid = user.uid
+            
+            
+            //unsused
+            _ = user.email
+            _ = user.photoURL
+            //
+            
+            
+          var multiFactorString = "MultiFactor: "
+          for info in user.multiFactor.enrolledFactors {
+            multiFactorString += info.displayName ?? "[DispayName]"
+            multiFactorString += " "
+          }
+            print("currentUser.Auth: Successful---User:\(uid) is logged in")
 //            return "currentUser.Auth: Successful---User:\(uid) is logged in"
-////                let userInfo = Auth.auth().currentUser?.providerData[indexPath.row]
-////                cell?.textLabel?.text = userInfo?.providerID
-////                // Provider-specific UID
-////                cell?.detailTextLabel?.text = userInfo?.uid
-//
-//          // ...
-//        }
-//    } else {
-//      // No user is signed in.
-//      // ...
-//        print("currentUser.Auth: Successful---No user is currently signed in")
-//        return "currentUser.Auth: Successful---No user is currently signed in"
-//    }
-//    return "function call failed"
-//}
+//                let userInfo = Auth.auth().currentUser?.providerData[indexPath.row]
+//                cell?.textLabel?.text = userInfo?.providerID
+//                // Provider-specific UID
+//                cell?.detailTextLabel?.text = userInfo?.uid
+return true
+          // ...
+        }
+    } else {
+      // No user is signed in.
+      // ...
+        print("currentUser.Auth: Successful---No user is currently signed in")
+return false    }
+return false
+    
+}
 
 }
 /*------------------------------------------------------------------------------------------------------------------------*/
