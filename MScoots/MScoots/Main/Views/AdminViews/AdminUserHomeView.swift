@@ -12,10 +12,8 @@ import SwiftUI
 
 struct AdminUserHomeView: View{
     
-    @StateObject var model: DB_Authorization = DB_Authorization()
+    @StateObject var model: Firebase_Authorization = Firebase_Authorization()
     
-
-//    @State private var model: DB_Authorization = DB_Authorization()
     @State private var path_Admin = [ViewItem]()
     @State private var path_AdminText = ""
     //DropDown View List
@@ -54,17 +52,10 @@ struct AdminUserHomeView: View{
                                     //Log out and go back to landing page
                                     model.isLoggedIn =
                                     model.logOut()
-                                    
-//                                    self.value = "LandingPageView"
-//                                    path_AdminText = self.value
-//                                    path_Admin = []
-                                    
                                 } label: {
                                     NavigationLink("Log Out",value: ViewItem(name: "LandingPageView"))
                                     HStack{
                                         Image(systemName: "figure.wave")
-//                                        Text("Log Out")
-                                        
                                     }
                                     .font(.system(size: 22))
                                 }
@@ -77,31 +68,25 @@ struct AdminUserHomeView: View{
                         VStack{
                             List{
                                 Section{
-                                    //Text("LIST 1")
-//                                    Text("Scooter Object")
-//                                    Text("Scooter Object")
-//                                    Text("Scooter Object")
-//                                    Text("Scooter Object")
+                                    //TODO: Show random scooters
+                                    Text("Scooter")
+                                    Text("Scooter")
                                 }
                             header: {
                                 Text("Available Scooters")
                             }
                                 Section{
-                                    //Text("LIST 2")
-//                                    Text("Scooter Object")
-//                                    Text("Scooter Object")
-//                                    Text("Scooter Object")
-//                                    Text("Scooter Object")
+                                    //TODO: Show random scooters
+                                    Text("Scooter")
+                                    Text("Scooter")
                                 }
                             header: {
                                 Text("Scooters in-Use")
                             }
                                 Section{
-                                    //Text("LIST 3")
-//                                    Text("Scooter Object")
-//                                    Text("Scooter Object")
-//                                    Text("Scooter Object")
-//                                    Text("Scooter Object")
+                                    //TODO: Show random scooters
+                                    Text("Scooter")
+                                    Text("Scooter")
                                 }
                             header: {
                                 Text("Scooters offline")
@@ -141,7 +126,8 @@ struct AdminUserHomeView: View{
                                         }.frame(width: 180, height: 200)
                                     }
                                 }.navigationBarBackButtonHidden(false)
-                            }.background(Color.white)
+                            }
+//                            .background(Color.white)
                         }
                     }
                 }
@@ -162,7 +148,7 @@ struct AdminUserHomeView: View{
                                 }
                             }
                         } label: {
-                            VStack(spacing: 5){
+                            VStack{
                                 HStack{
                                     Text(value.isEmpty ? placeholder : value)
                                         .foregroundColor(value.isEmpty ? .gray : .black)
@@ -195,7 +181,6 @@ struct AdminUserHomeView: View{
     let views: [ViewItem] =
     [
         .init(name: "LandingPageView"),
-//        .init(name: "LoginView"),
         .init(name: "RegistrationView"),
         .init(name: "UserHomeView"),
         .init(name: "ResetPasswordView"),
@@ -212,8 +197,6 @@ struct AdminUserHomeView: View{
         switch view.name {
         case "LandingPageView":
             return AnyView(LandingPageView())
-//        case "LoginView":
-//            return AnyView(LoginView())
         case "RegistrationView":
             return AnyView(RegistrationView())
         case "UserHomeView":
