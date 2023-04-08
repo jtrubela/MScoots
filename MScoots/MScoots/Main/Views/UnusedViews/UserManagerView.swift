@@ -7,9 +7,9 @@ import Firebase
 
 struct UserManagerView: View {
 
-//    @ObservedObject var model = ViewModel()
-    
+    @ObservedObject var model = Firebase_Authorization()
     @State var list = [studentUser]()
+    @State var Scoot_list = [Scooter]()
 
 
     @State var CWID = ""
@@ -17,6 +17,12 @@ struct UserManagerView: View {
     @State var first_name = ""
     @State var last_name = ""
     @State var password = ""
+    
+    
+    @State var Availability = ""
+    @State var battery = ""
+    @State var nearestCharger = ""
+    @State var location = ""
 
 
     var body: some View {
@@ -49,21 +55,38 @@ struct UserManagerView: View {
             Divider()
 
             VStack(spacing: 5) {
-
+                
                 TextField("CWID", text: $CWID)
                     .textFieldStyle(RoundedBorderTextFieldStyle())
-
+                
                 TextField("email", text: $email)
                     .textFieldStyle(RoundedBorderTextFieldStyle())
-
+                
                 TextField("first_name", text: $first_name)
                     .textFieldStyle(RoundedBorderTextFieldStyle())
-
+                
                 TextField("last_name", text: $last_name)
                     .textFieldStyle(RoundedBorderTextFieldStyle())
-
+                
                 TextField("password", text: $password)
                     .textFieldStyle(RoundedBorderTextFieldStyle())
+            }
+                // scooter
+            VStack{
+                TextField("Availability", text: $Availability)
+                    .textFieldStyle(RoundedBorderTextFieldStyle())
+                
+                TextField("Battery status", text: $battery)
+                    .textFieldStyle(RoundedBorderTextFieldStyle())
+                
+                TextField("nearestCharger", text: $nearestCharger)
+                    .textFieldStyle(RoundedBorderTextFieldStyle())
+                
+                TextField("location", text: $location)
+                    .textFieldStyle(RoundedBorderTextFieldStyle())
+                
+               
+            }
 
                 Button{
                     // Call add data
@@ -79,11 +102,29 @@ struct UserManagerView: View {
                 }label:{
                     Text("Add New Student Item")
                 }
+            
+            
+            //Scoooter list items button
+            Button{
+                // Call add data
+                addData(CWID: CWID, email: email, first_name: first_name, last_name: last_name, password: password)
+
+                // Clear the text fields
+                Availability = ""
+                battery = ""
+                nearestCharger = ""
+                location = ""
+                
+                
+            }label:{
+                Text("Add Scotter")
+            }
+            
             }
         }
 
 
-    }
+    
 //    func updateData(studentUserToUpdate:studentUser) {
 //
 //        // Get a reference to the database
@@ -150,39 +191,110 @@ struct UserManagerView: View {
             }
         }
     }
+
+func getData() {
     
-    func getData() {
+    // Get a reference to the database
+    let db = Firestore.firestore()
+    
+    // Read the documents at a specific path
+    db.collection("studentUser").getDocuments { snapshot, error in
         
-        // Get a reference to the database
-        let db = Firestore.firestore()
-        
-        // Read the documents at a specific path
-        db.collection("studentUser").getDocuments { snapshot, error in
+        // Check for errors
+        if error == nil {
             
-            // Check for errors
-            if error == nil {
+            print("No User")
+            
+            // No errors
+            if let snapshot = snapshot {
                 
-                // No errors
-                if let snapshot = snapshot {
+                // Update the list property in the main thread
+                DispatchQueue.main.async {
                     
-                    // Update the list property in the main thread
-                    DispatchQueue.main.async {
+                    // Get all the documents and create studentUsers
+                    self.list = snapshot.documents.map { d in
                         
-                        // Get all the documents and create studentUsers
-                        self.list = snapshot.documents.map { d in
-                            
-                            // Create a studentUser item for each document returned
-                            return studentUser(CWID: d["CWID"] as? String ?? "",
-                                               email: d["Email"] as? String ?? "",
-                                               first_name: d["first_name"] as? String ?? "",
-                                               last_name: d["last_name"] as? String ?? "",
-                                               password: d["Password"] as? String ?? "")}
-  
-                    }
+                        // Create a studentUser item for each document returned
+                        return studentUser(CWID: d["CWID"] as? String ?? "",
+                                           email: d["Email"] as? String ?? "",
+                                           first_name: d["first_name"] as? String ?? "",
+                                           last_name: d["last_name"] as? String ?? "",
+                                           password: d["Password"] as? String ?? "")}
+                    
                 }
+                print("User info found")
             }
         }
     }
+}
+//add func for scotter list
+
+func addScootData(location: String, isAvailable: String, battery: String, nearestCharger: String)
+{
+    
+    // Get a reference to the database
+    let db = Firestore.firestore()
+    
+    // Add a document to a collection
+    db.collection("scooter_list").addDocument(data: ["Availability":isAvailable, "battery":battery, "nearestCharger":nearestCharger,"location":location]) { error in
+        
+        
+        // Check for errors
+        if error == nil {
+            
+            // No errors
+            // Call get data to retrieve latest data
+            self.getScootData()
+        }
+        else {
+            // Handle the error
+        }
+    }
+}
+    
+
+
+func getScootData() {
+    
+    // Get a reference to the database
+    let db = Firestore.firestore()
+    
+    // Read the documents at a specific path
+    db.collection("scooter_list").getDocuments { snapshot, error in
+        
+        // Check for errors
+        if error == nil {
+            
+            print("No User")
+            
+            // No errors
+            if let snapshot = snapshot {
+                
+                // Update the list property in the main thread
+                DispatchQueue.main.async {
+                    
+                    // Get all the documents and create studentUsers
+                    self.Scoot_list = snapshot.documents.map { d in
+                        
+                        // Create a studentUser item for each document returned
+//                        Scooter(location: <#T##String#>, isAvailable: <#T##String#>, battery: <#T##String#>, nearestCharger: <#T##String#>)
+                        
+                        return Scooter(location: d["location"] as? String ?? "",
+                                       isAvailable: d["isAvailable"] as? String ?? "",
+                                       battery: d["battery"] as? String ?? "",
+                                       nearestCharger: d["nearestCharger"] as? String ?? ""
+                                           )
+                        
+                    }
+
+                }
+                print("User info found")
+            }
+        }
+    }
+}
+
+    
 }
 
 

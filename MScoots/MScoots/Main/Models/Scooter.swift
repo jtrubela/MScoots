@@ -26,6 +26,16 @@ struct Scooter: Identifiable {
     //unused
     var nearestCharger: String
     var currentUser: studentUser? = nil
+    
+    
+    init(id: String = UUID().uuidString, location: String, isAvailable: String, battery: String, nearestCharger: String, currentUser: studentUser? = nil) {
+        self.id = id
+        self.location = location
+        self.isAvailable = isAvailable
+        self.battery = battery
+        self.nearestCharger = nearestCharger
+//        self.currentUser = currentUser
+    }
 
     //variable to check against the system if the user is admin so they can mange the system/users
 //    var currentUser: studentUser? = nil

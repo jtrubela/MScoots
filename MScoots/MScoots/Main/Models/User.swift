@@ -15,15 +15,15 @@ class studentUser: Identifiable, Decodable {
         var street: String
         var city: String
         var zipcode: String
-//Would be fantastic to get maps working so we can use this and store to Firestore
-//        var geo: Geo
-//
-//        struct Geo: Decodable {
-//            var lat: String
-//            var lng: String
-//        }
+        //Would be fantastic to get maps working so we can use this and store to Firestore
+        //        var geo: Geo
+        //
+        //        struct Geo: Decodable {
+        //            var lat: String
+        //            var lng: String
+        //        }
     }
-
+    
     init(CWID: String, email: String, first_name: String, last_name: String, password: String) {
         self.CWID = CWID
         self.email = email
@@ -31,5 +31,6 @@ class studentUser: Identifiable, Decodable {
         self.last_name = last_name
         self.password = password
     }
-
 }
+
+
