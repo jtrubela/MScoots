@@ -28,33 +28,30 @@ struct UserManagerView: View {
     var body: some View {
 
         VStack {
-
-
+            // EDIT AND REMOVE BUTTONS
+            HStack(spacing: 15){
+                //TODO: Update button
+                Spacer()
                 HStack {
-                    Text(CWID)
-                    Spacer()
-                    
-                    
-                    // Update button
-                    HStack {
-                        Button{
-//                            updateData(studentUserToUpdate: )
-                        }label:{
-                            Image(systemName: "pencil")
-                        }
-                        
-                        // Delete button
-                        Button{
-//                            deleteData(studentUserToDelete: )
-                        }label:{
-                            Image(systemName: "minus.circle")
-                        }
-                    }.buttonStyle(.borderedProminent).foregroundColor(.black)
+                    Button{
+                        //TODO:   updateData(studentUserToUpdate: )
+                    }label:{
+                        Image(systemName: "pencil")
+                    }
+                    .padding(10)
+                    // Delete button
+                    Button{
+                        //TODO:    deleteData(studentUserToDelete: )
+                    }label:{
+                        Image(systemName: "minus.circle")
+                    }
+                }.buttonStyle(.bordered).foregroundColor(.black)
+                    .padding(.trailing,20)
             }
-
+            
             Divider()
-
-            VStack(spacing: 5) {
+            // studentUser entry fields
+            VStack(spacing: 15) {
                 
                 TextField("CWID", text: $CWID)
                     .textFieldStyle(RoundedBorderTextFieldStyle())
@@ -70,9 +67,29 @@ struct UserManagerView: View {
                 
                 TextField("password", text: $password)
                     .textFieldStyle(RoundedBorderTextFieldStyle())
-            }
-                // scooter
-            VStack{
+            }.padding(10)
+            
+            Section{
+                Button{
+                    // Call add data
+                    addData(CWID: CWID, email: email, first_name: first_name, last_name: last_name, password: password)
+                    
+                    // Clear the text fields
+                    CWID = ""
+                    email = ""
+                    first_name = ""
+                    last_name = ""
+                    password = ""
+                    
+                }label:{
+                    Text("Add New Student Item")
+                }.buttonStyle(.borderedProminent)
+            }.padding(10)
+            
+            Divider().AddMyDivider()
+            
+            // scooter
+            VStack(spacing: 15){
                 TextField("Availability", text: $Availability)
                     .textFieldStyle(RoundedBorderTextFieldStyle())
                 
@@ -85,42 +102,28 @@ struct UserManagerView: View {
                 TextField("location", text: $location)
                     .textFieldStyle(RoundedBorderTextFieldStyle())
                 
-               
-            }
-
-                Button{
-                    // Call add data
-                    addData(CWID: CWID, email: email, first_name: first_name, last_name: last_name, password: password)
-
-                    // Clear the text fields
-                    CWID = ""
-                    email = ""
-                    first_name = ""
-                    last_name = ""
-                    password = ""
+                
+            }.padding(10)
+            VStack{
+                Section{
+                    //Scoooter list items button
+                    Button{
+                        // Call add data
+                        addScootData(location: location, isAvailable: Availability, battery: battery, nearestCharger: nearestCharger)
+                        // Clear the text fields
+                        Availability = ""
+                        battery = ""
+                        nearestCharger = ""
+                        location = ""
+                        
+                        
+                    }label:{
+                        Text("Add New Scooter Item")
+                    }
                     
-                }label:{
-                    Text("Add New Student Item")
-                }
-            
-            
-            //Scoooter list items button
-            Button{
-                // Call add data
-                addData(CWID: CWID, email: email, first_name: first_name, last_name: last_name, password: password)
-
-                // Clear the text fields
-                Availability = ""
-                battery = ""
-                nearestCharger = ""
-                location = ""
-                
-                
-            }label:{
-                Text("Add Scotter")
-            }
-            
-            }
+                }.padding(10).buttonStyle(.borderedProminent)
+            }.padding(10)
+        }
         }
 
 
