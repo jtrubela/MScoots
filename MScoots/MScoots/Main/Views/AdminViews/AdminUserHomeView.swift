@@ -73,7 +73,7 @@ struct AdminUserHomeView: View{
                                     Text("Scooter")
                                 }
                             header: {
-                                Text("Available Scooters")
+                                Text("Scooters")
                             }
                                 Section{
                                     //TODO: Show random scooters
@@ -100,32 +100,45 @@ struct AdminUserHomeView: View{
                         //Access to user views
                         VStack{
                             HStack{
-                                NavigationLink(destination: ScooterListView()) {
-                                    //modify regular scooter list view
-                                    Button{
-                                        
-                                    } label: {
-                                        VStack {
-                                            Image(systemName: "scooter")
-                                                .font(.system(size: 90))
-                                            Text("Scooter Manager!")
-                                                .foregroundColor(.white)
-                                        }.frame(width: 180, height: 200)
-                                    }
+                                NavigationLink(destination: ScooterManagerView()) {
+                                    VStack {
+                                        Image(systemName: "scooter")
+                                            .font(.system(size: 90))
+                                        Text("Scooter Manager!")
+                                            .foregroundColor(.white)
+                                    }.frame(width: 180, height: 200)
                                 }
-                                NavigationLink(destination: ScooterListView()) {
-                                    //modify regular scooter list view
-                                    Button{
-                                        
-                                    } label: {
-                                        VStack {
-                                            Image(systemName: "person.crop.circle.fill.badge.checkmark")
-                                                .font(.system(size: 90))
-                                            Text("User Manager!")
-                                                .foregroundColor(.white)
-                                        }.frame(width: 180, height: 200)
-                                    }
+                                
+//                                NavigationLink(destination: ScooterManagerView()) {
+//                                    //modify regular scooter list view
+//                                    Button{
+//
+//                                    } label: {
+//                                        VStack {
+//                                            Image(systemName: "scooter")
+//                                                .font(.system(size: 90))
+//                                            Text("Scooter Manager!")
+//                                                .foregroundColor(.white)
+//                                        }.frame(width: 180, height: 200)
+//                                    }
+//                                }
+                                
+                                NavigationLink(destination: UserManagerView()) {
+                                    VStack {
+                                        Image(systemName: "person.crop.circle.fill.badge.checkmark")
+                                            .font(.system(size: 90))
+                                        Text("User Manager!")
+                                            .foregroundColor(.white)
+                                    }.frame(width: 180, height: 200)
                                 }.navigationBarBackButtonHidden(false)
+//                                NavigationLink(destination: UserManagerView()) {
+//                                    //modify regular scooter list view
+//                                    Button{
+//                                        
+//                                    } label: {
+//                                        
+//                                    }
+//                                }.navigationBarBackButtonHidden(false)
                             }
 //                            .background(Color.white)
                         }
