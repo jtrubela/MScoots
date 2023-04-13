@@ -14,7 +14,6 @@
 		3D56C60429AD53EA00036363 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D56C60329AD53EA00036363 /* User.swift */; };
 		3D59B97B29B0BF650032BCB4 /* FirebaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D59B97A29B0BF650032BCB4 /* FirebaseManager.swift */; };
 		3D94DD5E29ABC99C0093C878 /* MScootsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D94DD5D29ABC99C0093C878 /* MScootsApp.swift */; };
-		3D94DD6029ABC99C0093C878 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D94DD5F29ABC99C0093C878 /* LoginView.swift */; };
 		3D94DD6529ABC99E0093C878 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3D94DD6429ABC99E0093C878 /* Preview Assets.xcassets */; };
 		3D94DD6F29ABCC4D0093C878 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 3D94DD6E29ABCC4D0093C878 /* FirebaseAuth */; };
 		3D94DD7129ABCC4D0093C878 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 3D94DD7029ABCC4D0093C878 /* FirebaseFirestore */; };
@@ -32,7 +31,6 @@
 		3DA1A8A329C985FA00BD2D54 /* UserProfile_SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DA1A8A229C985FA00BD2D54 /* UserProfile_SettingsView.swift */; };
 		3DA1A8A529C9E83B00BD2D54 /* ProfileImageSaver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DA1A8A429C9E83B00BD2D54 /* ProfileImageSaver.swift */; };
 		3DA868E729C5B58000043C9B /* Firebase_Firestore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DA868E629C5B58000043C9B /* Firebase_Firestore.swift */; };
-		3DAB28EF29C41E75004365D5 /* SwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DAB28EE29C41E75004365D5 /* SwiftUIView.swift */; };
 		3DAB28F129C41F7C004365D5 /* UserManagerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DAB28F029C41F7C004365D5 /* UserManagerView.swift */; };
 		3DAB28F329C4F188004365D5 /* LoadingScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DAB28F229C4F188004365D5 /* LoadingScreenView.swift */; };
 		3DACDC5A29D05DE300AFD00E /* Scooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DACDC5929D05DE200AFD00E /* Scooter.swift */; };
@@ -61,7 +59,6 @@
 		3D59B97A29B0BF650032BCB4 /* FirebaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseManager.swift; sourceTree = "<group>"; };
 		3D94DD5A29ABC99C0093C878 /* MScoots.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MScoots.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3D94DD5D29ABC99C0093C878 /* MScootsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MScootsApp.swift; sourceTree = "<group>"; };
-		3D94DD5F29ABC99C0093C878 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		3D94DD6429ABC99E0093C878 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		3D94DD7429ABD6170093C878 /* RegistrationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationView.swift; sourceTree = "<group>"; };
 		3D94DD7629ABD6CF0093C878 /* UserHomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserHomeView.swift; sourceTree = "<group>"; };
@@ -75,7 +72,6 @@
 		3DA1A8A229C985FA00BD2D54 /* UserProfile_SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfile_SettingsView.swift; sourceTree = "<group>"; };
 		3DA1A8A429C9E83B00BD2D54 /* ProfileImageSaver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileImageSaver.swift; sourceTree = "<group>"; };
 		3DA868E629C5B58000043C9B /* Firebase_Firestore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Firebase_Firestore.swift; sourceTree = "<group>"; };
-		3DAB28EE29C41E75004365D5 /* SwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIView.swift; sourceTree = "<group>"; };
 		3DAB28F029C41F7C004365D5 /* UserManagerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManagerView.swift; sourceTree = "<group>"; };
 		3DAB28F229C4F188004365D5 /* LoadingScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingScreenView.swift; sourceTree = "<group>"; };
 		3DACDC5929D05DE200AFD00E /* Scooter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scooter.swift; sourceTree = "<group>"; };
@@ -110,10 +106,8 @@
 		3D093EDA29CBFC24000E466F /* UserViews */ = {
 			isa = PBXGroup;
 			children = (
-				3D9F657929D1058100D65CCC /* Views Left To Do */,
 				3D94DD7629ABD6CF0093C878 /* UserHomeView.swift */,
-				3DAE1F9329B26120009FEA73 /* ScooterListView.swift */,
-				3DA1A89E29C9855300BD2D54 /* ScootMapView.swift */,
+				3D113E9B29C1D06E00A8C2B7 /* ScanQRView.swift */,
 			);
 			path = UserViews;
 			sourceTree = "<group>";
@@ -122,7 +116,6 @@
 			isa = PBXGroup;
 			children = (
 				3D56C5F929ACE05400036363 /* LandingPageView.swift */,
-				3DA1A89A29C979E100BD2D54 /* ResetPasswordView.swift */,
 				3D94DD7429ABD6170093C878 /* RegistrationView.swift */,
 			);
 			path = "Login&Registration";
@@ -144,7 +137,7 @@
 				3D093EDB29CBFCB8000E466F /* Login&Registration */,
 				3D093EDA29CBFC24000E466F /* UserViews */,
 				3D093EDC29CBFD0E000E466F /* AdminViews */,
-				3DCF552F29C84B0A00DA3FB3 /* UnusedViews */,
+				3D9F657929D1058100D65CCC /* Views Left To Finish */,
 				3DAE1F9229B227D3009FEA73 /* ViewStyling */,
 			);
 			path = Views;
@@ -163,7 +156,6 @@
 		3D56C5F229ACCD7700036363 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				3DA1A8A429C9E83B00BD2D54 /* ProfileImageSaver.swift */,
 				3DACDC5929D05DE200AFD00E /* Scooter.swift */,
 				3D56C60329AD53EA00036363 /* User.swift */,
 				3DAE1F9129B22680009FEA73 /* DatabaseMGRclass */,
@@ -209,15 +201,18 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
-		3D9F657929D1058100D65CCC /* Views Left To Do */ = {
+		3D9F657929D1058100D65CCC /* Views Left To Finish */ = {
 			isa = PBXGroup;
 			children = (
+				3DAB28F229C4F188004365D5 /* LoadingScreenView.swift */,
 				3DA1A8A229C985FA00BD2D54 /* UserProfile_SettingsView.swift */,
+				3DA1A89A29C979E100BD2D54 /* ResetPasswordView.swift */,
 				3DA1A89C29C9849D00BD2D54 /* MyScootsView.swift */,
-				3D113E9B29C1D06E00A8C2B7 /* ScanQRView.swift */,
 				3DA1A8A029C9858A00BD2D54 /* WalletView.swift */,
+				3DAE1F9329B26120009FEA73 /* ScooterListView.swift */,
+				3DA1A89E29C9855300BD2D54 /* ScootMapView.swift */,
 			);
-			path = "Views Left To Do";
+			path = "Views Left To Finish";
 			sourceTree = "<group>";
 		};
 		3DAD829C29CB7F93002C1FFA /* MScootsTests */ = {
@@ -242,19 +237,10 @@
 			isa = PBXGroup;
 			children = (
 				3D56C5FB29ACE67900036363 /* ViewStyling.swift */,
+				3DA1A8A429C9E83B00BD2D54 /* ProfileImageSaver.swift */,
 			);
 			name = ViewStyling;
 			path = Sources;
-			sourceTree = "<group>";
-		};
-		3DCF552F29C84B0A00DA3FB3 /* UnusedViews */ = {
-			isa = PBXGroup;
-			children = (
-				3D94DD5F29ABC99C0093C878 /* LoginView.swift */,
-				3DAB28F229C4F188004365D5 /* LoadingScreenView.swift */,
-				3DAB28EE29C41E75004365D5 /* SwiftUIView.swift */,
-			);
-			path = UnusedViews;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -371,8 +357,6 @@
 				3D94DD7729ABD6CF0093C878 /* UserHomeView.swift in Sources */,
 				3DACDC5A29D05DE300AFD00E /* Scooter.swift in Sources */,
 				3D94DD7529ABD6170093C878 /* RegistrationView.swift in Sources */,
-				3DAB28EF29C41E75004365D5 /* SwiftUIView.swift in Sources */,
-				3D94DD6029ABC99C0093C878 /* LoginView.swift in Sources */,
 				3D56C60429AD53EA00036363 /* User.swift in Sources */,
 				3DAB28F329C4F188004365D5 /* LoadingScreenView.swift in Sources */,
 				3DA1A89F29C9855300BD2D54 /* ScootMapView.swift in Sources */,
