@@ -19,6 +19,8 @@ struct AdminUserHomeView: View{
     //DropDown View List
     @State var value = ""
     var placeholder = "Select View"
+
+//TODO: items for the drop down list
     var dropDownList =
     [
         "LandingPageView",
@@ -42,6 +44,8 @@ struct AdminUserHomeView: View{
                     VStack{
                         HStack{
                             
+                            
+//TODO: Titles
                             Text("ADMIN HOME")
                                 .font(.system(size: 32))
                                 .fontWeight(.bold)
@@ -67,6 +71,7 @@ struct AdminUserHomeView: View{
                         // Admin Scooter information
                         VStack{
                             List{
+//Sections
                                 Section{
                                     //TODO: Show random scooters
                                     Text("Scooter")
@@ -109,19 +114,7 @@ struct AdminUserHomeView: View{
                                     }.frame(width: 180, height: 200)
                                 }
                                 
-//                                NavigationLink(destination: ScooterManagerView()) {
-//                                    //modify regular scooter list view
-//                                    Button{
-//
-//                                    } label: {
-//                                        VStack {
-//                                            Image(systemName: "scooter")
-//                                                .font(.system(size: 90))
-//                                            Text("Scooter Manager!")
-//                                                .foregroundColor(.white)
-//                                        }.frame(width: 180, height: 200)
-//                                    }
-//                                }
+
                                 
                                 NavigationLink(destination: UserManagerView()) {
                                     VStack {
@@ -151,9 +144,11 @@ struct AdminUserHomeView: View{
             }
             .background(Color.yellow)
             .toolbar {
+//toolbar
                 ToolbarItem(placement: .bottomBar) {
                     HStack{
                         Menu {
+// dropDownList
                             ForEach(dropDownList, id: \.self){ view in
                                 Button(view) {
                                     self.value = view
@@ -166,6 +161,7 @@ struct AdminUserHomeView: View{
                                     Text(value.isEmpty ? placeholder : value)
                                         .foregroundColor(value.isEmpty ? .gray : .black)
                                     Spacer()
+//dropDownList button
                                     Image(systemName: "chevron.down")
                                         .foregroundColor(Color.blue)
                                         .font(Font.system(size: 20, weight: .bold))
@@ -220,8 +216,8 @@ struct AdminUserHomeView: View{
             return AnyView(ScanQRView())
         case "ScooterListView":
             return AnyView(ScooterListView())
-        case "ScootMapView":
-            return AnyView(ScootMapView())
+//        case "ScootMapView":
+//            return AnyView(ScootMapView())
         case "MyScootsView":
             return AnyView(MyScootsView())
         case "UserProfile_SettingsView":

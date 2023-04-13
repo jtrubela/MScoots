@@ -6,7 +6,7 @@
 
 //import Foundation
 import SwiftUI
-import Firebase
+//import Firebase
 
 
 struct UserManagerView: View {
@@ -14,9 +14,6 @@ struct UserManagerView: View {
     @ObservedObject var Firestore = Firebase_Firestore()
 
     @State var list = [studentUser]()
-    
-
-    
     
     @State var CWID = ""
     @State var email = ""
@@ -147,7 +144,7 @@ struct UserManagerView: View {
                                 Text("Add New Student Item")
                             }.buttonStyle(.borderedProminent)
                             
-                        }.padding(20)
+                        }
                     }
                     
                 
