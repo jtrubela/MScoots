@@ -31,28 +31,10 @@ struct ScooterListView: View {
                 //
                 //                //TODO: Add logic for reserving a scooter
 
-  
-                
-                
-                
-                //            NavigationView{
                 List{
-                    //                    ForEach (scooters, id: \.self) { scooter in
                     ForEach(scooters) { scooter in
                         
-                        
                         HStack{
-                            
-                            //                                GroupBox(label: Label("", systemImage: "")
-                            //                                    {
-                            //                                    Spacer()
-                            
-                            //                            ScooterListItemView(scooters: isAvailableScooters, Scooter: scooter, ImageText: "scooterList", imageNum: checkScooterAvail(scooterAvail: scooter.isAvailable), _ImageName: LED)
-                            //                                    Spacer()
-                            
-                            //                                }
-                            //                                .shadow(color: .black, radius: 15, x: 5, y: 5)
-                            //                                .groupBoxStyle(DefaultGroupBoxStyle())
                             
                             Button{
                                 
@@ -65,31 +47,25 @@ struct ScooterListView: View {
                                         HStack{
                                             Image("scooterList").scaledToFill()
                                             
-                                            //                                    Spacer()
+                                            //Spacer()
                                             //TODO: Add logic for availability
                                             //if scooter is available turn green light on, otherwise turn grey light on
-
                                         }
                                     }
                                 }
                                 .indexViewStyle(.page(backgroundDisplayMode: .automatic))
-                                
                             }
-                            
-                            
-                            
                             .listStyle(GroupedListStyle())
                         }
-                        
-                    }.onDelete(perform: delete)
-                    
-                }.toolbar {
+                    }
+                    .onDelete(perform: delete)
+                }
+                .toolbar {
                     EditButton()
-                    
-                }.navigationBarTitle("Scoots")
+                }
+                .navigationBarTitle("Scoots")
             }
             .padding(.bottom, 120)
-            
         }
     }
     
