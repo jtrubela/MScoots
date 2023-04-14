@@ -18,12 +18,6 @@ struct LandingPageView: View {
     
     //StateObject accessing these variables in this view
     @StateObject var model = Firebase_Authorization()
-    //@State public var showingAlert: Bool
-    //@State public var statusErrorMessage: String
-    //@State private var isLoggedIn = false
-    //@State private var isAdmin = false
-    //@State private var selection: String? = nil
-    
 
     //show registration sheet action listener
     @State private var shouldShowRegistrationSheet = false
@@ -76,7 +70,7 @@ struct LandingPageView: View {
                                     ZStack{
                                         Image("scooter")
                                         Image("rocky")
-                                            .position(x:210,y:150)
+                                            .position(x:160,y:105)
                                             .scaleEffect(x:2.5,y:1.6)
                                     }
                                     Image("smoke-effect")

@@ -6,8 +6,6 @@
 //
 
 import SwiftUI
-import Firebase
-import FirebaseAuth
 
 struct UserHomeView: View{
     @State private var model = Firebase_Authorization()
@@ -19,15 +17,10 @@ struct UserHomeView: View{
         NavigationView{
             ZStack{
                 Color.init(red: 0.9, green: 0.0, blue: 0.1).ignoresSafeArea()
-                //Stack for elements-
-                //      1) Title and Hamburger
-                //      2) User Buttons
-                //      3) Nav Bar Buttons
+
                 VStack{
                     
                     VStack{
-                        //STACK 1.1 -- Title and Hamburger
-                        //Stack for Title and Hamburger Menu
                         HStack{
                             VStack{
                                 Text("Home")
@@ -68,9 +61,7 @@ struct UserHomeView: View{
 
                     }
 
-                    //STACK 1.2 -- User Buttons
                     VStack{
-                        //ROW 1
                         HStack{
                             //Stack for navigation button linked to ScanQRView to view scooters
                             NavigationLink(destination: ScanQRView()) {
@@ -94,15 +85,21 @@ struct UserHomeView: View{
                                     Text("Find a Scoot!")
                                         .font(.title2).foregroundColor(.white)
                                 }
-                            }.padding()
+                            }
+                            .padding()
                         }
                         
-                        //ROW 2
                         HStack{
-                            /* implement scan button option 2
-                             implement transition to option 2 screen
-                             */
-                            NavigationLink(destination: ScootMapView()) {
+//TODO: Add this line back in when the mapview is completed
+//                            NavigationLink(destination: ScootMapView()) {
+                            
+                            
+                                //Temporary Nav link to wait vinnies implementation of geofencing
+                                NavigationLink(destination: UserHomeView()) {
+                                    
+                                    
+                                    
+
                                 VStack {
                                     Image(systemName: "map")
                                         .font(.system(size: 110))
@@ -110,11 +107,8 @@ struct UserHomeView: View{
                                         .font(.title2).foregroundColor(.white)
                                     
                                 }
-                            }.padding()
-                            
-                            /* implement scan button option 2
-                             implement transition to option 2 screen
-                             */
+                            }
+                                .padding()
                             
                             NavigationLink(destination: WalletView()) {
                                 VStack {
@@ -123,7 +117,8 @@ struct UserHomeView: View{
                                     Text("Wallet")
                                         .font(.title).foregroundColor(.white)
                                 }
-                            }.padding()
+                            }
+                            .padding()
                         }
                     }
                     

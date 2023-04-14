@@ -3,21 +3,21 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>350990676021-6kjqtf4skghi45tqcggg598d19j36v4l.apps.googleusercontent.com</string>
+	<string>442721411381-vta9cu3t6r0u9fh1oiqahk2c1pq6hmu2.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.350990676021-6kjqtf4skghi45tqcggg598d19j36v4l</string>
+	<string>com.googleusercontent.apps.442721411381-vta9cu3t6r0u9fh1oiqahk2c1pq6hmu2</string>
 	<key>API_KEY</key>
-	<string>AIzaSyCxjE3nJMzOBNw7Lq_eVbJJ4ACzl6UlOIU</string>
+	<string>AIzaSyCfwGXO9VM0i0vEp5NuyeXv8H0qsMqZ9rw</string>
 	<key>GCM_SENDER_ID</key>
-	<string>350990676021</string>
+	<string>442721411381</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>Justin-Trubela.MScoots</string>
+	<string>MScoots-1</string>
 	<key>PROJECT_ID</key>
-	<string>mscootsfs</string>
+	<string>mscoots-1</string>
 	<key>STORAGE_BUCKET</key>
-	<string>mscootsfs.appspot.com</string>
+	<string>mscoots-1.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
 	<false></false>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -29,6 +29,6 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:350990676021:ios:4871edec7b7c6f8958817c</string>
+	<string>1:442721411381:ios:0ddd977c1d330fb9a9ec7c</string>
 </dict>
 </plist>

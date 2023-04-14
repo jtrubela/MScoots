@@ -13,7 +13,7 @@ import SwiftUI
 struct Scooter: Identifiable {
     //conform the object to Identifiable so that we can do a thorough search for
     // and have complete control over the scooter objects
-    var id = UUID().uuidString
+    var id = NSUUID().uuidString
     //location is shown to the user when looking for scoothers to rent
     //admin will have the option to change and update these locations
     var location: String
