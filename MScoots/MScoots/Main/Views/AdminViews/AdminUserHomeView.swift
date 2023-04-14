@@ -19,6 +19,8 @@ struct AdminUserHomeView: View{
     //DropDown View List
     @State var value = ""
     var placeholder = "Select View"
+
+//TODO: items for the drop down list
     var dropDownList =
     [
         "LandingPageView",
@@ -42,6 +44,8 @@ struct AdminUserHomeView: View{
                     VStack{
                         HStack{
                             
+                            
+//TODO: Titles
                             Text("ADMIN HOME")
                                 .font(.system(size: 32))
                                 .fontWeight(.bold)
@@ -67,13 +71,14 @@ struct AdminUserHomeView: View{
                         // Admin Scooter information
                         VStack{
                             List{
+//Sections
                                 Section{
                                     //TODO: Show random scooters
                                     Text("Scooter")
                                     Text("Scooter")
                                 }
                             header: {
-                                Text("Available Scooters")
+                                Text("Scooters")
                             }
                                 Section{
                                     //TODO: Show random scooters
@@ -100,32 +105,33 @@ struct AdminUserHomeView: View{
                         //Access to user views
                         VStack{
                             HStack{
-                                NavigationLink(destination: ScooterListView()) {
-                                    //modify regular scooter list view
-                                    Button{
-                                        
-                                    } label: {
-                                        VStack {
-                                            Image(systemName: "scooter")
-                                                .font(.system(size: 90))
-                                            Text("Scooter Manager!")
-                                                .foregroundColor(.white)
-                                        }.frame(width: 180, height: 200)
-                                    }
+                                NavigationLink(destination: ScooterManagerView()) {
+                                    VStack {
+                                        Image(systemName: "scooter")
+                                            .font(.system(size: 90))
+                                        Text("Scooter Manager!")
+                                            .foregroundColor(.white)
+                                    }.frame(width: 180, height: 200)
                                 }
-                                NavigationLink(destination: ScooterListView()) {
-                                    //modify regular scooter list view
-                                    Button{
-                                        
-                                    } label: {
-                                        VStack {
-                                            Image(systemName: "person.crop.circle.fill.badge.checkmark")
-                                                .font(.system(size: 90))
-                                            Text("User Manager!")
-                                                .foregroundColor(.white)
-                                        }.frame(width: 180, height: 200)
-                                    }
+                                
+
+                                
+                                NavigationLink(destination: UserManagerView()) {
+                                    VStack {
+                                        Image(systemName: "person.crop.circle.fill.badge.checkmark")
+                                            .font(.system(size: 90))
+                                        Text("User Manager!")
+                                            .foregroundColor(.white)
+                                    }.frame(width: 180, height: 200)
                                 }.navigationBarBackButtonHidden(false)
+//                                NavigationLink(destination: UserManagerView()) {
+//                                    //modify regular scooter list view
+//                                    Button{
+//                                        
+//                                    } label: {
+//                                        
+//                                    }
+//                                }.navigationBarBackButtonHidden(false)
                             }
 //                            .background(Color.white)
                         }
@@ -138,9 +144,11 @@ struct AdminUserHomeView: View{
             }
             .background(Color.yellow)
             .toolbar {
+//toolbar
                 ToolbarItem(placement: .bottomBar) {
                     HStack{
                         Menu {
+// dropDownList
                             ForEach(dropDownList, id: \.self){ view in
                                 Button(view) {
                                     self.value = view
@@ -153,6 +161,7 @@ struct AdminUserHomeView: View{
                                     Text(value.isEmpty ? placeholder : value)
                                         .foregroundColor(value.isEmpty ? .gray : .black)
                                     Spacer()
+//dropDownList button
                                     Image(systemName: "chevron.down")
                                         .foregroundColor(Color.blue)
                                         .font(Font.system(size: 20, weight: .bold))
@@ -207,8 +216,8 @@ struct AdminUserHomeView: View{
             return AnyView(ScanQRView())
         case "ScooterListView":
             return AnyView(ScooterListView())
-        case "ScootMapView":
-            return AnyView(ScootMapView())
+//        case "ScootMapView":
+//            return AnyView(ScootMapView())
         case "MyScootsView":
             return AnyView(MyScootsView())
         case "UserProfile_SettingsView":

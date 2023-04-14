@@ -330,8 +330,9 @@ struct CustomScene: Scene {
             return AnyView(ScanQRView())
         case "ScooterListView":
             return AnyView(ScooterListView())
-        case "ScootMapView":
-            return AnyView(ScootMapView())
+//TODO: Awaiting vinnies implementation of mapview
+//        case "ScootMapView":
+//            return AnyView(ScootMapView())
         case "MyScootsView":
             return AnyView(MyScootsView())
         case "UserProfile_SettingsView":
