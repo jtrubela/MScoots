@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0CC432C629E73140003DA1F1 /* mapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC432C529E73140003DA1F1 /* mapView.swift */; };
 		3D113E9C29C1D06E00A8C2B7 /* ScanQRView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D113E9B29C1D06E00A8C2B7 /* ScanQRView.swift */; };
 		3D56C5F829ACD07000036363 /* Firebase_Authorization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D56C5F729ACD07000036363 /* Firebase_Authorization.swift */; };
 		3D56C5FA29ACE05400036363 /* LandingPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D56C5F929ACE05400036363 /* LandingPageView.swift */; };
@@ -51,7 +50,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		0CC432C529E73140003DA1F1 /* mapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mapView.swift; sourceTree = "<group>"; };
 		3D113E9B29C1D06E00A8C2B7 /* ScanQRView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanQRView.swift; sourceTree = "<group>"; };
 		3D56C5EB29ACC92100036363 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3D56C5F729ACD07000036363 /* Firebase_Authorization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Firebase_Authorization.swift; sourceTree = "<group>"; };
@@ -372,7 +370,6 @@
 				3D56C5FA29ACE05400036363 /* LandingPageView.swift in Sources */,
 				3D9B4E6129E6F5950010BE3B /* ScooterManagerView.swift in Sources */,
 				3DA1A89D29C9849D00BD2D54 /* MyScootsView.swift in Sources */,
-				0CC432C629E73140003DA1F1 /* mapView.swift in Sources */,
 				3D94DD5E29ABC99C0093C878 /* MScootsApp.swift in Sources */,
 				3DA1A89929C9681400BD2D54 /* AdminUserHomeView.swift in Sources */,
 				3D59B97B29B0BF650032BCB4 /* FirebaseManager.swift in Sources */,

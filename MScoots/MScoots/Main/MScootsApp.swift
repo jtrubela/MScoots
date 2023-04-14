@@ -13,7 +13,7 @@ struct MScootsApp: App {
     var body: some Scene {
         
         WindowGroup {
-                AdminUserHomeView()
+                UserHomeView()
         }
     }
 }
