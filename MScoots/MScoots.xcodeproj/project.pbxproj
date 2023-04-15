@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0CDADD9629EA61CA00E3D3A3 /* mapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CDADD9529EA61CA00E3D3A3 /* mapView.swift */; };
+		0CDADD9829EA627500E3D3A3 /* mapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CDADD9729EA627500E3D3A3 /* mapViewModel.swift */; };
 		3D113E9C29C1D06E00A8C2B7 /* ScanQRView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D113E9B29C1D06E00A8C2B7 /* ScanQRView.swift */; };
 		3D56C5F829ACD07000036363 /* Firebase_Authorization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D56C5F729ACD07000036363 /* Firebase_Authorization.swift */; };
 		3D56C5FA29ACE05400036363 /* LandingPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D56C5F929ACE05400036363 /* LandingPageView.swift */; };
@@ -50,6 +52,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0CDADD9529EA61CA00E3D3A3 /* mapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mapView.swift; sourceTree = "<group>"; };
+		0CDADD9729EA627500E3D3A3 /* mapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mapViewModel.swift; sourceTree = "<group>"; };
 		3D113E9B29C1D06E00A8C2B7 /* ScanQRView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanQRView.swift; sourceTree = "<group>"; };
 		3D56C5EB29ACC92100036363 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3D56C5F729ACD07000036363 /* Firebase_Authorization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Firebase_Authorization.swift; sourceTree = "<group>"; };
@@ -158,6 +162,7 @@
 			children = (
 				3DACDC5929D05DE200AFD00E /* Scooter.swift */,
 				3D56C60329AD53EA00036363 /* User.swift */,
+				0CDADD9729EA627500E3D3A3 /* mapViewModel.swift */,
 				3DAE1F9129B22680009FEA73 /* DatabaseMGRclass */,
 			);
 			path = Models;
@@ -211,6 +216,7 @@
 				3DA1A8A029C9858A00BD2D54 /* WalletView.swift */,
 				3DAE1F9329B26120009FEA73 /* ScooterListView.swift */,
 				3DA1A89E29C9855300BD2D54 /* ScootMapView.swift */,
+				0CDADD9529EA61CA00E3D3A3 /* mapView.swift */,
 			);
 			path = "Views Left To Finish";
 			sourceTree = "<group>";
@@ -360,6 +366,7 @@
 				3D56C60429AD53EA00036363 /* User.swift in Sources */,
 				3DAB28F329C4F188004365D5 /* LoadingScreenView.swift in Sources */,
 				3DA1A89F29C9855300BD2D54 /* ScootMapView.swift in Sources */,
+				0CDADD9629EA61CA00E3D3A3 /* mapView.swift in Sources */,
 				3D113E9C29C1D06E00A8C2B7 /* ScanQRView.swift in Sources */,
 				3D56C5FC29ACE67900036363 /* ViewStyling.swift in Sources */,
 				3DAB28F129C41F7C004365D5 /* UserManagerView.swift in Sources */,
@@ -368,6 +375,7 @@
 				3DA868E729C5B58000043C9B /* Firebase_Firestore.swift in Sources */,
 				3D56C5F829ACD07000036363 /* Firebase_Authorization.swift in Sources */,
 				3D56C5FA29ACE05400036363 /* LandingPageView.swift in Sources */,
+				0CDADD9829EA627500E3D3A3 /* mapViewModel.swift in Sources */,
 				3D9B4E6129E6F5950010BE3B /* ScooterManagerView.swift in Sources */,
 				3DA1A89D29C9849D00BD2D54 /* MyScootsView.swift in Sources */,
 				3D94DD5E29ABC99C0093C878 /* MScootsApp.swift in Sources */,
