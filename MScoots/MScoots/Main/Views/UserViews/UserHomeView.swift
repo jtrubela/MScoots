@@ -95,7 +95,7 @@ struct UserHomeView: View{
                             
                             
                                 //Temporary Nav link to wait vinnies implementation of geofencing
-                                NavigationLink(destination: UserHomeView()) {
+                                NavigationLink(destination: mapView()) {
                                     
                                     
                                     

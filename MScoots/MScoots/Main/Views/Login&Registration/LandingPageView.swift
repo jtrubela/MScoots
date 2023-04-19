@@ -6,6 +6,10 @@
 //
 
 import SwiftUI
+import Firebase
+import FirebaseAuth
+
+
 
 struct LandingPageView: View {
     //View variables
@@ -34,6 +38,10 @@ struct LandingPageView: View {
     //variables for changing focus on fields
     @FocusState private var focusField: Field?
     @State private var buttonsDisabled = true
+    
+    
+    // Registration Sheet View
+    @State public var showRegistrationSheet = false
 
     
 
@@ -151,8 +159,12 @@ struct LandingPageView: View {
                             .AddLandingFieldText()
 
                         //TODO: implement test for reset password
-                        NavigationLink("Reset Password", destination: ResetPasswordView())
-                            .fontWeight(.bold)
+                        Button{
+                            showRegistrationSheet.toggle()
+                        } label: {
+                            Text("Reset Password")
+                                .fontWeight(.bold)
+                        }
 
                         Spacer()
                         //Register
@@ -186,6 +198,198 @@ struct LandingPageView: View {
     }
 
 }
+
+
+struct RegistrationView: View {
+    //ModelView Values-functionality
+    //imports functions needed to register
+    @ObservedObject var model = Firebase_Authorization()
+    @State var user: studentUser? = nil
+    @State var statusMessage = "Test message"
+    
+    @State var Address = ""
+    @State var Street = ""
+    @State var City = ""
+    @State var ZipCode = ""
+    
+    @State var CWID = ""
+    @State private var email = ""
+    //Section for trying to register an email address and password the manual way
+    @State private var password = ""
+    @State private var password2 = ""
+    @State var first_name = ""
+    @State var last_name = ""
+    
+    //variables for errors upon user login attempt
+    enum Field {
+        case email, password
+    }
+    // create instance for showing data back to user if user already created
+//    @State private var alertMessage = ""
+//    @State public var statusMessage = ""
+    //  Variables for the alerts back to the user if upon register request see's errors in user input
+//    @State private var showingAlert = false
+    @State private var isRegisteredUser = false
+    
+    
+    //View Variables
+    //  ViewModifying variables
+    @State private var buttonsDisabled = true
+    @FocusState private var focusField: Field?
+    @Environment(\.dismiss) private var dismiss
+    
+    var comparePasswords: Bool {
+        if password == password2 {
+            return true
+        }
+        return false
+    }
+    
+    
+    
+    
+    var body: some View {
+        //Navigates to UserHome upon successfull registration
+        
+            ZStack{
+                NavigationView{
+                    VStack{
+                        List{
+                        //Section for name input
+                        Section("Name") {
+                            TextField("First Name",text: $first_name)
+                            TextField("Last Name", text: $last_name)
+                        }
+
+                        //Section for CWID imput
+                        Section("Campus Wide ID"){
+                            TextField("CWID", text: $CWID)
+                        }
+                        
+                        //Section for Email and Passowrd input
+                        Section("Email"){
+                            EmailTextField(email: $email, enableButtons: enableButtons)
+                                                        .focused($focusField, equals: .email)// field bound to the .email case
+                                                        .onSubmit {
+                                                            focusField = .password
+                                                        }
+                                                        .onChange(of: email) { _ in
+                                                            //Enable buttons?
+                                                            enableButtons()
+                                                        }
+                        }
+
+                        //TODO: Figure out why strong password is trying to change during password input
+                        Section("Password"){
+                            SecurePasswordField(password: $password, email: email, buttonsDisabled: buttonsDisabled, enableButtons: enableButtons)
+                            //TODO: See if you can add these options on the section as the groups modifiers and eliminate some code
+                                                        .focused($focusField, equals: .password) /* field bound to the .email case*/
+                                                        .onSubmit {
+                                                            focusField = .password
+                                                        }
+                                                        .onChange(of: password) { _ in
+                                                            //Enable buttons?
+                                                            enableButtons()
+                                                        }
+                            
+                            
+                            SecurePasswordField(password: $password2, email: email, buttonsDisabled: buttonsDisabled, enableButtons: enableButtons)
+                                                        .focused($focusField, equals: .password) /* field bound to the .email case*/
+                                                        .onSubmit {
+                                                            focusField = .password
+                                                        }
+                                                        .onChange(of: password) { _ in
+                                                            //Enable buttons?
+                                                            enableButtons()
+                                                        }
+                            
+                        }
+                        
+
+                            
+                        //TODO: implement upon successful registration transition to UserHomeView.
+                        //TODO: implement upon unsuccesful registration error message is shown to the user
+                        
+                        Button {
+                            model.statusErrorMessage = model.registerAccount(email: email, password: password)
+                            model.statusMessagee = model.registerAccount(email: email, password: password)
+                            
+
+                            
+                            model.showingAlert_Reg.toggle()
+                                                        
+                        } label: {
+                                Section{
+                                    
+                                    Text("Register").buttonStyle(.borderedProminent)
+                                        .foregroundColor(.blue)
+                                } header:{
+                                    if model.showingAlert_Reg{
+                                        Text("\(model.statusErrorMessage)").foregroundColor(.red)
+                                    }
+                                }
+                                .padding(.leading,70)
+                        }
+                    
+                        }
+                        .navigationBarTitle("Registration")
+                        
+                }
+            }
+            .ignoresSafeArea()
+            
+            //Verify that the alert to register account shows the correct information
+//            .alert("Register Account Message\n\(model.statusMessagee)", isPresented: $model.showingAlert_Reg, actions: {})
+            .alert("Registration Completed\n\(model.alertMessage)", isPresented: $isRegisteredUser, actions: {
+            })
+            //MARK: 2 onSubmit calls for auth.signIn
+            //TODO: Verify bother work
+            .onSubmit {
+                if isRegisteredUser{
+                    FirebaseManager.shared.auth.signIn(withEmail: email, password: password)
+                    model.showingAlert_Reg.toggle()
+                    
+                }
+            }
+            .onSubmit {
+                if !isRegisteredUser{
+                    // TODO: Verify that this call to login outputs to the console that the user has been authenticated and all of the proper view variables are correct
+                    model.Login(email, password)
+                    model.showingAlert_Reg.toggle()
+                    
+                }
+            }
+            .onSubmit {
+                model.alertMessage = model.statusMessagee
+            }
+            
+        }
+
+        .navigationTitle("Registration")
+            
+    }
+    
+   
+//    struct RegistrationView_Previews: PreviewProvider {
+//        static var previews: some View {
+//            //takes in error message so that we can access the login function in model
+//            NavigationStack{
+//                RegistrationView()
+//            }
+//        }
+//    }
+
+    
+    func enableButtons() {
+        let emailIsGood = email.count >= 6 && email.contains("@")
+        let passwordIsGood = password.count >= 6
+        buttonsDisabled = !(emailIsGood && passwordIsGood)
+    }
+}
+
+
+
+
 
 struct LandingPageView_Previews: PreviewProvider {
     static var previews: some View {

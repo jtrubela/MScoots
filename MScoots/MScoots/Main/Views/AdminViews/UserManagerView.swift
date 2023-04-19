@@ -6,14 +6,22 @@
 
 //import Foundation
 import SwiftUI
+import CoreLocation
 //import Firebase
 
 
 struct UserManagerView: View {
     @ObservedObject var model = Firebase_Authorization()
     @ObservedObject var Firestore = Firebase_Firestore()
-
     @State var list = [studentUser]()
+    
+    //takes in the systems current data from the random Location/Scooter attribute/and scooter status to use to locate these scooters on the scooterlist system
+
+
+    func delete(at offsets: IndexSet) {
+        list.remove(atOffsets: offsets)
+    }
+
     
     @State var CWID = ""
     @State var email = ""
@@ -63,6 +71,8 @@ struct UserManagerView: View {
                             
                             List{
                                 ForEach(Firestore.list) { item in
+
+                                    
                                     NavigationLink("\(item.last_name), \(item.first_name)\n \(String(item.id).truncated(limit:10))"){
                                         VStack{
                                             List{
@@ -103,6 +113,7 @@ struct UserManagerView: View {
                                         }
                                     }
                                 }
+                                //TODO: Figure out why this is causing Mesh Errors
                                 .onDelete(perform: delete)
                                 
                             }.toolbar {
@@ -114,37 +125,37 @@ struct UserManagerView: View {
                             Text("Student Users in DataBase").textCase(.none)
                         }
                         
-                        Section{
-                            // studentUser entry fields
-                            
-                            TextField("CWID", text: $CWID)
-                                .textFieldStyle(RoundedBorderTextFieldStyle())
-                            
-                            TextField("email", text: $email)
-                                .textFieldStyle(RoundedBorderTextFieldStyle())
-                            
-                            TextField("first_name", text: $first_name)
-                                .textFieldStyle(RoundedBorderTextFieldStyle())
-                            
-                            TextField("last_name", text: $last_name)
-                                .textFieldStyle(RoundedBorderTextFieldStyle())
-                            
-                            TextField("password", text: $password)
-                                .textFieldStyle(RoundedBorderTextFieldStyle())
-                            
-                            
-                            Button{
-                                // Call add data
-                                Firestore.addData(CWID: CWID, email: email, first_name: first_name, last_name: last_name, password: password)
-                                
-                                // Clear the text fields
-                                clear_studentUserTextFields()
-                                
-                            }label:{
-                                Text("Add New Student Item")
-                            }.buttonStyle(.borderedProminent)
-                            
-                        }
+//                        Section{
+//                            // studentUser entry fields
+//
+//                            TextField("CWID", text: $CWID)
+//                                .textFieldStyle(RoundedBorderTextFieldStyle())
+//
+//                            TextField("email", text: $email)
+//                                .textFieldStyle(RoundedBorderTextFieldStyle())
+//
+//                            TextField("first_name", text: $first_name)
+//                                .textFieldStyle(RoundedBorderTextFieldStyle())
+//
+//                            TextField("last_name", text: $last_name)
+//                                .textFieldStyle(RoundedBorderTextFieldStyle())
+//
+//                            TextField("password", text: $password)
+//                                .textFieldStyle(RoundedBorderTextFieldStyle())
+//
+//
+//                            Button{
+//                                // Call add data
+//                                Firestore.addData(CWID: CWID, email: email, first_name: first_name, last_name: last_name, password: password)
+//
+//                                // Clear the text fields
+//                                clear_studentUserTextFields()
+//
+//                            }label:{
+//                                Text("Add New Student Item")
+//                            }.buttonStyle(.borderedProminent)
+//
+//                        }
                     }
                     
                 
@@ -188,3 +199,4 @@ struct UserManagerView_Previews: PreviewProvider {
         UserManagerView()
     }
 }
+

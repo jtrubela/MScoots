@@ -1,72 +1,110 @@
-
 //
 //  ScooterListView.swift
 //  MScoots
 //
 //  Created by Justin Trubela on 3/3/23.
 //
-
 import SwiftUI
 import Firebase
 
+
 struct ScooterListView: View {
-    
-    @State var scootAvailable = true
-    @State var canReserve = true
-    
-    
-    
+    @ObservedObject var Firestore = Firebase_Firestore()
+
     var body: some View {
         NavigationView{
             ZStack{
                 //TODO: Add Battery images
                 List{
-                    ForEach(scooters){scooter in
-                        Rectangle().size(width: 400, height: 3)
+                    ForEach(Firestore.Scoot_list){scooter in
                         HStack{
-                            
-                            
-                            ScooterListItemView()
-                            
-                            
-                            //TODO: Add logic for reserving a scooter
-                            Button{}label:{
-                                Text("Reserve")}.buttonStyle(.borderedProminent)
-                            
-                            //TODO: add logic so that if anwhere on the list item some more details are provided about the scooter
-                            
-                            
-                            Spacer()
-                            let LEDcheck = checkScooterAvail(scooterAvail: scooter.isAvailable)
-                            if LEDcheck == 1{
-                                Image("LED ON")
+
+                            VStack{
+                                
+                                Rectangle().size(width: 400, height: 3)
+
+                                HStack{
+                                    
+                                    Text(scooter.location)
+                                        .frame(width: 80, height: 80, alignment: .leading)
+                                        .font(Font.system(size: 16)).multilineTextAlignment(.leading)
+                                    
+                                    Spacer()
+                                    
+                                    Image("scooterList")                                        .frame(width: 80, height: 80, alignment: .leading)
+
+                                   
+                                    /*
+                                     if scooter status comes back as a
+                                        Near         1 return the green image
+                                        Close        0 retrun the yellow image
+                                        Far         -1 return the red image
+                                        No Funds    -2
+                                     */
+                                    if scooter.isAvailable == "1" {
+                                        Image(systemName: "arrowtriangle.up.fill").foregroundColor(.green)
+                                    }
+                                    else if scooter.isAvailable == "0" {
+                                        Image(systemName: "arrowtriangle.up.fill").foregroundColor(.yellow)
+                                    }
+                                    else if scooter.isAvailable == "-1" {
+                                        Image(systemName: "arrowtriangle.down.fill").foregroundColor(.red)
+                                    }
+                                    else {
+                                        Image(systemName: "arrowtriangle.down.fill").foregroundColor(.black)
+                                    }
+//                                    Text("\(scooter.isAvailable)")
+                                    
+                                    if scooter.nearestCharger == "Green" {
+                                        Image(systemName: "circle.fill").foregroundColor(.green)
+                                    }
+                                    else if scooter.nearestCharger == "Yellow" {
+                                        Image(systemName: "circle.fill").foregroundColor(.yellow)
+                                    }
+                                    else if scooter.nearestCharger == "Red" {
+                                        Image(systemName: "circle.fill").foregroundColor(.red)
+                                    }
+                                    else if scooter.nearestCharger == "Blue" {
+                                        Image(systemName: "circle.fill").foregroundColor(.blue)
+                                    }
+                                    else if scooter.nearestCharger == "Black" {
+                                        Image(systemName: "circle.fill").foregroundColor(.black)
+                                    }
+                                    else if scooter.nearestCharger == "Pink" {
+                                        Image(systemName: "circle.fill").foregroundColor(.pink)
+                                    }
+                                    else {
+                                        Image(systemName: "circle.fill").foregroundColor(.brown)
+                                    }
+//                                        Text("\(scooter.nearestCharger)")
+                                    
+                                    
+                                    //TODO: Add logic for reserving a scooter
+                                    Button{}label:{
+                                        Text("Reserve")}.buttonStyle(.borderedProminent)
+                                    
+                                    
+                                }
                             }
-                            else if LEDcheck == 0 && LEDcheck == -1 {
-                                Image("LED OFF")
-                            }
-                            else {
-                                Image("LED OFF")
-                            }
-                            Spacer()
-                            
-                            //                                        //TODO: Add logic for reserving a scooter
-                            
+
                         }
-                        .frame(maxWidth: .infinity)
                         .background(
                             Color.white
                                 .clipShape(RoundedRectangle(cornerRadius: 25, style: .continuous))
-                                .ignoresSafeArea()
                         )
                     }
-                    
-                }.listStyle(InsetListStyle())
-                
-                
-            }.navigationTitle("Scoots")
-        }.ignoresSafeArea()
+ 
+                }
+                .listStyle(InsetListStyle())
+
+            }
+            .navigationTitle("Scoots")
+        }
+        .onAppear(
+            perform: Firestore.getScootData
+        )
     }
-    
+
 }
 
 struct ScooterListView_Previews: PreviewProvider {
@@ -74,82 +112,3 @@ struct ScooterListView_Previews: PreviewProvider {
         ScooterListView()
     }
 }
-
-
-//
-//  ScooterListView.swift
-//  MScoots
-//
-//  Created by Justin Trubela on 3/3/23.
-//
-
-//struct ScooterListView2: View {
-//
-//    @State var user = FirebaseManager.shared.auth.currentUser?.email
-//    @State var scootAvailable = true
-//    @State var canReserve = true
-//    @State var LED = ""
-//    @State var isAvailableScooters = [[Scooter]]()
-//    @State var availableScooters: [Scooter] = [Scooter]()
-//    @State var unavailableScooters: [Scooter] = [Scooter]()
-//
-//    var body: some View {
-//        NavigationView{
-//
-//            VStack{
-//
-//                //                //TODO: Add Battery images
-//                //                //TODO: Add logic for reserving a scooter
-//                //
-//                //                //TODO: add logic so that if anwhere on the list item some more details are provided about the scooter
-//                //
-//                //                //TODO: Add logic for reserving a scooter
-//
-//                List{
-//                    ForEach(scooters) { scooter in
-//
-//                        HStack{
-//
-//                            Button{
-//
-//                            }label:{
-//                                HStack{
-//                                    Text(scooter.location).frame(width: 130, height: 80).border(.black).font(Font.system(size: 16))
-//                                    Spacer()
-//
-//                                    HStack{
-//                                        HStack{
-//                                            Image("scooterList").scaledToFill()
-//
-//                                            //Spacer()
-//                                            //TODO: Add logic for availability
-//                                            //if scooter is available turn green light on, otherwise turn grey light on
-//                                        }
-//                                    }
-//                                }
-//                                .indexViewStyle(.page(backgroundDisplayMode: .automatic))
-//                            }
-//                            .listStyle(GroupedListStyle())
-//                        }
-//                    }
-//                    .onDelete(perform: delete)
-//                }
-//                .toolbar {
-//                    EditButton()
-//                }
-//                .navigationBarTitle("Scoots")
-//            }
-//            .padding(.bottom, 120)
-//        }
-//    }
-//
-//
-//}
-//struct ScooterListView2_Previews: PreviewProvider {
-//    static var previews: some View {
-//        ScooterListView2()
-//    }
-//}
-
-
-

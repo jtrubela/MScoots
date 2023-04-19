@@ -2,14 +2,14 @@
 //  ResetPasswordView.swift
 //  MScoots
 //
-//  Created by Justin Trubela on 3/21/23.
+//  Created by Justin Trubela on 4/19/23.
 //
 
 import SwiftUI
 
 struct ResetPasswordView: View {
     var body: some View {
-        Text("Reset Password")
+        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
     }
 }
 

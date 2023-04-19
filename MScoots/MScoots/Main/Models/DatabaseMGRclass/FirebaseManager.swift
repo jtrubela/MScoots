@@ -33,7 +33,7 @@ class FirebaseManager: NSObject, ObservableObject {
     override init() {
         FirebaseApp.configure()
         
-        //be able to call these items as 
+        //be able to call these items as
         self.auth = Auth.auth()
         self.storage = Storage.storage()
         self.firestore = Firestore.firestore()
