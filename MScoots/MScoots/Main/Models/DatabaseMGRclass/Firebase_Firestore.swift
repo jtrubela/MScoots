@@ -29,7 +29,8 @@ import Foundation
 import Firebase
 
 class Firebase_Firestore: ObservableObject {
-    
+    let firebase = FirebaseManager.shared.firestore
+
     @Published var list = [studentUser]()
     @Published var Scoot_list = [Scooter]()
     
@@ -141,7 +142,7 @@ class Firebase_Firestore: ObservableObject {
                         }
                         
                     }
-                } 
+                }
             }
         }
     }

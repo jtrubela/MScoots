@@ -45,25 +45,25 @@ struct AdminUserHomeView: View{
                         HStack{
                             
                             
-//TODO: Titles
+                            //TODO: Titles
                             Text("ADMIN HOME")
                                 .font(.system(size: 32))
                                 .fontWeight(.bold)
                                 .padding(.leading, 30)
                             Spacer()
                             
-                                Button{
-                                    //Log out and go back to landing page
-                                    model.isLoggedIn =
-                                    model.logOut()
-                                } label: {
-                                    NavigationLink("Log Out",value: ViewItem(name: "LandingPageView"))
-                                    HStack{
-                                        Image(systemName: "figure.wave")
-                                    }
-                                    .font(.system(size: 22))
+                            Button{
+                                //Log out and go back to landing page
+                                model.isLoggedIn =
+                                model.logOut()
+                            } label: {
+                                NavigationLink("Log Out",value: ViewItem(name: "LandingPageView"))
+                                HStack{
+                                    Image(systemName: "figure.wave")
                                 }
-                                .buttonStyle(.bordered)
+                                .font(.system(size: 22))
+                            }
+                            .buttonStyle(.bordered)
                             
                             Spacer()
                         }
@@ -71,7 +71,7 @@ struct AdminUserHomeView: View{
                         // Admin Scooter information
                         VStack{
                             List{
-//Sections
+                                //Sections
                                 Section{
                                     //TODO: Show random scooters
                                     Text("Scooter")
@@ -110,45 +110,39 @@ struct AdminUserHomeView: View{
                                         Image(systemName: "scooter")
                                             .font(.system(size: 90))
                                         Text("Scooter Manager!")
-                                            .foregroundColor(.white)
-                                    }.frame(width: 180, height: 200)
+                                            .foregroundColor(.black)
+                                    }
+                                    .frame(width: 180, height: 200)
                                 }
-                                
 
-                                
+
+
                                 NavigationLink(destination: UserManagerView()) {
                                     VStack {
                                         Image(systemName: "person.crop.circle.fill.badge.checkmark")
                                             .font(.system(size: 90))
                                         Text("User Manager!")
-                                            .foregroundColor(.white)
-                                    }.frame(width: 180, height: 200)
-                                }.navigationBarBackButtonHidden(false)
-//                                NavigationLink(destination: UserManagerView()) {
-//                                    //modify regular scooter list view
-//                                    Button{
-//                                        
-//                                    } label: {
-//                                        
-//                                    }
-//                                }.navigationBarBackButtonHidden(false)
+                                            .foregroundColor(.gray)
+                                    }
+                                    .frame(width: 180, height: 200)
+                                }
+                                .navigationBarBackButtonHidden(false)
                             }
-//                            .background(Color.white)
-                        }
+                            }
                     }
                 }
             }
             //Navigation Stack Destination
             .navigationDestination(for: ViewItem.self) {      view in
-                    ViewForItem(view)
+                ViewForItem(view)
             }
             .background(Color.yellow)
             .toolbar {
-//toolbar
+                //toolbar
                 ToolbarItem(placement: .bottomBar) {
                     HStack{
                         Menu {
-// dropDownList
+                            // dropDownList
                             ForEach(dropDownList, id: \.self){ view in
                                 Button(view) {
                                     self.value = view
@@ -161,7 +155,7 @@ struct AdminUserHomeView: View{
                                     Text(value.isEmpty ? placeholder : value)
                                         .foregroundColor(value.isEmpty ? .gray : .black)
                                     Spacer()
-//dropDownList button
+                                    //dropDownList button
                                     Image(systemName: "chevron.down")
                                         .foregroundColor(Color.blue)
                                         .font(Font.system(size: 20, weight: .bold))
@@ -180,7 +174,7 @@ struct AdminUserHomeView: View{
             }
         }.navigationBarBackButtonHidden(true)
     }
-        
+    
     
     struct ViewItem: Identifiable, Hashable {
         let name: String
@@ -192,13 +186,16 @@ struct AdminUserHomeView: View{
         .init(name: "LandingPageView"),
         .init(name: "RegistrationView"),
         .init(name: "UserHomeView"),
-        .init(name: "ResetPasswordView"),
         .init(name: "ScanQRView"),
-        .init(name: "ScooterListView"),
-        .init(name: "ScootMapView"),
-        .init(name: "MyScootsView"),
+        .init(name: "AdminUserHomeView"),
+        .init(name: "ScooterManagerView"),
+        .init(name: "UserManagerView"),
+        .init(name: "LoadingPageView"),
         .init(name: "UserProfile_SettingsView"),
+        .init(name: "ResetPasswordView"),
         .init(name: "WalletView"),
+        .init(name: "ScooterListView"),
+        .init(name: "mapView"),
     ]
     
     //update the view to the navigationstack path variable
@@ -210,26 +207,34 @@ struct AdminUserHomeView: View{
             return AnyView(RegistrationView())
         case "UserHomeView":
             return AnyView(UserHomeView())
-        case "ResetPasswordView":
-            return AnyView(ResetPasswordView())
         case "ScanQRView":
             return AnyView(ScanQRView())
-        case "ScooterListView":
-            return AnyView(ScooterListView())
-//        case "ScootMapView":
-//            return AnyView(ScootMapView())
-        case "MyScootsView":
-            return AnyView(MyScootsView())
+        case "AdminUserHomeView":
+            return AnyView(AdminUserHomeView())
+        case "ScooterMangerView":
+            return AnyView(ScooterManagerView())
+        case "UserMangerView":
+            return AnyView(UserManagerView())
+        case "LoadingScreenView":
+            return AnyView(LoadingScreenView())
         case "UserProfile_SettingsView":
             return AnyView(UserProfile_SettingsView())
+        case "ResetPasswordView":
+            return AnyView(ResetPasswordView())
         case "WalletView":
             return AnyView(WalletView())
+        case "ScooterListView":
+            return AnyView(ScooterListView())
+        case "mapView":
+            return AnyView(mapView())
+
         default:
             return AnyView(AdminUserHomeView())
         }
     }
     
-
+    
+    
     
     struct AdminUserHomeView_Previews: PreviewProvider {
         static var previews: some View {

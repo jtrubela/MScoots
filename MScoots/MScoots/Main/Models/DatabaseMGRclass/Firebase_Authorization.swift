@@ -49,9 +49,10 @@ class Firebase_Authorization: ObservableObject {
     
     //used to present messages back to the user in event of unsuccessful/successful login attempt
     @Published var showingAlert = false
-    @Published var statusErrorMessage = ""
-    @Published var alertMessage = ""
-    @Published var statusMessage = ""
+    //Linked to Login Error message
+    @Published var statusErrorMessage = "!"
+    @Published var alertMessage = "!!"
+    @Published var statusMessage = "!"
     
 
     func registerAccount(email: String, password: String) -> String {
@@ -62,17 +63,22 @@ class Firebase_Authorization: ObservableObject {
                 self.showingAlert.toggle()
                 let err = self.checkError(err: maybeError as NSError)
                 self.statusErrorMessage = err
+                self.showingAlert.toggle()
+                self.statusErrorMessage = err
+                self.statusMessagee = err
                 print(err)
             } else {
                 if (FirebaseManager.shared.auth.currentUser != nil) {
                     let newUserInfo = FirebaseManager.shared.auth.currentUser
 
                     self.alertMessage = "User has been successfully created!\nUID:\(String(describing: newUserInfo?.uid)),\(String(describing: newUserInfo?.email))"
+                    self.statusMessagee = "User has been successfully created!\nUID:\(String(describing: newUserInfo?.uid)),\(String(describing: newUserInfo?.email))"
                     //                    isRegisteredUser = true
                     print(self.alertMessage)
                     
                     let email = newUserInfo?.email
                     self.statusMessage = "User\(newUserInfo?.uid ?? "--uid---") signed up successfully with email: \(String(describing: email))"
+                    self.statusMessagee = "User\(newUserInfo?.uid ?? "--uid---") signed up successfully with email: \(String(describing: email))"
                 }
             }
         }
@@ -93,6 +99,7 @@ class Firebase_Authorization: ObservableObject {
     @Published var isLoggedIn = false
     @Published var isAdmin = false
     @Published var selection: String? = nil
+    @Published var statusMessagee = "Status Error Message"
 
 
 
@@ -105,24 +112,28 @@ class Firebase_Authorization: ObservableObject {
                 
                 let err = self.checkError(err: maybeError as NSError)
                 self.statusErrorMessage = err
+                self.statusMessagee = err
                 
                 print(err)
                 
             } else { //there was no error so the user could be auth'd or maybe not!
                 if let _ = auth?.user {
                     self.isLoggedIn = true
+                    
                     if email == "Jtrubela@icloud.com"{
                         self.isAdmin = true
                         self.selection = "Admin"
                     }
                     else if password.isEmpty{
                         self.statusErrorMessage = "Password needs to be entered"
+                        self.statusMessagee = "Password needs to be entered"
                     }
                     else{
                         self.selection = "User"
                     }
                     print("User: \(String(describing: self.firebase.currentUser?.uid)) is Authenticated")
                     self.statusErrorMessage = "user is authd"
+                    self.statusMessagee = "user is authd"
                     print(self.statusErrorMessage)
                 }
             }
@@ -188,7 +199,7 @@ class Firebase_Authorization: ObservableObject {
         case AuthErrorCode.credentialAlreadyInUse.rawValue:
             return "This credential is already associated with a different user account"
         case AuthErrorCode.weakPassword.rawValue:
-            return "The password must be 6 characters long or more"
+            return "!!!The password must be 6 characters long or more"
         case AuthErrorCode.appNotAuthorized.rawValue:
             return "This app is not authorized to use Firebase Authentication. Please verifythat the correct bundle identifier has been entered in the Firebase Console"
         case AuthErrorCode.expiredActionCode.rawValue:

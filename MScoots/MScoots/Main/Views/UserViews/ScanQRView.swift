@@ -16,7 +16,7 @@ struct ScanQRView: View {
         CodeScannerView(
             codeTypes: [.qr],
             completion: { result in
-                if case let .success(code) = result {
+                if case .success(_) = result {
                     if case let .success(code) = result {
                         self.scannedCode = code.string
                         self.isPresentingScanner = false

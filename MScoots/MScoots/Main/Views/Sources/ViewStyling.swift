@@ -61,42 +61,42 @@ struct ProfilePhotoButton: View {
 
 
 
-
-struct ScooterListItemView: View {
-    var Scooter: Scooter?
-    
-    var ImageText = "scooterList"
-    var imageNum: Int {
-        checkScooterAvail(scooterAvail: Scooter?.isAvailable ?? "\(randomScooterAvailability)!")
-    }
-    
-    
-    var body: some View {
-        HStack{
-            Text(Scooter?.location ?? "\(randomLocation)!")
-                .font(Font.system(size: 16))
-
-
-            
-            Spacer()
-            
-            
-            let LEDcheck = imageNum
-            if LEDcheck == 1{
-                Image("LED ON")
-            }
-            else if LEDcheck == 0{
-                Image("LED OFF")
-            }
-            Spacer()
-            Image(ImageText)
-
-            Spacer()
-            //TODO: Add logic for availability
-            //if scooter is available turn green light on, otherwise turn grey light on
-        }
-    }
-}
+//
+//struct ScooterListItemView: View {
+//    var Scooter: Scooter?
+//
+//    var ImageText = "scooterList"
+//    var imageNum: Int {
+//        checkScooterAvail(scooterAvail: Scooter?.isAvailable ?? "\(randomScooterAvailability)!")
+//    }
+//
+//
+//    var body: some View {
+//        HStack{
+//            Text(Scooter?.location ?? "\(randomLocation)!")
+//                .font(Font.system(size: 16))
+//
+//
+//
+//            Spacer()
+//
+//
+//            let LEDcheck = imageNum
+//            if LEDcheck == 1{
+//                Image("LED ON")
+//            }
+//            else if LEDcheck == 0{
+//                Image("LED OFF")
+//            }
+//            Spacer()
+//            Image(ImageText)
+//
+//            Spacer()
+//            //TODO: Add logic for availability
+//            //if scooter is available turn green light on, otherwise turn grey light on
+//        }
+//    }
+//}
 
 struct EmailTextField: View {
     @Binding var email: String
@@ -224,7 +224,7 @@ struct LandingViewLoginButton2: View {
 }
 
 
-struct HamburgerMenu: View {    
+struct HamburgerMenu: View {
     var body: some View {
         
         Image(systemName: "line.3.horizontal")
